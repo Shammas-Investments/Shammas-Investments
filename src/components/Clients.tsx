@@ -39,7 +39,7 @@ const Clients = () => {
             {clients.map(([client, logo]) => (
               <li key={client}>
                 <FadeIn>
-                  <Image src={logo} alt={client} unoptimized />
+                  <Image src={logo} alt={client} unoptimized className="grayscale" />
                 </FadeIn>
               </li>
             ))}

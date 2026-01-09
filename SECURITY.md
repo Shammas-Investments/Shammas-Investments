@@ -1,211 +1,158 @@
-# Security Policy
+# Security Documentation - Shammas Investments Website
 
-## Overview
+## Security Audit Status: ✅ SECURED
 
-Shammas Investments takes security seriously. This document outlines the security measures implemented in this website and provides guidelines for reporting vulnerabilities.
-
-## Security Measures Implemented
-
-### 1. HTTP Security Headers
-
-All HTTP responses include comprehensive security headers:
-
-- **Strict-Transport-Security (HSTS)**: Forces HTTPS connections for 2 years
-- **Content-Security-Policy (CSP)**: Prevents XSS attacks by controlling resource loading
-- **X-Frame-Options**: Prevents clickjacking attacks (SAMEORIGIN)
-- **X-Content-Type-Options**: Prevents MIME-sniffing attacks (nosniff)
-- **X-XSS-Protection**: Enables browser XSS filter
-- **Referrer-Policy**: Controls referrer information leakage
-- **Permissions-Policy**: Restricts access to browser features (camera, microphone, geolocation)
-- **X-DNS-Prefetch-Control**: Controls DNS prefetching
-- **X-Download-Options**: Prevents file downloads from opening automatically (IE)
-- **X-Permitted-Cross-Domain-Policies**: Restricts cross-domain policy files
-
-### 2. Next.js Security Features
-
-- **React Strict Mode**: Enabled for better error detection
-- **Production Source Maps**: Disabled to protect source code
-- **Asset Compression**: Gzip compression enabled
-- **Image Optimization**: Sharp library for secure image processing
-
-### 3. Dependency Security
-
-- All dependencies updated to latest secure versions
-- Regular security audits with `npm audit`
-- Automated dependency updates monitoring
-
-### 4. Environment Variables
-
-- Environment variables properly separated (.env.local)
-- Example file provided (.env.local.example)
-- Sensitive data never committed to version control
-- .gitignore properly configured
-
-### 5. Input Validation & Sanitization
-
-- Contact form inputs are validated
-- Email validation on client and server side
-- Protection against common injection attacks
-
-### 6. HTTPS/SSL
-
-- Configured for HTTPS-only in production
-- HSTS header ensures browser always uses HTTPS
-- SSL certificate required for production deployment
-
-### 7. Rate Limiting (Recommended for Production)
-
-When deploying, implement:
-- API route rate limiting
-- Contact form rate limiting
-- DDoS protection via hosting provider (Vercel, Cloudflare, etc.)
-
-### 8. Data Protection
-
-- No sensitive user data stored
-- Newsletter signups should use secure third-party services
-- Contact form submissions should be encrypted in transit
-
-## Known Vulnerabilities
-
-### Development Dependencies (Non-Critical)
-
-- **3 high severity vulnerabilities** in `eslint-config-next` glob dependency
-- **Impact**: Development/linting tools only, does NOT affect production
-- **Status**: Requires Next.js 15 upgrade (breaking changes)
-- **Risk Level**: Low (dev dependencies don't run in production)
-
-## Security Best Practices for Deployment
-
-### Before Going Live:
-
-1. **SSL/TLS Certificate**
-   - Obtain valid SSL certificate
-   - Configure HTTPS redirect
-   - Test SSL configuration (ssllabs.com)
-
-2. **Environment Variables**
-   - Set production environment variables
-   - Never expose API keys in client code
-   - Use secret management for sensitive data
-
-3. **Domain Configuration**
-   - Configure proper DNS records
-   - Set up DMARC, SPF, DKIM for email
-   - Enable DNSSEC if available
-
-4. **Hosting Security**
-   - Enable DDoS protection
-   - Configure WAF (Web Application Firewall) if available
-   - Set up monitoring and alerts
-
-5. **Access Control**
-   - Use strong passwords for hosting accounts
-   - Enable 2FA on all admin accounts
-   - Limit access to production environment
-
-6. **Monitoring**
-   - Set up error tracking (Sentry, LogRocket, etc.)
-   - Monitor for unusual traffic patterns
-   - Set up uptime monitoring
-
-7. **Backup**
-   - Regular backups of content
-   - Test restore procedures
-   - Keep backups in secure location
-
-## Reporting a Vulnerability
-
-If you discover a security vulnerability, please report it responsibly:
-
-1. **Do NOT** open a public GitHub issue
-2. Email security concerns to: security@shammasinvestments.com
-3. Provide detailed information:
-   - Type of vulnerability
-   - Steps to reproduce
-   - Potential impact
-   - Suggested fix (if any)
-
-### What to Expect:
-
-- **Initial Response**: Within 48 hours
-- **Status Update**: Within 7 days
-- **Fix Timeline**: Critical issues within 30 days
-
-### Bug Bounty:
-
-Currently, we do not offer a formal bug bounty program, but we greatly appreciate responsible disclosure and may offer recognition or rewards on a case-by-case basis.
-
-## Security Update Policy
-
-- **Critical vulnerabilities**: Patched within 24-48 hours
-- **High severity**: Patched within 7 days
-- **Medium severity**: Patched within 30 days
-- **Low severity**: Patched in next regular update
-
-## Regular Security Maintenance
-
-### Weekly:
-- Monitor dependency updates
-- Review server logs for suspicious activity
-
-### Monthly:
-- Run `npm audit` and address issues
-- Update dependencies to latest secure versions
-- Review and test all security headers
-
-### Quarterly:
-- Complete security audit
-- Penetration testing (if budget allows)
-- Review and update security policies
-
-## Compliance
-
-This website is designed to comply with:
-
-- **GDPR**: EU data protection regulations (minimal data collection)
-- **CCPA**: California Consumer Privacy Act
-- **WCAG 2.1**: Web accessibility standards
-- **OWASP Top 10**: Common web vulnerabilities
-
-## Security Checklist for Production
-
-- [ ] SSL/TLS certificate installed and configured
-- [ ] All environment variables set
-- [ ] Security headers verified (securityheaders.com)
-- [ ] Content Security Policy tested
-- [ ] SSL configuration tested (ssllabs.com)
-- [ ] DDoS protection enabled
-- [ ] Rate limiting configured
-- [ ] Error tracking set up
-- [ ] Monitoring and alerts configured
-- [ ] Backup system in place
-- [ ] 2FA enabled on all admin accounts
-- [ ] Access logs reviewed
-- [ ] Vulnerability scan completed
-- [ ] Dependency audit clean
-- [ ] HTTPS redirect configured
-- [ ] Security.txt file added (optional)
-
-## Additional Resources
-
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
-- [Next.js Security Best Practices](https://nextjs.org/docs/app/building-your-application/configuring/security)
-- [Mozilla Web Security Guidelines](https://infosec.mozilla.org/guidelines/web_security)
-- [Security Headers](https://securityheaders.com/)
-- [SSL Labs](https://www.ssllabs.com/ssltest/)
-
-## Contact
-
-For security-related questions or concerns:
-
-- **Email**: security@shammasinvestments.com
-- **Response Time**: Within 48 hours
-- **PGP Key**: [Available upon request]
+Last Updated: 2026-01-09
 
 ---
 
-**Last Updated**: January 8, 2026
-**Next Review**: April 8, 2026
+## Executive Summary
 
-© 2026 Shammas Investments LLC. All rights reserved.
+This document outlines the comprehensive security measures implemented for the Shammas Investments website. The application has undergone a complete security audit and hardening process to protect against common web vulnerabilities and attacks.
+
+**Current Security Rating**: **HIGH** (Previously: MEDIUM-HIGH RISK)
+
+---
+
+## ✅ CRITICAL SECURITY FIXES IMPLEMENTED
+
+### 1. API Key Protection - CRITICAL
+**Issue**: Web3Forms API key exposed in client-side code  
+**Fix**: Moved to server-side API route  
+**Impact**: API key no longer visible in browser  
+**Location**: `src/app/api/contact/route.ts`
+
+### 2. Rate Limiting - HIGH
+**Implementation**: 3 requests/minute per IP  
+**Impact**: Prevents spam and DoS attacks  
+**Location**: `src/app/api/contact/route.ts:8-20`
+
+### 3. Input Validation - HIGH
+**Implementation**: Server-side validation & sanitization  
+**Impact**: Prevents injection attacks  
+**Location**: `src/app/api/contact/route.ts:22-38`
+
+### 4. CSP Enhancement - MEDIUM
+**Fix**: Removed unsafe-eval, added security directives  
+**Impact**: Reduces XSS attack surface  
+**Location**: `next.config.js:78-92`
+
+### 5. Error Boundaries - MEDIUM
+**Implementation**: React Error Boundary component  
+**Impact**: Prevents stack trace exposure  
+**Location**: `src/components/ErrorBoundary.tsx`
+
+### 6. Dependency Updates - HIGH
+**Result**: 0 vulnerabilities (was 3 HIGH)  
+**Updated**: eslint, eslint-config-next  
+**Verified**: `npm audit` shows 0 vulnerabilities
+
+### 7. Production Logging - LOW
+**Fix**: Console.logs only in development  
+**Impact**: Prevents information disclosure  
+**Files**: ServiceWorkerRegistration.tsx, InstallPrompt.tsx
+
+### 8. TypeScript Strict Mode - MEDIUM
+**Configuration**: Enabled with pragmatic settings  
+**Impact**: Improved type safety  
+**Location**: `tsconfig.json`
+
+---
+
+## Current Security Headers
+
+```
+✅ Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+✅ X-Frame-Options: SAMEORIGIN
+✅ X-Content-Type-Options: nosniff
+✅ X-XSS-Protection: 1; mode=block
+✅ Referrer-Policy: strict-origin-when-cross-origin
+✅ Permissions-Policy: camera=(), microphone=(), geolocation=()
+✅ Content-Security-Policy: See next.config.js
+```
+
+---
+
+## Environment Variables Security
+
+### Server-Side Only (Secure)
+```
+WEB3FORMS_ACCESS_KEY=your_key_here
+```
+
+### Client-Side (Public - OK)
+```
+NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/...
+NEXT_PUBLIC_SITE_URL=https://shammasinvestments.com
+```
+
+**RULE**: Never use `NEXT_PUBLIC_` prefix for secrets!
+
+---
+
+## Deployment Checklist
+
+Before deploying to production:
+
+- [ ] Run `npm audit` (should show 0 vulnerabilities)
+- [ ] Run `npm run build` (should succeed)
+- [ ] Verify WEB3FORMS_ACCESS_KEY is set (server-side only)
+- [ ] Test contact form (should use /api/contact route)
+- [ ] Test rate limiting (4 rapid submissions should be blocked)
+- [ ] Check browser DevTools Network tab (no API keys visible)
+- [ ] Verify HTTPS/SSL certificate is valid
+- [ ] Test with SecurityHeaders.com (target: A rating)
+
+---
+
+## Testing Security
+
+### Test Rate Limiting
+```bash
+# Submit form 4 times rapidly - 4th should fail with 429
+```
+
+### Test API Key Protection
+```bash
+# 1. Open browser DevTools
+# 2. Go to Network tab
+# 3. Submit contact form
+# 4. Check request payload - should NOT contain API key
+```
+
+### Test Error Boundary
+```bash
+# Trigger a React error - should show friendly message, no stack trace
+```
+
+---
+
+## Security Score
+
+| Category | Status |
+|----------|--------|
+| API Security | ✅ SECURE |
+| Input Validation | ✅ SECURE |
+| Rate Limiting | ✅ IMPLEMENTED |
+| Dependencies | ✅ NO VULNERABILITIES |
+| Headers | ✅ CONFIGURED |
+| Error Handling | ✅ IMPLEMENTED |
+| Type Safety | ✅ ENABLED |
+| Secrets Management | ✅ SECURE |
+
+**Overall**: ✅ **PRODUCTION READY**
+
+---
+
+## Future Enhancements (Optional)
+
+1. **CSRF Tokens** - Explicit CSRF protection for API routes
+2. **Captcha** - Add reCAPTCHA to contact form
+3. **Error Monitoring** - Integrate Sentry or similar
+4. **Full Strict TypeScript** - Add explicit types to remaining 23 components
+
+---
+
+**Security Status**: ✅ SECURED  
+**Last Audit**: 2026-01-09  
+**Next Audit**: 2026-04-09 (3 months)  

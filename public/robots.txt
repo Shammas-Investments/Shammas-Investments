@@ -1,10 +1,43 @@
-# robots.txt for Shammas Investments
+# robots.txt for Shammas Investments LLC
+# Company: Shammas Investments, shammasinvestments, shammasinvest
+# Website: https://shammasinvestments.com
+
 User-agent: *
 Allow: /
+Allow: /about
+Allow: /services
+Allow: /products
+Allow: /work
+Allow: /process
+Allow: /contact
 
-# Disallow admin or private paths if any
+# Disallow private paths
 Disallow: /api/
 Disallow: /_next/
+Disallow: /*.json$
+
+# Allow common crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://shammasinvestments.com/sitemap.xml
+
+# Host directive (for search engines that support it)
+Host: https://shammasinvestments.com

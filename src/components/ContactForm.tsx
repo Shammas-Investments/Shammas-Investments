@@ -44,29 +44,25 @@ const ContactForm = () => {
     setStatus({ type: "", message: "" });
 
     try {
-      // Web3Forms API endpoint - FREE unlimited submissions
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // Submit to secure server-side API route
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE",
           name: formData.name,
           email: formData.email,
           company: formData.company,
           phone: formData.phone,
           message: formData.message,
           budget: formData.budget,
-          subject: "New Contact Form Submission - Shammas Investments",
-          from_name: "Shammas Investments Website",
         }),
       });
 
       const result = await response.json();
 
-      if (result.success) {
+      if (response.ok && result.success) {
         setStatus({
           type: "success",
           message: "Thank you! Your message has been sent successfully. We'll get back to you soon.",
@@ -80,7 +76,10 @@ const ContactForm = () => {
           budget: "",
         });
       } else {
-        throw new Error("Form submission failed");
+        setStatus({
+          type: "error",
+          message: result.error || "Something went wrong. Please try again.",
+        });
       }
     } catch (error) {
       setStatus({

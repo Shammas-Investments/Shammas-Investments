@@ -2,7 +2,19 @@
 
 import { useId, useRef, useState } from "react";
 import { motion } from "framer-motion";
-function Block({ x, y, ...props }) {
+import React from "react";
+
+interface BlockProps extends React.ComponentProps<typeof motion.path> {
+  x: number;
+  y: number;
+}
+
+interface GridPatternProps extends React.SVGProps<SVGSVGElement> {
+  yOffset?: number;
+  interactive?: boolean;
+}
+
+function Block({ x, y, ...props }: BlockProps) {
   return (
     <motion.path
       transform={`translate(${-32 * y + 96 * x} ${160 * y})`}
@@ -12,11 +24,9 @@ function Block({ x, y, ...props }) {
   );
 }
 
-const GridPattern = ({ yOffset = 0, interactive = false, ...props }) => {
+const GridPattern: React.FC<GridPatternProps> = ({ yOffset = 0, interactive = false, ...props }) => {
   const id = useId();
   const ref = useRef<SVGSVGElement>(null);
-  const currentBlock = useRef<[number, number] | null>(null);
-  const counter = useRef(0);
   const [hoveredBlocks, setHoveredBlocks] = useState<Array<[number, number, number]>>([]);
   const staticBlocks = [
     [1, 1],

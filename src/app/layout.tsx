@@ -4,6 +4,7 @@ import "./globals.css";
 import { Playfair_Display, Inter } from 'next/font/google';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import InstallPrompt from '@/components/InstallPrompt';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const playfair = Playfair_Display({
@@ -27,11 +28,26 @@ export const metadata: Metadata = {
     template: "%s | Shammas Investments",
     default: "Shammas Investments - Complete IT Solutions & Technology Services",
   },
-  description: "Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services.",
+  description: "Shammas Investments LLC - Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services. Expert technology consulting and investment solutions.",
   keywords: [
+    // Brand name variations for maximum visibility
+    'Shammas Investments',
+    'Shammas Investment',
+    'shammas',
+    'shammasinvestments',
+    'shammasinvest',
+    'shammas invest',
+    'shammas LLC',
+    'Shammas Investments LLC',
+    'shammas investments company',
+    'shammas technology',
+    'shammas tech',
+    'shammas solutions',
+    // Core services
     'software development',
     'AI development',
     'machine learning',
+    'artificial intelligence services',
     'e-commerce solutions',
     'Amazon seller services',
     'Walmart marketplace',
@@ -48,6 +64,16 @@ export const metadata: Metadata = {
     'digital transformation',
     'technology services',
     'enterprise software',
+    // Investment related
+    'technology investment',
+    'IT investment',
+    'tech investment firm',
+    'investment company',
+    // Location/Industry
+    'IT solutions provider',
+    'technology consulting',
+    'software consultancy',
+    'tech company',
   ],
   applicationName: 'Shammas Investments',
   alternates: {
@@ -87,10 +113,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
+    shortcut: [{ url: '/favicon.svg' }],
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
@@ -133,17 +158,30 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Shammas Investments LLC',
+    alternateName: [
+      'Shammas Investments',
+      'Shammas Investment',
+      'shammasinvestments',
+      'shammasinvest',
+      'Shammas LLC',
+      'Shammas Technology Solutions',
+    ],
+    legalName: 'Shammas Investments LLC',
     url: siteUrl,
     logo: `${siteUrl}/android-chrome-512x512.png`,
-    description: 'Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services.',
+    image: `${siteUrl}/android-chrome-512x512.png`,
+    description: 'Shammas Investments LLC is a leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services. Expert technology consulting and investment solutions.',
+    slogan: 'Complete IT Solutions & Technology Services',
     founder: [
       {
         '@type': 'Person',
         name: 'Jonathan Shammas',
+        jobTitle: 'Co-Founder',
       },
       {
         '@type': 'Person',
         name: 'Joe Shammas',
+        jobTitle: 'Co-Founder',
       },
     ],
     address: {
@@ -155,6 +193,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       '@type': 'ContactPoint',
       email: 'info@shammasinvestments.com',
       contactType: 'Customer Service',
+      availableLanguage: ['English'],
     },
     sameAs: [
       // Add your social media URLs here when available
@@ -173,6 +212,43 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       'Mobile App Development',
       'Game Development',
       'Web Development',
+      'Digital Transformation',
+      'IT Consulting',
+      'Technology Investment',
+    ],
+    makesOffer: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Software Development Services',
+          description: 'Custom software development, web development, mobile app development',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'AI & Machine Learning Solutions',
+          description: 'Artificial intelligence development, machine learning models, LLM chatbots',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'E-commerce Solutions',
+          description: 'Amazon seller services, Walmart marketplace, Shopify development',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Cloud Management Services',
+          description: 'AWS services, cloud infrastructure, cloud management',
+        },
+      },
     ],
   };
 
@@ -190,7 +266,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body className="flex min-h-full flex-col">
         <ServiceWorkerRegistration />
         <InstallPrompt />
-        <RootLayout>{children}</RootLayout>
+        <ErrorBoundary>
+          <RootLayout>{children}</RootLayout>
+        </ErrorBoundary>
         <SpeedInsights />
       </body>
     </html>

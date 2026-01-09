@@ -27,15 +27,15 @@ const Header = ({
     <Container>
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <Link href={"/"} aria-label="Home" className="flex items-center">
+        <Link href={"/"} aria-label="Home" className="flex items-center flex-shrink-0">
           <Image
             src={appLogo}
             alt="Shammas Investments"
-            width={400}
-            height={120}
+            width={700}
+            height={210}
             className={clsx(
-              "h-24 w-auto sm:h-32 md:h-36",
-              invert && "brightness-0 invert"
+              "h-36 w-auto sm:h-44 md:h-48 lg:h-52",
+              invert ? "brightness-0 invert" : "grayscale"
             )}
             priority
           />
@@ -132,7 +132,7 @@ const RootLayoutInner = ({ children }) => {
         <div
           className="absolute left-0 right-0 top-2 z-40 pt-14"
           aria-hidden={expanded ? "true" : undefined}
-          inert={expanded ? true : undefined}
+          {...(expanded ? { inert: "" as any } : {})}
         >
           {/* Header */}
           <Header
@@ -154,7 +154,7 @@ const RootLayoutInner = ({ children }) => {
           style={{ height: expanded ? "auto" : "0.5rem" }}
           className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
           aria-hidden={expanded ? undefined : "true"}
-          inert={expanded ? undefined : true}
+          {...(!expanded ? { inert: "" as any } : {})}
         >
           <motion.div layout className="bg-neutral-800">
             <div ref={navRef} className="bg-neutral-950 pb-16 pt-14">

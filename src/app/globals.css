@@ -1,3 +1,17 @@
 @import "./base.css";
 @tailwind components;
 @tailwind utilities;
+
+/* Global grayscale filter for all images - black and white theme */
+@layer components {
+  img,
+  svg image,
+  [class*="Image"] {
+    @apply grayscale;
+  }
+
+  /* Ensure Next.js Image components are also grayscale */
+  img[src] {
+    filter: grayscale(100%);
+  }
+}

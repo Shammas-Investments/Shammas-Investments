@@ -1,8 +1,34 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import clsx from "clsx";
 import Border from "./Border";
+import React from "react";
 
-function BlockquoteWithImage({ author, image, children, className }) {
+interface Author {
+  name: string;
+  role: string;
+}
+
+interface BlockquoteWithImageProps {
+  author: Author;
+  image: StaticImageData | { src: string; alt?: string };
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface BlockquoteWithoutImageProps {
+  author: Author;
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface BlockquoteProps {
+  author: Author;
+  image?: StaticImageData | { src: string; alt?: string };
+  children: React.ReactNode;
+  className?: string;
+}
+
+function BlockquoteWithImage({ author, image, children, className }: BlockquoteWithImageProps) {
   return (
     <figure
       className={clsx(
@@ -31,7 +57,7 @@ function BlockquoteWithImage({ author, image, children, className }) {
   );
 }
 
-function BlockquoteWithoutImage({ author, children, className }) {
+function BlockquoteWithoutImage({ author, children, className }: BlockquoteWithoutImageProps) {
   return (
     <Border position="left" className={clsx("pl-8", className)}>
       <figure className="text-sm">
@@ -46,9 +72,9 @@ function BlockquoteWithoutImage({ author, children, className }) {
   );
 }
 
-const Blockquote = (props) => {
+const Blockquote: React.FC<BlockquoteProps> = (props) => {
   if (props.image) {
-    return <BlockquoteWithImage {...props} />;
+    return <BlockquoteWithImage {...props} image={props.image} />;
   }
   return <BlockquoteWithoutImage {...props} />;
 };

@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 const nextConfig = {
   // Performance optimizations
   reactStrictMode: true,
@@ -78,13 +80,17 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+              `script-src 'self' 'unsafe-inline' ${isDevelopment ? "'unsafe-eval'" : ''} https://va.vercel-scripts.com`,
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https:",
+              "img-src 'self' data: https: blob:",
               "font-src 'self' data:",
-              "connect-src 'self' https://api.web3forms.com https://*.list-manage.com https://*.mailchimp.com https://calendly.com https://*.calendly.com",
+              "connect-src 'self' https://vitals.vercel-insights.com https://api.web3forms.com https://*.list-manage.com https://*.mailchimp.com https://calendly.com https://*.calendly.com",
               "frame-src 'self' https://calendly.com https://*.calendly.com",
               "frame-ancestors 'self'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "object-src 'none'",
+              "upgrade-insecure-requests",
             ].join('; ')
           }
         ]

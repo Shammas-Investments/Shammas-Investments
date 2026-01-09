@@ -1,7 +1,16 @@
 import clsx from "clsx";
 import Link from "next/link";
+import React from "react";
 
-const Logo = ({ invert, href, className, children, fillOnHover = false, ...props }) => {
+interface LogoProps extends React.HTMLAttributes<HTMLElement> {
+  invert?: boolean;
+  href?: string;
+  className?: string;
+  children: React.ReactNode;
+  fillOnHover?: boolean;
+}
+
+const Logo: React.FC<LogoProps> = ({ invert, href, className, children, fillOnHover = false, ...props }) => {
   className = clsx(
     className,
     fillOnHover && "group-hover:text-neutral-700",

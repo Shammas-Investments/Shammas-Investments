@@ -21,14 +21,18 @@ export default function InstallPrompt() {
       setTimeout(() => {
         setShowPrompt(true);
       }, 3000); // Show after 3 seconds
-      console.log("PWA install prompt event fired");
+      if (process.env.NODE_ENV === 'development') {
+        console.log("PWA install prompt event fired");
+      }
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
     // Check if app is already installed
     window.addEventListener("appinstalled", () => {
-      console.log("PWA was installed");
+      if (process.env.NODE_ENV === 'development') {
+        console.log("PWA was installed");
+      }
       setShowPrompt(false);
       setDeferredPrompt(null);
     });
@@ -44,7 +48,9 @@ export default function InstallPrompt() {
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) {
-      console.log("Install prompt not available");
+      if (process.env.NODE_ENV === 'development') {
+        console.log("Install prompt not available");
+      }
       return;
     }
 
@@ -53,13 +59,17 @@ export default function InstallPrompt() {
       await deferredPrompt.prompt();
       // Wait for the user to respond to the prompt
       const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User response to the install prompt: ${outcome}`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`User response to the install prompt: ${outcome}`);
+      }
 
       // We've used the prompt, and can't use it again
       setDeferredPrompt(null);
       setShowPrompt(false);
     } catch (error) {
-      console.error("Error during PWA installation:", error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error("Error during PWA installation:", error);
+      }
     }
   };
 

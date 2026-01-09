@@ -42,7 +42,7 @@ const StylizedImage: React.FC<StylizedImageProps> = ({ shape = 0, className, ...
             <foreignObject width={width} height={height}>
               <Image
                 alt=""
-                className="w-full bg-neutral-100 object-cover"
+                className="w-full bg-neutral-100 object-cover grayscale"
                 style={{ aspectRatio: `${width} / ${height}` }}
                 {...props}
               />
