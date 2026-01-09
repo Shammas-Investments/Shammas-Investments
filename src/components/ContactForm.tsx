@@ -5,8 +5,22 @@ import TextInput from "./TextInput";
 import RadioInput from "./RadioInput";
 import Button from "./Button";
 
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  message: string;
+  budget: string;
+}
+
+interface StatusState {
+  type: string;
+  message: string;
+}
+
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     company: "",
@@ -14,17 +28,17 @@ const ContactForm = () => {
     message: "",
     budget: "",
   });
-  const [status, setStatus] = useState({ type: "", message: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<StatusState>({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus({ type: "", message: "" });

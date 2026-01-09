@@ -3,12 +3,16 @@ import React, { useState } from "react";
 import Container from "./Container";
 import FadeIn from "./FadeIn";
 import FooterNavigation from "./FooterNavigation";
-import Logo from "./Logo";
 import Link from "next/link";
 import Image from "next/image";
 import appLogo from "@/appLogo.png";
 
-const ArrowIcon = (props) => {
+interface StatusState {
+  type: string;
+  message: string;
+}
+
+const ArrowIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg viewBox="0 0 16 6" aria-hidden="true" {...props}>
       <path
@@ -22,11 +26,11 @@ const ArrowIcon = (props) => {
 };
 
 const NewsletterForm = () => {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState({ type: "", message: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [status, setStatus] = useState<StatusState>({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus({ type: "", message: "" });
@@ -58,7 +62,7 @@ const NewsletterForm = () => {
         return;
       }
 
-      const response = await fetch(MAILCHIMP_URL, {
+      await fetch(MAILCHIMP_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

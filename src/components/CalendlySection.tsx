@@ -2,7 +2,13 @@
 import React from "react";
 import FadeIn from "./FadeIn";
 
-const CalendlySection = ({ title, description, inline = false }) => {
+interface CalendlySectionProps {
+  title?: string;
+  description?: string;
+  inline?: boolean;
+}
+
+const CalendlySection: React.FC<CalendlySectionProps> = ({ title, description, inline = false }) => {
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com";
 
   const handleBooking = () => {

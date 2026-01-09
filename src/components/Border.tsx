@@ -1,6 +1,14 @@
 import clsx from "clsx";
+import React from "react";
 
-const Border = ({
+interface BorderProps extends React.HTMLAttributes<HTMLElement> {
+  className?: string;
+  position?: "top" | "left";
+  invert?: boolean;
+  as?: React.ElementType;
+}
+
+const Border: React.FC<BorderProps> = ({
   className,
   position = "top",
   invert = false,

@@ -4,7 +4,16 @@ import FadeIn from "@/components/FadeIn";
 import ContactSection from "@/components/ContactSection";
 import React from "react";
 
-const CaseStudyCard = ({ title, client, industry, description, results, comingSoon }) => {
+interface CaseStudyCardProps {
+  title: string;
+  client: string;
+  industry: string;
+  description: string;
+  results?: string[];
+  comingSoon?: boolean;
+}
+
+const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ title, client, industry, description, results, comingSoon }) => {
   return (
     <FadeIn>
       <div className="relative overflow-hidden rounded-4xl bg-neutral-50 p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-100 sm:p-10">

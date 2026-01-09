@@ -1,3 +1,4 @@
+import type { Metadata, Viewport } from 'next';
 import RootLayout from "@/components/RootLayout";
 import "./globals.css";
 import { Playfair_Display, Inter } from 'next/font/google';
@@ -20,7 +21,7 @@ const inter = Inter({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shammasinvestments.com';
 const heroImage = '/android-chrome-512x512.png';
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     template: "%s | Shammas Investments",
@@ -118,7 +119,7 @@ export const metadata = {
   category: 'technology',
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -126,7 +127,7 @@ export const viewport = {
   themeColor: '#0a0a0a',
 };
 
-export default function Layout({ children }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   // JSON-LD structured data for SEO
   const jsonLd = {
     '@context': 'https://schema.org',

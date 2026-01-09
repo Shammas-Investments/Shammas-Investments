@@ -2,11 +2,19 @@ import ContactSection from "@/components/ContactSection";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import PageIntro from "@/components/PageIntro";
-import { GradientBackground } from "@/components/Services";
 import React from "react";
 
 // Individual Service Component
-const ServiceDetail = ({ title, description, features, technologies, icon, id }) => {
+interface ServiceDetailProps {
+  title: string;
+  description: string;
+  features: string[];
+  technologies: string[];
+  icon: string;
+  id: string;
+}
+
+const ServiceDetail: React.FC<ServiceDetailProps> = ({ title, description, features, technologies, icon, id }) => {
   return (
     <div id={id} className="scroll-mt-24">
       <FadeIn>

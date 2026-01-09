@@ -111,9 +111,9 @@ const Navigation = () => {
 const RootLayoutInner = ({ children }) => {
   const panelId = useId();
   const [expanded, setExpanded] = useState(false);
-  const openRef = useRef();
-  const closeRef = useRef();
-  const navRef = useRef();
+  const openRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   useEffect(() => {
     function onClick(event) {
@@ -133,7 +133,7 @@ const RootLayoutInner = ({ children }) => {
         <div
           className="absolute left-0 right-0 top-2 z-40 pt-14"
           aria-hidden={expanded ? "true" : undefined}
-          inert={expanded ? "" : undefined}
+          inert={expanded ? true : undefined}
         >
           {/* Header */}
           <Header
@@ -155,7 +155,7 @@ const RootLayoutInner = ({ children }) => {
           style={{ height: expanded ? "auto" : "0.5rem" }}
           className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
           aria-hidden={expanded ? undefined : "true"}
-          inert={expanded ? undefined : ""}
+          inert={expanded ? undefined : true}
         >
           <motion.div layout className="bg-neutral-800">
             <div ref={navRef} className="bg-neutral-950 pb-16 pt-14">
