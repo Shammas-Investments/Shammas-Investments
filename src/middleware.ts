@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 
-export function middleware(request) {
+export function middleware(_request) {
   const response = NextResponse.next();
 
   // Additional security headers (augments next.config.js headers)
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+  const _nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
   // Security headers for extra protection
   response.headers.set('X-DNS-Prefetch-Control', 'on');
