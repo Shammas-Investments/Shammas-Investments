@@ -13,12 +13,12 @@ function Block({ x, y, ...props }) {
 }
 
 const GridPattern = ({ yOffset = 0, interactive = false, ...props }) => {
-  let id = useId();
-  let ref = useRef<SVGSVGElement>(null);
-  let currentBlock = useRef<[number, number] | null>(null);
-  let counter = useRef(0);
-  let [hoveredBlocks, setHoveredBlocks] = useState<Array<[number, number, number]>>([]);
-  let staticBlocks = [
+  const id = useId();
+  const ref = useRef<SVGSVGElement>(null);
+  const currentBlock = useRef<[number, number] | null>(null);
+  const counter = useRef(0);
+  const [hoveredBlocks, setHoveredBlocks] = useState<Array<[number, number, number]>>([]);
+  const staticBlocks = [
     [1, 1],
     [2, 2],
     [4, 3],

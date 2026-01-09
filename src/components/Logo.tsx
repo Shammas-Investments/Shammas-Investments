@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import Link from "next/link";
-import Image from "next/image";
 
 const Logo = ({ invert, href, className, children, fillOnHover = false, ...props }) => {
   className = clsx(
