@@ -35,7 +35,7 @@ export default function Home() {
     <main className="text-black">
       <Container className="mt-32 sm:mt-40 md:mt-48 lg:mt-56">
         <FadeIn className="max-w-3xl">
-          <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
+          <h1 className="font-banner text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
             Transforming Vision Into Digital Reality
           </h1>
           <p className="mt-8 text-xl text-neutral-600">

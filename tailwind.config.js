@@ -15,6 +15,7 @@ module.exports = {
         sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
         serif: ["var(--font-playfair)", ...defaultTheme.fontFamily.serif],
         display: ["var(--font-playfair)", ...defaultTheme.fontFamily.serif],
+        banner: ["Dark Crow", ...defaultTheme.fontFamily.serif],
       },
       colors: {
         primary: {

@@ -1,6 +1,14 @@
 @tailwind base;
 
 @font-face {
+  font-family: "Dark Crow";
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+  src: url("../fonts/DarkCrowItalic_PERSONAL_USE.ttf") format("truetype");
+}
+
+@font-face {
   font-family: "Mona Sans";
   font-weight: 200 900;
   font-display: block;

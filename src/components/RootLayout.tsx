@@ -94,7 +94,7 @@ const NavigationItem = ({ href, children }) => {
 
 const Navigation = () => {
   return (
-    <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
+    <nav className="mt-px font-banner text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
         <NavigationItem href="/about">About Us</NavigationItem>
         <NavigationItem href="/process">Our Process</NavigationItem>
