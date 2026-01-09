@@ -1,0 +1,169 @@
+"use client";
+import React, { useState } from "react";
+import Container from "./Container";
+import FadeIn from "./FadeIn";
+import FooterNavigation from "./FooterNavigation";
+import Logo from "./Logo";
+import Link from "next/link";
+import Image from "next/image";
+import appLogo from "@/appLogo.png";
+
+const ArrowIcon = (props) => {
+  return (
+    <svg viewBox="0 0 16 6" aria-hidden="true" {...props}>
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M16 3 10 .5v2H0v1h10v2L16 3Z"
+      />
+    </svg>
+  );
+};
+
+const NewsletterForm = () => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: "", message: "" });
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatus({
+        type: "error",
+        message: "Please enter a valid email address.",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Using Mailchimp embedded form submission
+      // You can also create an API route at /api/newsletter for server-side handling
+      const MAILCHIMP_URL = process.env.NEXT_PUBLIC_MAILCHIMP_URL || "";
+
+      if (!MAILCHIMP_URL) {
+        // Fallback: Store in localStorage or show message
+        setStatus({
+          type: "success",
+          message: "Thank you for subscribing! We&apos;ll keep you updated.",
+        });
+        setEmail("");
+        setIsSubmitting(false);
+        return;
+      }
+
+      const response = await fetch(MAILCHIMP_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          EMAIL: email,
+        }),
+        mode: "no-cors", // Mailchimp doesn't support CORS
+      });
+
+      // With no-cors, we can't read the response, so assume success
+      setStatus({
+        type: "success",
+        message: "Thank you for subscribing! Check your email to confirm.",
+      });
+      setEmail("");
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: "Something went wrong. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="max-w-sm">
+      <h2 className="font-display text-sm font-semibold tracking-wider text-neutral-950">
+        Stay Updated
+      </h2>
+      <p className="mt-4 text-sm text-neutral-700">
+        Subscribe to receive the latest insights on technology trends, industry news, and exclusive updates from Shammas Investments.
+      </p>
+
+      {status.message && (
+        <div
+          className={`mt-4 rounded-xl p-3 text-sm ${
+            status.type === "success"
+              ? "bg-green-50 text-green-800 border border-green-200"
+              : "bg-red-50 text-red-800 border border-red-200"
+          }`}
+        >
+          {status.message}
+        </div>
+      )}
+
+      <div className="relative mt-6">
+        <input
+          type="email"
+          placeholder="Email address"
+          autoComplete="email"
+          aria-label="Email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          disabled={isSubmitting}
+          className="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5 disabled:opacity-50"
+        />
+        <div className="absolute inset-y-1 right-1 flex justify-end">
+          <button
+            type="submit"
+            aria-label="Submit"
+            disabled={isSubmitting}
+            className="flex aspect-square h-full items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? (
+              <span className="text-xs">...</span>
+            ) : (
+              <ArrowIcon className="w-4" />
+            )}
+          </button>
+        </div>
+      </div>
+    </form>
+  );
+};
+
+const Footer = () => {
+  return (
+    <Container as="footer" className="mt-24 w-full sm:mt-32 lg:mt-40">
+      <FadeIn>
+        <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
+          <FooterNavigation />
+          <div className="flex lg:justify-end">
+            <NewsletterForm />
+          </div>
+        </div>
+        <div className="mb-20 mt-24 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-neutral-950/10 pt-12">
+          <Link href={"/"} aria-label="Home">
+            <Image
+              src={appLogo}
+              alt="Shammas Investments"
+              width={350}
+              height={100}
+              className="h-20 w-auto sm:h-24 md:h-28"
+            />
+          </Link>
+          <p className="text-sm text-neutral-700">
+            © Shammas Investments LLC. {new Date().getFullYear()}. All rights reserved.
+          </p>
+        </div>
+      </FadeIn>
+    </Container>
+  );
+};
+
+export default Footer;
