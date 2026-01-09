@@ -3,6 +3,7 @@ import "./globals.css";
 import { Playfair_Display, Inter } from 'next/font/google';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import InstallPrompt from '@/components/InstallPrompt';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -189,6 +190,7 @@ export default function Layout({ children }) {
         <ServiceWorkerRegistration />
         <InstallPrompt />
         <RootLayout>{children}</RootLayout>
+        <SpeedInsights />
       </body>
     </html>
   );
