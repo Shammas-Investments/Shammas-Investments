@@ -3,8 +3,6 @@ import ContactSection from "@/components/ContactSection";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import Services from "@/components/Services";
-import Testimonials from "@/components/Testimonials";
-import logoPhobiaDark from "@/images/clients/phobia/logo-dark.svg";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -36,20 +34,14 @@ export default function Home() {
       <Container className="mt-32 sm:mt-40 md:mt-48 lg:mt-56">
         <FadeIn className="max-w-3xl">
           <h1 className="font-banner text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            Transforming Vision Into Digital Reality
+            We build software and automation that removes bottlenecks and drives growth.
           </h1>
           <p className="mt-8 text-xl text-neutral-600">
-            Shammas Investments LLC (shammasinvestments.com) delivers comprehensive IT solutions across every domain of technology. Whether you search for shammas, shammasinvest, or shammas investments, you'll find expert technology services including AI-powered applications, e-commerce platforms, cloud management, and digital transformation solutions. We partner with businesses worldwide to drive innovation and achieve measurable results.
+            We partner with startups and growing companies to design, build, and maintain reliable technology with clear timelines and measurable results. From internal tools to customer-facing platforms, we deliver scalable systems that streamline operations and support long-term growth.
           </p>
         </FadeIn>
       </Container>
       <Clients />
-      <Testimonials
-        className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: "Client Name", logo: logoPhobiaDark }}
-      >
-        Shammas Investments transformed our digital infrastructure with their expertise in cloud management and AI solutions. Their team delivered exceptional results that exceeded our expectations.
-      </Testimonials>
       <Services />
       <ContactSection />
     </main>

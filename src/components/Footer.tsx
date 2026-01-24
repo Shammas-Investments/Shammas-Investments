@@ -95,7 +95,7 @@ const NewsletterForm = () => {
         Stay Updated
       </h2>
       <p className="mt-4 text-sm text-neutral-700">
-        Subscribe to receive the latest insights on technology trends, industry news, and exclusive updates from Shammas Investments.
+        Practical insights on software, AI, and automation. No spam.
       </p>
 
       {status.message && (

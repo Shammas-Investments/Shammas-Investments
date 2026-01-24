@@ -15,41 +15,27 @@ const Values = () => {
       </div>
       <SectionIntro
         eyebrow="Our values"
-        title="Balancing reliability and innovation"
+        title="Built on trust and execution"
       >
         <p>
-          We strive to stay at the forefront of emerging trends and
-          technologies, while completely ignoring them and forking that old
-          Rails project we feel comfortable using. We stand by our core values
-          to justify that decision.
+          We believe that great partnerships are built on honest communication,
+          consistent delivery, and a shared commitment to quality. These values
+          guide every project we take on.
         </p>
       </SectionIntro>
       <Container className="mt-24">
         <GridList>
-          <GridListItem title="Meticulous">
-            The first part of any partnership is getting our designer to put
-            your logo in our template. The second step is getting them to do the
-            colors.
+          <GridListItem title="Integrity">
+            Honest timelines and clear scope. We set realistic expectations
+            from day one and communicate proactively throughout every engagement.
           </GridListItem>
-          <GridListItem title="Efficient">
-            We pride ourselves on never missing a deadline which is easy because
-            most of the work was done years ago.
+          <GridListItem title="Quality">
+            Clean code, thorough testing, and comprehensive documentation.
+            We build systems designed to last and scale with your business.
           </GridListItem>
-          <GridListItem title="Adaptable">
-            Every business has unique needs and our greatest challenge is
-            shoe-horning those needs into something we already built.
-          </GridListItem>
-          <GridListItem title="Honest">
-            We are transparent about all of our processes, banking on the simple
-            fact our clients never actually read anything.
-          </GridListItem>
-          <GridListItem title="Loyal">
-            We foster long-term relationships with our clients that go beyond
-            just delivering a product, allowing us to invoice them for decades.
-          </GridListItem>
-          <GridListItem title="Innovative">
-            The technological landscape is always evolving and so are we. We are
-            constantly on the lookout for new open source projects to clone.
+          <GridListItem title="Partnership">
+            Proactive communication and true ownership. We invest in understanding
+            your business goals and treat your success as our own.
           </GridListItem>
         </GridList>
       </Container>

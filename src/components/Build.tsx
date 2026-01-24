@@ -1,7 +1,6 @@
 import React from "react";
 import Section from "./Section";
 import imageLaptop from "@/images/laptop.jpg";
-import Blockquote from "./Blockquote";
 
 const Build = () => {
   return (
@@ -17,12 +16,23 @@ const Build = () => {
           Our development team follows industry best practices including code reviews, continuous integration, and automated testing to ensure the highest quality standards. We leverage modern frameworks and proven architectures to build scalable, maintainable solutions.
         </p>
       </div>
-      <Blockquote
-        author={{ name: "Client Name", role: "CEO of Company" }}
-        className="mt-12"
-      >
-        Shammas Investments delivered exceptional results with clear communication and professional execution throughout the entire development process.
-      </Blockquote>
+      <h3 className="mt-12 font-display text-base font-semibold text-neutral-950">
+        What you can expect
+      </h3>
+      <ul className="mt-4 space-y-2 text-base text-neutral-600">
+        <li className="flex items-start gap-3">
+          <span className="text-neutral-950">•</span>
+          <span>Weekly updates, demos, and documentation</span>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="text-neutral-950">•</span>
+          <span>Dedicated project manager as your point of contact</span>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="text-neutral-950">•</span>
+          <span>Code reviews and continuous integration</span>
+        </li>
+      </ul>
     </Section>
   );
 };

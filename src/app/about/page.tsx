@@ -1,36 +1,56 @@
 import ContactSection from "@/components/ContactSection";
-import Container from "@/components/Container";
 import Cultures from "@/components/Cultures";
+import Founders from "@/components/Founders";
 import PageIntro from "@/components/PageIntro";
-import { StatList, StatListItem } from "@/components/StatList";
 import React from "react";
 
 const AboutPage = () => {
   return (
     <>
-      <PageIntro eyebrow="About us" title="Excellence Through Innovation">
+      <PageIntro
+        eyebrow="About us"
+        title="Technology Partner for Growing Teams"
+      >
         <p>
-          We believe that our strength lies in our comprehensive approach to technology, delivering solutions that drive real business value across every IT domain.
+          Shammas Investments is a technology partner focused on building
+          reliable software, AI automation, and cloud systems.
         </p>
         <div className="mt-10 max-w-2xl space-y-6 text-base">
           <p>
-            Shammas Investments was founded by visionary entrepreneurs Jonathan Shammas and Joe Shammas, who recognized the growing need for a comprehensive IT solutions provider that could deliver excellence across all technology domains. Our mission is to empower businesses with cutting-edge technology solutions that drive growth and innovation.
+            {/* We help companies simplify operations and scale through well-built technology. Founded to deliver cleaner builds, clearer communication, and better outcomes. */}
+            Shammas Investments was founded on the idea that technology should
+            feel supportive not overwhelming.
           </p>
           <p>
-            As a full-service IT company, we specialize in software development, AI/ML solutions, e-commerce platform management, cloud infrastructure, and digital transformation. Our team of expert developers, designers, and strategists work collaboratively to deliver solutions that exceed expectations and create lasting impact.
+            We believe strong systems come from thoughtful planning, clear
+            communication, and respect for the people who depend on them every
+            day.
           </p>
           <p>
-            From Fortune 500 companies to innovative startups, we partner with organizations that share our commitment to excellence and innovation. Our approach combines technical expertise with strategic thinking to solve complex challenges and unlock new opportunities.
+            Our vision is to build solutions teams trust, understand, and
+            confidently use long after launch.
           </p>
+          <p>
+            As founders, we hold ourselves accountable for the quality of our
+            work.
+          </p>
+          <p>
+            Every project is approached as a long-term investment in our
+            client's success.
+          </p>
+          <p>
+            Our goal is to build enduring partnerships and technology that
+            scales with the businesses we serve.
+          </p>
+          {/* <p>
+            We build custom software, AI automation, and cloud systems for teams that value execution. Our focus is on long-term success, not buzzwords.
+          </p>
+          <p>
+            From startups to growing enterprises, we partner with organizations that need practical solutions delivered with discipline and transparency.
+          </p> */}
         </div>
       </PageIntro>
-      <Container className="mt-16">
-        <StatList>
-          <StatListItem value="100+" label="Projects Delivered" />
-          <StatListItem value="50+" label="Happy Clients" />
-          <StatListItem value="15+" label="Technology Domains" />
-        </StatList>
-      </Container>
+      <Founders />
       <Cultures />
       <ContactSection />
     </>

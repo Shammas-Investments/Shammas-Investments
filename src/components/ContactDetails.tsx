@@ -9,12 +9,12 @@ const ContactDetails = () => {
   return (
     <FadeIn>
       <h2 className="font-display text-base font-semibold text-neutral-950">
-        Our offices
+        Location
       </h2>
       <p className="mt-6 text-base text-neutral-600">
-        Visit our offices to discuss your project in person. We&apos;re here to help bring your vision to life.
+        We&apos;re a remote-first team ready to help bring your vision to life. Quick call, clear scope, simple proposal.
       </p>
-      <Offices className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2" />
+      <Offices className="mt-10" />
       <Border className="mt-16 pt-16">
         <h2 className="font-display text-base font-semibold text-neutral-950">
           Email us

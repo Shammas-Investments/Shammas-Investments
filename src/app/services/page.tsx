@@ -215,9 +215,9 @@ const ServicesPage = () => {
 
   return (
     <>
-      <PageIntro eyebrow="Our Services" title="Comprehensive IT Solutions for Every Business Need">
+      <PageIntro eyebrow="Our Services" title="Practical Engineering Solutions">
         <p>
-          From software development to AI solutions, we provide end-to-end technology services that empower businesses to innovate, scale, and succeed in the digital age. Explore our complete range of services below.
+          Our services are designed to help businesses build, automate, and scale technology with confidence. We deliver practical engineering solutions that solve real operational problems.
         </p>
       </PageIntro>
 

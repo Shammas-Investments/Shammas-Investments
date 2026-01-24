@@ -142,7 +142,7 @@ const ProductsPage = () => {
                   Enterprise Security
                 </h4>
                 <p className="mt-4 text-base text-neutral-600">
-                  Bank-level security infrastructure ensuring safe transactions, data protection, and regulatory compliance for the gaming industry.
+                  Built with security best practices and compliance-ready architecture. Designed to support regulated environments depending on implementation.
                 </p>
                 <ul className="mt-6 space-y-2 text-sm text-neutral-600">
                   <li className="flex items-start gap-3">
@@ -155,11 +155,11 @@ const ProductsPage = () => {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-neutral-950">✓</span>
-                    <span>Compliance with gaming regulations</span>
+                    <span>Access controls and audit logging</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-neutral-950">✓</span>
-                    <span>Fraud detection and prevention systems</span>
+                    <span>Continuous monitoring and threat detection</span>
                   </li>
                 </ul>
               </div>
@@ -243,8 +243,8 @@ const ProductsPage = () => {
               <GridListItem title="Scalable Infrastructure" invert>
                 Built on cloud-native architecture that scales seamlessly from hundreds to millions of concurrent users.
               </GridListItem>
-              <GridListItem title="Regulatory Compliance" invert>
-                Fully compliant with gaming and gambling regulations across multiple jurisdictions.
+              <GridListItem title="Compliance-Ready" invert>
+                Designed to support common regulatory requirements depending on implementation.
               </GridListItem>
               <GridListItem title="24/7 Support" invert>
                 Round-the-clock technical support and platform monitoring to ensure uninterrupted service.
