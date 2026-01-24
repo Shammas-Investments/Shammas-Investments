@@ -47,38 +47,28 @@ const NewsletterForm = () => {
     }
 
     try {
-      // Using Mailchimp embedded form submission
-      // You can also create an API route at /api/newsletter for server-side handling
-      const MAILCHIMP_URL = process.env.NEXT_PUBLIC_MAILCHIMP_URL || "";
-
-      if (!MAILCHIMP_URL) {
-        // Fallback: Store in localStorage or show message
-        setStatus({
-          type: "success",
-          message: "Thank you for subscribing! We&apos;ll keep you updated.",
-        });
-        setEmail("");
-        setIsSubmitting(false);
-        return;
-      }
-
-      await fetch(MAILCHIMP_URL, {
+      const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
         },
-        body: new URLSearchParams({
-          EMAIL: email,
-        }),
-        mode: "no-cors", // Mailchimp doesn't support CORS
+        body: JSON.stringify({ email }),
       });
 
-      // With no-cors, we can't read the response, so assume success
-      setStatus({
-        type: "success",
-        message: "Thank you for subscribing! Check your email to confirm.",
-      });
-      setEmail("");
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({
+          type: "success",
+          message: data.message || "Thank you for subscribing!",
+        });
+        setEmail("");
+      } else {
+        setStatus({
+          type: "error",
+          message: data.error || "Something went wrong. Please try again.",
+        });
+      }
     } catch (error) {
       setStatus({
         type: "error",
