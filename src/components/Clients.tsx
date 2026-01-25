@@ -73,7 +73,7 @@ const reviewPlatforms: ReviewPlatform[] = [
     logo: <TrustpilotLogo />,
     rating: 5,
     reviewCount: "Excellent",
-    url: "https://www.trustpilot.com/review/shammasinvestments.com", // Update with your actual Trustpilot URL
+    url: "https://www.trustpilot.com/review/shammasinvestments.com",
     bgColor: "hover:bg-neutral-800",
   },
   {
