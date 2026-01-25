@@ -58,9 +58,15 @@ async function sendWelcomeEmail(subscriberEmail: string): Promise<boolean> {
 
                   <!-- Logo Header -->
                   <tr>
-                    <td align="center" style="padding: 32px 0 40px 0;">
-                      <a href="${SITE_URL}" target="_blank">
-                        <img src="${LOGO_URL}" alt="Shammas Investments" width="280" style="display: block; max-width: 280px; height: auto;" />
+                    <td align="center" style="padding: 32px 20px 40px 20px;">
+                      <a href="${SITE_URL}" target="_blank" style="text-decoration: none;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 12px; display: inline-block;">
+                          <tr>
+                            <td style="padding: 16px 24px;">
+                              <img src="${LOGO_URL}" alt="Shammas Investments" width="220" style="display: block; max-width: 220px; height: auto;" />
+                            </td>
+                          </tr>
+                        </table>
                       </a>
                     </td>
                   </tr>
@@ -335,12 +341,20 @@ export async function POST(request: NextRequest) {
     // Handle different response scenarios
     if (response.ok) {
       // Send welcome email to new subscriber
-      await sendWelcomeEmail(subscriberEmail);
+      const emailSent = await sendWelcomeEmail(subscriberEmail);
 
-      return NextResponse.json(
-        { message: "Successfully subscribed! Check your inbox for a welcome email." },
-        { status: 200 }
-      );
+      if (emailSent) {
+        return NextResponse.json(
+          { message: "Successfully subscribed! Check your inbox for a welcome email." },
+          { status: 200 }
+        );
+      } else {
+        // Contact added but email failed - still success for subscription
+        return NextResponse.json(
+          { message: "Successfully subscribed! (Welcome email could not be sent - please verify sender email in Brevo)" },
+          { status: 200 }
+        );
+      }
     }
 
     // Contact already exists (duplicate)
