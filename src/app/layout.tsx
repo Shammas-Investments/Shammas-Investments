@@ -6,7 +6,7 @@ import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import InstallPrompt from '@/components/InstallPrompt';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import Script from 'next/script';
+import TrustpilotScript from '@/components/TrustpilotScript';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -271,20 +271,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <RootLayout>{children}</RootLayout>
         </ErrorBoundary>
         <SpeedInsights />
-
-        {/* Trustpilot Script */}
-        <Script
-          id="trustpilot-script"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,r,n){w.TrustpilotObject=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};
-              a=d.createElement(s);a.async=1;a.src=r;a.type='text/java'+s;f=d.getElementsByTagName(s)[0];
-              f.parentNode.insertBefore(a,f)})(window,document,'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
-              tp('register', 'qdeqUpdF7WxPCJEm');
-            `,
-          }}
-        />
+        <TrustpilotScript />
       </body>
     </html>
   );
