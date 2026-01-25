@@ -6,7 +6,6 @@ import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import InstallPrompt from '@/components/InstallPrompt';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import TrustpilotScript from '@/components/TrustpilotScript';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -263,6 +262,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Trustpilot Integration Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,r,n){w.TrustpilotObject=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};
+              var a=d.createElement(s);a.async=1;a.src=r;a.type='text/javascript';var f=d.getElementsByTagName(s)[0];
+              f.parentNode.insertBefore(a,f)})(window,document,'script','https://invitejs.trustpilot.com/tp.min.js','tp');
+              tp('register', 'qdeqUpdF7WxPCJEm');
+            `,
+          }}
+        />
       </head>
       <body className="flex min-h-full flex-col">
         <ServiceWorkerRegistration />
@@ -271,7 +281,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <RootLayout>{children}</RootLayout>
         </ErrorBoundary>
         <SpeedInsights />
-        <TrustpilotScript />
       </body>
     </html>
   );
