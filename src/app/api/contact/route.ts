@@ -116,8 +116,8 @@ export async function POST(request: NextRequest) {
         phone: sanitizedData.phone,
         message: sanitizedData.message,
         budget: sanitizedData.budget,
-        subject: 'New Contact Form Submission - Shammas Investments',
-        from_name: 'Shammas Investments Website',
+        subject: 'New Contact Form Submission - Shammas Development',
+        from_name: 'Shammas Development Website',
       }),
     });
 

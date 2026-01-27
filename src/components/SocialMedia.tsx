@@ -11,27 +11,27 @@ import {
 export const SocialMediaProfiles = [
   {
     title: "LinkedIn",
-    href: "https://www.linkedin.com/company/shammas-investments",
+    href: "https://www.linkedin.com/company/shammas-development",
     icon: BsLinkedin,
   },
   {
     title: "Twitter",
-    href: "https://twitter.com/shammasinvest",
+    href: "https://twitter.com/shammasdev",
     icon: BsTwitter,
   },
   {
     title: "Facebook",
-    href: "https://www.facebook.com/shammasinvestments",
+    href: "https://www.facebook.com/shammasdevelopment",
     icon: BsFacebook,
   },
   {
     title: "Instagram",
-    href: "https://www.instagram.com/shammasinvestments",
+    href: "https://www.instagram.com/shammasdevelopment",
     icon: BsInstagram,
   },
   {
     title: "GitHub",
-    href: "https://github.com/shammas-investments",
+    href: "https://github.com/shammas-development",
     icon: BsGithub
   },
 ];

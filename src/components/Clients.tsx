@@ -65,7 +65,7 @@ const reviewPlatforms: ReviewPlatform[] = [
     logo: <ClutchLogo />,
     rating: 5,
     reviewCount: "5.0",
-    url: "https://clutch.co/profile/shammas-investments", // Update with your actual Clutch URL
+    url: "https://clutch.co/profile/shammas-development", // Update with your actual Clutch URL
     bgColor: "hover:bg-neutral-800",
   },
   {
@@ -73,7 +73,7 @@ const reviewPlatforms: ReviewPlatform[] = [
     logo: <TrustpilotLogo />,
     rating: 5,
     reviewCount: "Excellent",
-    url: "https://www.trustpilot.com/review/shammasinvestments.com",
+    url: "https://www.trustpilot.com/review/shammasdevelopment.com",
     bgColor: "hover:bg-neutral-800",
   },
   {
@@ -81,7 +81,7 @@ const reviewPlatforms: ReviewPlatform[] = [
     logo: <GoogleLogo />,
     rating: 5,
     reviewCount: "5.0",
-    url: "https://g.page/shammas-investments/review", // Update with your actual Google Reviews URL
+    url: "https://g.page/shammas-development/review", // Update with your actual Google Reviews URL
     bgColor: "hover:bg-neutral-800",
   },
 ];

@@ -1,9 +1,9 @@
-# SEO Optimization Guide - Shammas Investments
+# SEO Optimization Guide - Shammas Development
 
 ## ✅ SEO STATUS: FULLY OPTIMIZED
 
 **Last Updated**: 2026-01-09  
-**Target Keywords**: shammas, shammas investments, shammasinvest, shammas invest, shammas LLC
+**Target Keywords**: shammas, shammas investments, shammasdev, shammas invest, shammas LLC
 
 ---
 
@@ -13,7 +13,7 @@ Your website is now optimized to appear when people search for:
 - ✅ **"shammas"**
 - ✅ **"shammas investments"**
 - ✅ **"shammas investment"**
-- ✅ **"shammasinvest"**
+- ✅ **"shammasdev"**
 - ✅ **"shammas invest"**
 - ✅ **"shammas LLC"**
 - ✅ **"shammas technology"**
@@ -32,14 +32,14 @@ Added comprehensive keyword list including ALL brand variations:
 ```typescript
 keywords: [
   // Brand variations
-  'Shammas Investments',
+  'Shammas Development',
   'Shammas Investment',
   'shammas',
-  'shammasinvestments',
-  'shammasinvest',
+  'shammasdevelopment',
+  'shammasdev',
   'shammas invest',
   'shammas LLC',
-  'Shammas Investments LLC',
+  'Shammas Development LLC',
   // ... plus 30+ service keywords
 ]
 ```
@@ -73,7 +73,7 @@ Enhanced sitemap with:
 
 Homepage now includes natural keyword placement:
 ```
-"Whether you search for shammas, shammasinvest, or shammas investments, 
+"Whether you search for shammas, shammasdev, or shammas investments, 
 you'll find expert technology services..."
 ```
 
@@ -104,9 +104,9 @@ Each major page has optimized title and description including brand keywords.
 
 **Step-by-step**:
 1. Go to: https://search.google.com/search-console
-2. Add property: `https://shammasinvestments.com`
+2. Add property: `https://shammasdevelopment.com`
 3. Verify ownership (DNS or HTML file method)
-4. Submit sitemap: `https://shammasinvestments.com/sitemap.xml`
+4. Submit sitemap: `https://shammasdevelopment.com/sitemap.xml`
 5. Request indexing for all pages
 
 **Why**: Without submitting, Google won't know about your site!
@@ -115,9 +115,9 @@ Each major page has optimized title and description including brand keywords.
 
 **Step-by-step**:
 1. Go to: https://www.bing.com/webmasters
-2. Add site: `https://shammasinvestments.com`
+2. Add site: `https://shammasdevelopment.com`
 3. Verify ownership
-4. Submit sitemap: `https://shammasinvestments.com/sitemap.xml`
+4. Submit sitemap: `https://shammasdevelopment.com/sitemap.xml`
 
 ### 3. Add Google Verification Meta Tag
 
@@ -134,7 +134,7 @@ Add to `<head>` section:
 
 **Go to**: https://www.google.com/business/
 
-Create a profile for "Shammas Investments LLC" - this will show up in Google Maps and local searches.
+Create a profile for "Shammas Development LLC" - this will show up in Google Maps and local searches.
 
 ---
 
@@ -143,7 +143,7 @@ Create a profile for "Shammas Investments LLC" - this will show up in Google Map
 ### Timeline:
 - **Week 1-2**: Google discovers and indexes your pages
 - **Week 2-4**: Rankings start appearing for brand keywords
-- **Month 2-3**: Ranking on first page for "shammas investments", "shammasinvest"
+- **Month 2-3**: Ranking on first page for "shammas investments", "shammasdev"
 - **Month 3-6**: Top 3 results for all brand variations
 - **Month 6+**: Ranking for service keywords too
 
@@ -151,11 +151,11 @@ Create a profile for "Shammas Investments LLC" - this will show up in Google Map
 When you search for any of these on Google:
 - "shammas"
 - "shammas investments"
-- "shammasinvest"  
+- "shammasdev"  
 - "shammas invest"
 - "shammas LLC"
 
-Your website (shammasinvestments.com) should appear in results!
+Your website (shammasdevelopment.com) should appear in results!
 
 ---
 
@@ -180,8 +180,8 @@ Use these free tools:
 
 ### 1. Content Marketing
 Create blog posts with titles like:
-- "Shammas Investments Launches New AI Solutions"
-- "About Shammas Investments: Our Story"
+- "Shammas Development Launches New AI Solutions"
+- "About Shammas Development: Our Story"
 - "Why Choose Shammas for Technology Services"
 
 ### 2. Backlinks
@@ -193,10 +193,10 @@ Get other websites to link to you:
 
 ### 3. Social Media
 Create profiles on:
-- LinkedIn (as "Shammas Investments LLC")
-- Twitter/X (@shammasinvest)
-- Facebook (Shammas Investments)
-- Instagram (@shammasinvest)
+- LinkedIn (as "Shammas Development LLC")
+- Twitter/X (@shammasdev)
+- Facebook (Shammas Development)
+- Instagram (@shammasdev)
 
 Link all back to your website!
 
@@ -214,8 +214,8 @@ If you have a physical office:
 These should rank #1:
 - shammas
 - shammas investments
-- shammasinvestments
-- shammasinvest
+- shammasdevelopment
+- shammasdev
 - shammas invest
 - shammas LLC
 
@@ -236,7 +236,7 @@ These will rank eventually:
 ## 📝 CONTENT CHECKLIST
 
 For EVERY new page you add, make sure to:
-- [ ] Include "Shammas Investments" in the title
+- [ ] Include "Shammas Development" in the title
 - [ ] Mention brand name variations naturally in content
 - [ ] Add page to sitemap.xml
 - [ ] Set proper metadata (title, description, keywords)
@@ -251,8 +251,8 @@ Update all images to include SEO keywords:
 
 **Example**:
 ```html
-<img src="/logo.png" alt="Shammas Investments LLC Logo - shammasinvest" />
-<img src="/service.jpg" alt="Shammas Investments Software Development Services" />
+<img src="/logo.png" alt="Shammas Development LLC Logo - shammasdev" />
+<img src="/service.jpg" alt="Shammas Development Software Development Services" />
 ```
 
 ---
@@ -279,7 +279,7 @@ You'll know SEO is working when:
 
 ✅ **Google "shammas"** → Your site appears on page 1
 ✅ **Google "shammas investments"** → Your site is #1-3
-✅ **Google "shammasinvest"** → Your site is #1
+✅ **Google "shammasdev"** → Your site is #1
 ✅ **Search Console shows** → 100+ impressions/week
 ✅ **Organic traffic increases** → Week over week growth
 
@@ -289,16 +289,16 @@ You'll know SEO is working when:
 
 ### Test Right Now:
 
-1. **Google**: Search "shammasinvestments.com"
+1. **Google**: Search "shammasdevelopment.com"
    - Should show your site as #1 result
 
-2. **Check Indexing**: Search "site:shammasinvestments.com"
+2. **Check Indexing**: Search "site:shammasdevelopment.com"
    - Shows all indexed pages (may be 0 at first, normal!)
 
-3. **Check Sitemap**: Visit https://shammasinvestments.com/sitemap.xml
+3. **Check Sitemap**: Visit https://shammasdevelopment.com/sitemap.xml
    - Should load without errors
 
-4. **Check Robots**: Visit https://shammasinvestments.com/robots.txt
+4. **Check Robots**: Visit https://shammasdevelopment.com/robots.txt
    - Should show updated content
 
 ---

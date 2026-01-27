@@ -6,12 +6,12 @@ import Services from "@/components/Services";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Shammas Investments - Complete IT Solutions & Technology Services | shammasinvest',
-  description: 'Shammas Investments LLC - Expert IT solutions provider. Search shammas, shammasinvest, shammas investments for software development, AI/ML, e-commerce, cloud management, and digital transformation services. Technology investment and consulting worldwide.',
+  title: 'Shammas Development - Complete IT Solutions & Technology Services | shammasdev',
+  description: 'Shammas Development LLC - Expert IT solutions provider. Search shammas, shammasdev, shammas investments for software development, AI/ML, e-commerce, cloud management, and digital transformation services. Technology investment and consulting worldwide.',
   keywords: [
     'shammas',
     'shammas investments',
-    'shammasinvest',
+    'shammasdev',
     'shammas invest',
     'shammas LLC',
     'shammas technology',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     'digital transformation',
   ],
   openGraph: {
-    title: 'Shammas Investments - Complete IT Solutions & Technology Services',
+    title: 'Shammas Development - Complete IT Solutions & Technology Services',
     description: 'Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, and digital transformation. Expert technology consulting.',
     type: 'website',
   },

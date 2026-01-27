@@ -82,7 +82,7 @@ export default function InstallPrompt() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="font-display font-bold text-lg mb-1">
-            Install Shammas Investments
+            Install Shammas Development
           </h3>
           <p className="text-sm text-neutral-300">
             Add to your home screen for quick access and offline support!

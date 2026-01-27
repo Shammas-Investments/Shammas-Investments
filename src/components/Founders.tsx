@@ -61,7 +61,7 @@ const Founders = () => {
         title="Meet the founders"
       >
         <p>
-          We started Shammas Investments with a simple belief: technology should
+          We started Shammas Development with a simple belief: technology should
           empower businesses, not complicate them. Our mission is to build reliable,
           scalable solutions that our clients can trust and depend on.
         </p>

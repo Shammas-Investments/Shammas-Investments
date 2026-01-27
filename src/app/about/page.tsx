@@ -12,13 +12,13 @@ const AboutPage = () => {
         title="Technology Partner for Growing Teams"
       >
         <p>
-          Shammas Investments is a technology partner focused on building
+          Shammas Development is a technology partner focused on building
           reliable software, AI automation, and cloud systems.
         </p>
         <div className="mt-10 max-w-2xl space-y-6 text-base">
           <p>
             {/* We help companies simplify operations and scale through well-built technology. Founded to deliver cleaner builds, clearer communication, and better outcomes. */}
-            Shammas Investments was founded on the idea that technology should
+            Shammas Development was founded on the idea that technology should
             feel supportive not overwhelming.
           </p>
           <p>

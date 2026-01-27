@@ -1,4 +1,4 @@
-# Security Documentation - Shammas Investments Website
+# Security Documentation - Shammas Development Website
 
 ## Security Audit Status: ✅ SECURED
 
@@ -8,7 +8,7 @@ Last Updated: 2026-01-09
 
 ## Executive Summary
 
-This document outlines the comprehensive security measures implemented for the Shammas Investments website. The application has undergone a complete security audit and hardening process to protect against common web vulnerabilities and attacks.
+This document outlines the comprehensive security measures implemented for the Shammas Development website. The application has undergone a complete security audit and hardening process to protect against common web vulnerabilities and attacks.
 
 **Current Security Rating**: **HIGH** (Previously: MEDIUM-HIGH RISK)
 
@@ -83,7 +83,7 @@ WEB3FORMS_ACCESS_KEY=your_key_here
 ### Client-Side (Public - OK)
 ```
 NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/...
-NEXT_PUBLIC_SITE_URL=https://shammasinvestments.com
+NEXT_PUBLIC_SITE_URL=https://shammasdevelopment.com
 ```
 
 **RULE**: Never use `NEXT_PUBLIC_` prefix for secrets!

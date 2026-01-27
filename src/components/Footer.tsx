@@ -145,14 +145,14 @@ const Footer = () => {
           <Link href={"/"} aria-label="Home" className="flex-shrink-0">
             <Image
               src={appLogo}
-              alt="Shammas Investments"
+              alt="Shammas Development"
               width={650}
               height={195}
               className="h-32 w-auto sm:h-40 md:h-44 lg:h-48 grayscale"
             />
           </Link>
           <p className="text-sm text-neutral-700 flex items-center">
-            © Shammas Investments LLC. {new Date().getFullYear()}. All rights reserved.
+            © Shammas Development LLC. {new Date().getFullYear()}. All rights reserved.
           </p>
         </div>
       </FadeIn>

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 // Preview the welcome email template
 export async function GET() {
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://shammasinvestments.com";
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://shammasdevelopment.com";
   const LOGO_URL = `${SITE_URL}/email-logo.png`;
 
   const htmlContent = `
@@ -12,7 +12,7 @@ export async function GET() {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>Welcome to Shammas Investments - Email Preview</title>
+      <title>Welcome to Shammas Development - Email Preview</title>
     </head>
     <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0a0a0a; -webkit-font-smoothing: antialiased;">
       <!-- Preview Banner -->
@@ -34,7 +34,7 @@ export async function GET() {
                     <table role="presentation" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 12px; display: inline-block;">
                       <tr>
                         <td style="padding: 16px 24px;">
-                          <img src="${LOGO_URL}" alt="Shammas Investments" width="220" style="display: block; max-width: 220px; height: auto;" />
+                          <img src="${LOGO_URL}" alt="Shammas Development" width="220" style="display: block; max-width: 220px; height: auto;" />
                         </td>
                       </tr>
                     </table>
@@ -61,7 +61,7 @@ export async function GET() {
                           <tr>
                             <td align="center">
                               <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700; letter-spacing: -0.5px;">You're In!</h1>
-                              <p style="margin: 16px 0 0 0; color: #a3a3a3; font-size: 18px; font-weight: 400;">Welcome to the Shammas Investments community</p>
+                              <p style="margin: 16px 0 0 0; color: #a3a3a3; font-size: 18px; font-weight: 400;">Welcome to the Shammas Development community</p>
                             </td>
                           </tr>
                         </table>
@@ -175,10 +175,10 @@ export async function GET() {
                     <tr>
                       <td align="center" style="padding-bottom: 24px;">
                         <!-- Social Links -->
-                        <a href="https://linkedin.com/company/shammas-investments" target="_blank" style="display: inline-block; margin: 0 8px; color: #737373; text-decoration: none;">
+                        <a href="https://linkedin.com/company/shammas-development" target="_blank" style="display: inline-block; margin: 0 8px; color: #737373; text-decoration: none;">
                           <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24" height="24" style="display: block; opacity: 0.6;" />
                         </a>
-                        <a href="https://twitter.com/shammasinvest" target="_blank" style="display: inline-block; margin: 0 8px; color: #737373; text-decoration: none;">
+                        <a href="https://twitter.com/shammasdev" target="_blank" style="display: inline-block; margin: 0 8px; color: #737373; text-decoration: none;">
                           <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="24" height="24" style="display: block; opacity: 0.6;" />
                         </a>
                       </td>
@@ -186,13 +186,13 @@ export async function GET() {
                     <tr>
                       <td align="center">
                         <p style="margin: 0 0 8px 0; color: #737373; font-size: 14px; font-weight: 500;">
-                          Shammas Investments LLC
+                          Shammas Development LLC
                         </p>
                         <p style="margin: 0 0 16px 0; color: #525252; font-size: 13px;">
                           Remote-first &bull; Serving clients across the United States
                         </p>
                         <p style="margin: 0; color: #525252; font-size: 12px;">
-                          You received this email because you subscribed at <a href="${SITE_URL}" style="color: #737373;">shammasinvestments.com</a>
+                          You received this email because you subscribed at <a href="${SITE_URL}" style="color: #737373;">shammasdevelopment.com</a>
                         </p>
                       </td>
                     </tr>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shammas-investments-v1'
+const CACHE_NAME = 'shammas-development-v1'
 const urlsToCache = [
   '/',
   '/about',
@@ -9,8 +9,8 @@ const urlsToCache = [
   '/contact',
   '/site.webmanifest',
   '/favicon.ico',
-  '/android-chrome-192x192.png',
-  '/android-chrome-512x512.png',
+  '/web-app-manifest-192x192.png',
+  '/web-app-manifest-512x512.png',
 ]
 
 // Install service worker

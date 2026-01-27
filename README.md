@@ -1,12 +1,12 @@
-# Shammas Investments - Professional IT Solutions Website
+# Shammas Development - Professional IT Solutions Website
 
-A modern, secure, and SEO-optimized website for Shammas Investments LLC, built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
+A modern, secure, and SEO-optimized website for Shammas Development LLC, built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
 
-![Shammas Investments](./src/appLogo.png)
+![Shammas Development](./src/appLogo.png)
 
-## About Shammas Investments
+## About Shammas Development
 
-Shammas Investments is a comprehensive IT solutions provider specializing in:
+Shammas Development is a comprehensive IT solutions provider specializing in:
 
 - **Software & Application Development** - Custom software solutions, web applications, mobile apps
 - **Game Development** - Immersive gaming experiences across all platforms
@@ -57,7 +57,7 @@ Shammas Investments is a comprehensive IT solutions provider specializing in:
 ## Project Structure
 
 ```
-shammas-investments/
+shammas-development/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── about/             # About page
@@ -227,7 +227,7 @@ Compatible with any Node.js hosting:
 Create `.env.local` for environment-specific configuration:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://shammasinvestments.com
+NEXT_PUBLIC_SITE_URL=https://shammasdevelopment.com
 ```
 
 ## Maintenance
@@ -252,12 +252,12 @@ All content is easily editable in the respective component files. No database re
 ## Support
 
 For technical issues or questions:
-- Email: support@shammasinvestments.com
+- Email: support@shammasdevelopment.com
 - GitHub Issues: [Create an issue]
 
 ## License
 
-© 2026 Shammas Investments LLC. All rights reserved.
+© 2026 Shammas Development LLC. All rights reserved.
 
 ## Changelog
 
@@ -279,7 +279,7 @@ For technical issues or questions:
 
 ## Next Steps
 
-1. **Purchase Domain**: Register shammasinvestments.com
+1. **Purchase Domain**: Register shammasdevelopment.com
 2. **Update Contact Info**: Replace all placeholder emails/phones
 3. **Update Social Media**: Add real social media account URLs
 4. **Add Portfolio**: Populate work/portfolio section with real projects

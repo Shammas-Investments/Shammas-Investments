@@ -1,5 +1,5 @@
 export function constructMetadata({
-  title = "Shammas Investments - Complete IT Solutions & Technology Services",
+  title = "Shammas Development - Complete IT Solutions & Technology Services",
   description = "Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms (Amazon, Walmart, Shopify), cloud management, and digital transformation services.",
   image = "/og-image.png",
   icons = "/favicon.ico",
@@ -26,14 +26,14 @@ export function constructMetadata({
       "IT consulting",
       "digital transformation"
     ],
-    authors: [{ name: "Shammas Investments" }],
-    creator: "Shammas Investments",
-    publisher: "Shammas Investments",
+    authors: [{ name: "Shammas Development" }],
+    creator: "Shammas Development",
+    publisher: "Shammas Development",
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://shammasinvestments.com",
-      siteName: "Shammas Investments",
+      url: "https://shammasdevelopment.com",
+      siteName: "Shammas Development",
       title,
       description,
       images: [
@@ -41,7 +41,7 @@ export function constructMetadata({
           url: image,
           width: 1200,
           height: 630,
-          alt: "Shammas Investments - IT Solutions Provider",
+          alt: "Shammas Development - IT Solutions Provider",
         },
       ],
     },
@@ -50,10 +50,10 @@ export function constructMetadata({
       title,
       description,
       images: [image],
-      creator: "@shammasinvest",
+      creator: "@shammasdev",
     },
     icons,
-    metadataBase: new URL("https://shammasinvestments.com"),
+    metadataBase: new URL("https://shammasdevelopment.com"),
     themeColor: "#000000",
     manifest: "/site.webmanifest",
     ...(noIndex && {

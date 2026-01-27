@@ -84,7 +84,7 @@ const ContactForm = () => {
     } catch (error) {
       setStatus({
         type: "error",
-        message: "Oops! Something went wrong. Please try again or email us directly at info@shammasinvestments.com",
+        message: "Oops! Something went wrong. Please try again or email us directly at info@shammasdevelopment.com",
       });
     } finally {
       setIsSubmitting(false);

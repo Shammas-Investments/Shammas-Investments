@@ -1,6 +1,6 @@
-# robots.txt for Shammas Investments LLC
-# Company: Shammas Investments, shammasinvestments, shammasinvest
-# Website: https://shammasinvestments.com
+# robots.txt for Shammas Development LLC
+# Company: Shammas Development, shammasdevelopment, shammasdev
+# Website: https://shammasdevelopment.com
 
 User-agent: *
 Allow: /
@@ -10,6 +10,7 @@ Allow: /products
 Allow: /work
 Allow: /process
 Allow: /contact
+Allow: /blog
 
 # Disallow private paths
 Disallow: /api/
@@ -37,7 +38,7 @@ Disallow: /
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://shammasinvestments.com/sitemap.xml
+Sitemap: https://shammasdevelopment.com/sitemap.xml
 
 # Host directive (for search engines that support it)
-Host: https://shammasinvestments.com
+Host: https://shammasdevelopment.com

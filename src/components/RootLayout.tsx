@@ -30,7 +30,7 @@ const Header = ({
         <Link href={"/"} aria-label="Home" className="flex items-center flex-shrink-0">
           <Image
             src={appLogo}
-            alt="Shammas Investments"
+            alt="Shammas Development"
             width={700}
             height={210}
             className={clsx(

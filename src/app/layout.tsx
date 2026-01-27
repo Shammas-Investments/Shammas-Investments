@@ -19,27 +19,27 @@ const inter = Inter({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shammasinvestments.com';
-const heroImage = '/android-chrome-512x512.png';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shammasdevelopment.com';
+const heroImage = '/web-app-manifest-512x512.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    template: "%s | Shammas Investments",
-    default: "Shammas Investments - Complete IT Solutions & Technology Services",
+    template: "%s | Shammas Development",
+    default: "Shammas Development - Complete IT Solutions & Technology Services",
   },
-  description: "Shammas Investments LLC - Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services. Expert technology consulting and investment solutions.",
+  description: "Shammas Development LLC - Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services. Expert technology consulting and investment solutions.",
   keywords: [
     // Brand name variations for maximum visibility
-    'Shammas Investments',
+    'Shammas Development',
     'Shammas Investment',
     'shammas',
-    'shammasinvestments',
-    'shammasinvest',
+    'shammasdevelopment',
+    'shammasdev',
     'shammas invest',
     'shammas LLC',
-    'Shammas Investments LLC',
-    'shammas investments company',
+    'Shammas Development LLC',
+    'shammas development company',
     'shammas technology',
     'shammas tech',
     'shammas solutions',
@@ -75,28 +75,28 @@ export const metadata: Metadata = {
     'software consultancy',
     'tech company',
   ],
-  applicationName: 'Shammas Investments',
+  applicationName: 'Shammas Development',
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
     type: 'website',
     url: siteUrl,
-    title: 'Shammas Investments - Complete IT Solutions & Technology Services',
+    title: 'Shammas Development - Complete IT Solutions & Technology Services',
     description: 'Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services.',
-    siteName: 'Shammas Investments',
+    siteName: 'Shammas Development',
     images: [
       {
         url: heroImage,
         width: 512,
         height: 512,
-        alt: 'Shammas Investments - Complete IT Solutions',
+        alt: 'Shammas Development - Complete IT Solutions',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shammas Investments - Complete IT Solutions & Technology Services',
+    title: 'Shammas Development - Complete IT Solutions & Technology Services',
     description: 'Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services.',
     images: [heroImage],
   },
@@ -113,20 +113,24 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
     ],
-    shortcut: [{ url: '/favicon.svg' }],
+    shortcut: [{ url: '/favicon.ico' }],
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
       {
-        rel: 'android-chrome-192x192',
-        url: '/android-chrome-192x192.png',
+        rel: 'icon',
+        url: '/web-app-manifest-192x192.png',
+        sizes: '192x192',
       },
       {
-        rel: 'android-chrome-512x512',
-        url: '/android-chrome-512x512.png',
+        rel: 'icon',
+        url: '/web-app-manifest-512x512.png',
+        sizes: '512x512',
       },
     ],
   },
@@ -134,7 +138,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Shammas Investments',
+    title: 'Shammas Development',
   },
   formatDetection: {
     telephone: false,
@@ -157,20 +161,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Shammas Investments LLC',
+    name: 'Shammas Development LLC',
     alternateName: [
-      'Shammas Investments',
+      'Shammas Development',
       'Shammas Investment',
-      'shammasinvestments',
-      'shammasinvest',
+      'shammasdevelopment',
+      'shammasdev',
       'Shammas LLC',
       'Shammas Technology Solutions',
     ],
-    legalName: 'Shammas Investments LLC',
+    legalName: 'Shammas Development LLC',
     url: siteUrl,
-    logo: `${siteUrl}/android-chrome-512x512.png`,
-    image: `${siteUrl}/android-chrome-512x512.png`,
-    description: 'Shammas Investments LLC is a leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services. Expert technology consulting and investment solutions.',
+    logo: `${siteUrl}/web-app-manifest-512x512.png`,
+    image: `${siteUrl}/web-app-manifest-512x512.png`,
+    description: 'Shammas Development LLC is a leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services. Expert technology consulting and investment solutions.',
     slogan: 'Complete IT Solutions & Technology Services',
     founder: [
       {
@@ -191,7 +195,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'info@shammasinvestments.com',
+      email: 'info@shammasdevelopment.com',
       contactType: 'Customer Service',
       availableLanguage: ['English'],
     },
