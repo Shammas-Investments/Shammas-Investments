@@ -3,6 +3,7 @@ import ContactSection from "@/components/ContactSection";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import Services from "@/components/Services";
+import Button from "@/components/Button";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -39,6 +40,9 @@ export default function Home() {
           <p className="mt-8 text-xl text-neutral-600">
             From MVPs to enterprise-grade systems, we help teams ship faster, operate smarter, and grow with confidence.
           </p>
+          <div className="mt-10">
+            <Button href="/get-quote">Get a Custom Quote</Button>
+          </div>
         </FadeIn>
       </Container>
       <Clients />

@@ -2,6 +2,7 @@ import ContactSection from "@/components/ContactSection";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import PageIntro from "@/components/PageIntro";
+import Button from "@/components/Button";
 import React from "react";
 
 // Individual Service Component
@@ -227,6 +228,23 @@ const ServicesPage = () => {
             <ServiceDetail key={index} {...service} />
           ))}
         </div>
+
+        {/* CTA Section */}
+        <FadeIn>
+          <div className="mt-16 rounded-4xl bg-neutral-950 p-8 text-center sm:mt-20 sm:p-12">
+            <h2 className="font-display text-2xl font-semibold text-white sm:text-3xl">
+              Ready to get started?
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base text-neutral-300">
+              Build your custom service plan and get an instant quote for your project.
+            </p>
+            <div className="mt-8">
+              <Button href="/get-quote" invert>
+                Get a Custom Quote
+              </Button>
+            </div>
+          </div>
+        </FadeIn>
       </Container>
 
       <ContactSection />

@@ -40,7 +40,10 @@ const Header = ({
             priority
           />
         </Link>
-        <div className="flex items-center gap-x-8">
+        <div className="flex items-center gap-x-4 sm:gap-x-8">
+          <Button href={"/get-quote"} invert={invert}>
+            Get a Quote
+          </Button>
           <Button href={"/contact"} invert={invert}>
             Contact us
           </Button>
