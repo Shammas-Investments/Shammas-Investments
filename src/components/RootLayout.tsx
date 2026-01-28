@@ -40,8 +40,8 @@ const Header = ({
             priority
           />
         </Link>
-        <div className="flex items-center gap-x-4 sm:gap-x-8">
-          <Button href={"/get-quote"} invert={invert}>
+        <div className="flex items-center gap-x-3 sm:gap-x-6">
+          <Button href={"/get-quote"} invert={invert} className="hidden sm:inline-flex">
             Get a Quote
           </Button>
           <Button href={"/contact"} invert={invert}>
@@ -105,6 +105,10 @@ const Navigation = () => {
       <NavigationRow>
         <NavigationItem href="/services">Services</NavigationItem>
         <NavigationItem href="/products">Products</NavigationItem>
+      </NavigationRow>
+      <NavigationRow>
+        <NavigationItem href="/get-quote">Get a Quote</NavigationItem>
+        <NavigationItem href="/contact">Contact</NavigationItem>
       </NavigationRow>
     </nav>
   );
