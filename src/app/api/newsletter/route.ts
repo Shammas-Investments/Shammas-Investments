@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 // Brevo (formerly Sendinblue) API integration
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const BREVO_LIST_ID = process.env.BREVO_LIST_ID || "2";
-const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || "info@shammasdevelopment.com";
+const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || "info@shammasdevelopment.io";
 const SENDER_NAME = process.env.BREVO_SENDER_NAME || "Shammas Development";
 
 interface BrevoContact {
@@ -14,7 +14,7 @@ interface BrevoContact {
 
 // Send welcome email to new subscriber
 async function sendWelcomeEmail(subscriberEmail: string): Promise<boolean> {
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://shammasdevelopment.com";
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://shammasdevelopment.io";
   const LOGO_URL = `${SITE_URL}/email-logo.png`;
 
   try {
@@ -221,7 +221,7 @@ async function sendWelcomeEmail(subscriberEmail: string): Promise<boolean> {
                               Remote-first &bull; Serving clients across the United States
                             </p>
                             <p style="margin: 0; color: #525252; font-size: 12px;">
-                              You received this email because you subscribed at <a href="${SITE_URL}" style="color: #737373;">shammasdevelopment.com</a>
+                              You received this email because you subscribed at <a href="${SITE_URL}" style="color: #737373;">shammasdevelopment.io</a>
                             </p>
                           </td>
                         </tr>
@@ -259,7 +259,7 @@ Explore Our Services: ${SITE_URL}
 Shammas Development LLC
 Remote-first | Serving clients across the United States
 
-You received this email because you subscribed at shammasdevelopment.com
+You received this email because you subscribed at shammasdevelopment.io
       `,
     };
 
@@ -336,7 +336,29 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify(contactData),
     });
 
-    const data = await response.json();
+    // Handle empty response or non-JSON response
+    const responseText = await response.text();
+    let data: { code?: string; message?: string; id?: number } = {};
+
+    if (responseText) {
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        console.error("Failed to parse Brevo response:", responseText);
+        // If we can't parse but response is ok, treat as success
+        if (response.ok) {
+          data = { id: 0 };
+        } else {
+          return NextResponse.json(
+            { error: `API Error (${response.status}): ${responseText || 'Unknown error'}` },
+            { status: response.status }
+          );
+        }
+      }
+    }
+
+    // Log for debugging
+    console.log("Brevo API response:", response.status, data);
 
     // Handle different response scenarios
     if (response.ok) {

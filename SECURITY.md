@@ -83,7 +83,7 @@ WEB3FORMS_ACCESS_KEY=your_key_here
 ### Client-Side (Public - OK)
 ```
 NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/...
-NEXT_PUBLIC_SITE_URL=https://shammasdevelopment.com
+NEXT_PUBLIC_SITE_URL=https://shammasdevelopment.io
 ```
 
 **RULE**: Never use `NEXT_PUBLIC_` prefix for secrets!

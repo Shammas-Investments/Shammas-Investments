@@ -97,7 +97,7 @@ const Navigation = () => {
     <nav className="mt-px font-banner text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
         <NavigationItem href="/about">About Us</NavigationItem>
-        <NavigationItem href="/process">Our Process</NavigationItem>
+        <NavigationItem href="/process">How We Work</NavigationItem>
       </NavigationRow>
       <NavigationRow>
         <NavigationItem href="/services">Services</NavigationItem>

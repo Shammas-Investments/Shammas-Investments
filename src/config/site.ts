@@ -32,7 +32,7 @@ export function constructMetadata({
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://shammasdevelopment.com",
+      url: "https://shammasdevelopment.io",
       siteName: "Shammas Development",
       title,
       description,
@@ -53,7 +53,7 @@ export function constructMetadata({
       creator: "@shammasdev",
     },
     icons,
-    metadataBase: new URL("https://shammasdevelopment.com"),
+    metadataBase: new URL("https://shammasdevelopment.io"),
     themeColor: "#000000",
     manifest: "/site.webmanifest",
     ...(noIndex && {

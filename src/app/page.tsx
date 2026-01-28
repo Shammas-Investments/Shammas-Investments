@@ -34,10 +34,10 @@ export default function Home() {
       <Container className="mt-32 sm:mt-40 md:mt-48 lg:mt-56">
         <FadeIn className="max-w-3xl">
           <h1 className="font-banner text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            We build software and automation that removes bottlenecks and drives growth.
+            We design and build custom software, AI, and automation that eliminate manual work and help businesses scale faster.
           </h1>
           <p className="mt-8 text-xl text-neutral-600">
-            We partner with startups and growing companies to design, build, and maintain reliable technology with clear timelines and measurable results. From internal tools to customer-facing platforms, we deliver scalable systems that streamline operations and support long-term growth.
+            From MVPs to enterprise-grade systems, we help teams ship faster, operate smarter, and grow with confidence.
           </p>
         </FadeIn>
       </Container>

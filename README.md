@@ -227,7 +227,7 @@ Compatible with any Node.js hosting:
 Create `.env.local` for environment-specific configuration:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://shammasdevelopment.com
+NEXT_PUBLIC_SITE_URL=https://shammasdevelopment.io
 ```
 
 ## Maintenance
@@ -252,7 +252,7 @@ All content is easily editable in the respective component files. No database re
 ## Support
 
 For technical issues or questions:
-- Email: support@shammasdevelopment.com
+- Email: support@shammasdevelopment.io
 - GitHub Issues: [Create an issue]
 
 ## License
@@ -279,7 +279,7 @@ For technical issues or questions:
 
 ## Next Steps
 
-1. **Purchase Domain**: Register shammasdevelopment.com
+1. **Purchase Domain**: Register shammasdevelopment.io
 2. **Update Contact Info**: Replace all placeholder emails/phones
 3. **Update Social Media**: Add real social media account URLs
 4. **Add Portfolio**: Populate work/portfolio section with real projects

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 // Preview the welcome email template
 export async function GET() {
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://shammasdevelopment.com";
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://shammasdevelopment.io";
   const LOGO_URL = `${SITE_URL}/email-logo.png`;
 
   const htmlContent = `
@@ -192,7 +192,7 @@ export async function GET() {
                           Remote-first &bull; Serving clients across the United States
                         </p>
                         <p style="margin: 0; color: #525252; font-size: 12px;">
-                          You received this email because you subscribed at <a href="${SITE_URL}" style="color: #737373;">shammasdevelopment.com</a>
+                          You received this email because you subscribed at <a href="${SITE_URL}" style="color: #737373;">shammasdevelopment.io</a>
                         </p>
                       </td>
                     </tr>

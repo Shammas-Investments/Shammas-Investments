@@ -73,7 +73,7 @@ const reviewPlatforms: ReviewPlatform[] = [
     logo: <TrustpilotLogo />,
     rating: 5,
     reviewCount: "Excellent",
-    url: "https://www.trustpilot.com/review/shammasdevelopment.com",
+    url: "https://www.trustpilot.com/review/shammasdevelopment.io",
     bgColor: "hover:bg-neutral-800",
   },
   {
@@ -92,7 +92,7 @@ const Clients = () => {
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
-            Trusted by clients worldwide
+            Trusted by teams who care about quality, speed, and long-term reliability
           </h2>
           <div className="h-px flex-auto bg-neutral-800" />
         </FadeIn>

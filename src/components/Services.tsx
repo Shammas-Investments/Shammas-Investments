@@ -15,7 +15,7 @@ const Services = () => {
         className="mt-24 sm:mt-32 lg:mt-40"
       >
         <p>
-          From development to automation and cloud, we focus on execution and results. Our services are designed to help businesses build reliable technology that solves real operational problems.
+          We focus on execution and results — building technology that solves real problems, not just checks boxes.
         </p>
       </SectionIntro>
       <Container className="mt-16">
@@ -32,13 +32,13 @@ const Services = () => {
           {/* List item */}
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
             <ListItem title="Custom Software Development">
-              Web apps, mobile apps, internal tools, and integrations built to your specifications with clean code, testing, and documentation.
+              Web apps, mobile apps, internal tools, and integrations — built to spec with clean architecture and long-term maintainability in mind.
             </ListItem>
             <ListItem title="AI Automation & LLM Solutions">
-              Chatbots, copilots, and workflow automation powered by modern AI. We help you leverage LLMs to streamline operations and reduce manual work.
+              We build intelligent systems — chatbots, copilots, and automated workflows — that reduce busywork and help your team focus on what matters.
             </ListItem>
             <ListItem title="Cloud & DevOps Engineering">
-              Migrations, CI/CD pipelines, monitoring, security, and cost optimization. We build and maintain infrastructure that scales reliably.
+              From migrations to CI/CD and monitoring, we set up infrastructure that's secure, scalable, and cost-efficient.
             </ListItem>
           </List>
         </div>

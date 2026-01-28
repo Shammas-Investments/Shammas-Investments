@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import FadeIn from "./FadeIn";
 import TextInput from "./TextInput";
-import RadioInput from "./RadioInput";
 import Button from "./Button";
 
 interface FormData {
@@ -11,13 +10,15 @@ interface FormData {
   company: string;
   phone: string;
   message: string;
-  budget: string;
 }
 
 interface StatusState {
   type: string;
   message: string;
 }
+
+// Web3Forms access key (safe to expose - they have built-in protection)
+const WEB3FORMS_ACCESS_KEY = "3c89ca5b-b6c2-40b3-8a9c-29aa71b3fa08";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -26,7 +27,6 @@ const ContactForm = () => {
     company: "",
     phone: "",
     message: "",
-    budget: "",
   });
   const [status, setStatus] = useState<StatusState>({ type: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -44,25 +44,29 @@ const ContactForm = () => {
     setStatus({ type: "", message: "" });
 
     try {
-      // Submit to secure server-side API route
-      const response = await fetch("/api/contact", {
+      // Submit directly to Web3Forms (client-side required for free plan)
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
           company: formData.company,
           phone: formData.phone,
           message: formData.message,
-          budget: formData.budget,
+          subject: "New Contact Form Submission - Shammas Development",
+          from_name: "Shammas Development Website",
+          botcheck: "",
         }),
       });
 
       const result = await response.json();
 
-      if (response.ok && result.success) {
+      if (result.success) {
         setStatus({
           type: "success",
           message: "Thank you! Your message has been sent successfully. We'll get back to you soon.",
@@ -73,18 +77,17 @@ const ContactForm = () => {
           company: "",
           phone: "",
           message: "",
-          budget: "",
         });
       } else {
         setStatus({
           type: "error",
-          message: result.error || "Something went wrong. Please try again.",
+          message: result.message || "Something went wrong. Please try again.",
         });
       }
     } catch (error) {
       setStatus({
         type: "error",
-        message: "Oops! Something went wrong. Please try again or email us directly at info@shammasdevelopment.com",
+        message: "Oops! Something went wrong. Please try again or email us directly at info@shammasdevelopment.io",
       });
     } finally {
       setIsSubmitting(false);
@@ -150,42 +153,16 @@ const ContactForm = () => {
             onChange={handleChange}
             required
           />
-          <div className="border border-neutral-300 px-6 py-8 first:rounded-t-2xl last:rounded-b-2xl">
-            <fieldset>
-              <legend className="text-base/6 text-neutral-500">Budget</legend>
-            </fieldset>
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <RadioInput
-                label="$25K – $50K"
-                name="budget"
-                value="$25K – $50K"
-                checked={formData.budget === "$25K – $50K"}
-                onChange={handleChange}
-              />
-              <RadioInput
-                label="$50K – $100K"
-                name="budget"
-                value="$50K – $100K"
-                checked={formData.budget === "$50K – $100K"}
-                onChange={handleChange}
-              />
-              <RadioInput
-                label="$100K – $150K"
-                name="budget"
-                value="$100K – $150K"
-                checked={formData.budget === "$100K – $150K"}
-                onChange={handleChange}
-              />
-              <RadioInput
-                label="More than $150K"
-                name="budget"
-                value="More than $150K"
-                checked={formData.budget === "More than $150K"}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
         </div>
+
+        {/* Honeypot Spam Protection - hidden from users, catches bots */}
+        <input
+          type="checkbox"
+          name="botcheck"
+          className="hidden"
+          style={{ display: "none" }}
+        />
+
         <Button type="submit" className="mt-10" disabled={isSubmitting}>
           {isSubmitting ? "Sending..." : "Let's work together"}
         </Button>

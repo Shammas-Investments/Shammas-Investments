@@ -104,9 +104,9 @@ Each major page has optimized title and description including brand keywords.
 
 **Step-by-step**:
 1. Go to: https://search.google.com/search-console
-2. Add property: `https://shammasdevelopment.com`
+2. Add property: `https://shammasdevelopment.io`
 3. Verify ownership (DNS or HTML file method)
-4. Submit sitemap: `https://shammasdevelopment.com/sitemap.xml`
+4. Submit sitemap: `https://shammasdevelopment.io/sitemap.xml`
 5. Request indexing for all pages
 
 **Why**: Without submitting, Google won't know about your site!
@@ -115,9 +115,9 @@ Each major page has optimized title and description including brand keywords.
 
 **Step-by-step**:
 1. Go to: https://www.bing.com/webmasters
-2. Add site: `https://shammasdevelopment.com`
+2. Add site: `https://shammasdevelopment.io`
 3. Verify ownership
-4. Submit sitemap: `https://shammasdevelopment.com/sitemap.xml`
+4. Submit sitemap: `https://shammasdevelopment.io/sitemap.xml`
 
 ### 3. Add Google Verification Meta Tag
 
@@ -155,7 +155,7 @@ When you search for any of these on Google:
 - "shammas invest"
 - "shammas LLC"
 
-Your website (shammasdevelopment.com) should appear in results!
+Your website (shammasdevelopment.io) should appear in results!
 
 ---
 
@@ -289,16 +289,16 @@ You'll know SEO is working when:
 
 ### Test Right Now:
 
-1. **Google**: Search "shammasdevelopment.com"
+1. **Google**: Search "shammasdevelopment.io"
    - Should show your site as #1 result
 
-2. **Check Indexing**: Search "site:shammasdevelopment.com"
+2. **Check Indexing**: Search "site:shammasdevelopment.io"
    - Shows all indexed pages (may be 0 at first, normal!)
 
-3. **Check Sitemap**: Visit https://shammasdevelopment.com/sitemap.xml
+3. **Check Sitemap**: Visit https://shammasdevelopment.io/sitemap.xml
    - Should load without errors
 
-4. **Check Robots**: Visit https://shammasdevelopment.com/robots.txt
+4. **Check Robots**: Visit https://shammasdevelopment.io/robots.txt
    - Should show updated content
 
 ---

@@ -19,7 +19,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shammasdevelopment.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shammasdevelopment.io';
 const heroImage = '/web-app-manifest-512x512.png';
 
 export const metadata: Metadata = {
@@ -193,7 +193,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'info@shammasdevelopment.com',
+      email: 'info@shammasdevelopment.io',
       contactType: 'Customer Service',
       availableLanguage: ['English'],
     },

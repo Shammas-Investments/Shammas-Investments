@@ -5,8 +5,8 @@ import FadeIn, { FadeInStagger } from "./FadeIn";
 import SectionIntro from "./SectionIntro";
 
 // Placeholder images - replace with actual founder photos
-import founderImage1 from "@/images/team/michael-foster.jpeg";
-import founderImage2 from "@/images/team/cto.png";
+import founderImage1 from "@/images/team/ceo.jpeg";
+import founderImage2 from "@/images/team/cto.jpeg";
 
 interface FounderProps {
   name: string;
@@ -40,14 +40,14 @@ const FounderCard: React.FC<FounderProps> = ({ name, role, image, bio }) => {
 
 const founders: FounderProps[] = [
   {
-    name: "Jonathan Shammas",
-    role: "Founder & CEO",
+    name: "Hassan Naeem",
+    role: "Founder & CTO",
     image: founderImage1,
-    bio: "Jonathan leads our vision and strategy, bringing years of experience in technology leadership and a commitment to building solutions that create lasting value for clients.",
+    bio: "Hassan leads our vision and strategy, bringing years of experience in technology leadership and a commitment to building solutions that create lasting value for clients.",
   },
   {
     name: "Joe Shammas",
-    role: "Co-Founder & CTO",
+    role: "Co-Founder & CEO",
     image: founderImage2,
     bio: "Joe oversees our technical direction and engineering excellence, ensuring every solution we deliver meets the highest standards of quality and reliability.",
   },

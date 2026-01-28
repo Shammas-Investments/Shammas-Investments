@@ -11,7 +11,7 @@ import React from "react";
 const ProcessPage = () => {
   return (
     <>
-      <PageIntro eyebrow="Our process" title="Transparent and Reliable Execution">
+      <PageIntro eyebrow="How we work" title="Transparent and Reliable Execution">
         <p>
           We follow a structured process designed for clarity, accountability, and results. You always know what&apos;s happening, and we deliver systems built to last.
         </p>

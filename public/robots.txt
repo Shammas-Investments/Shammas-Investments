@@ -1,6 +1,6 @@
 # robots.txt for Shammas Development LLC
 # Company: Shammas Development, shammasdevelopment, shammasdev
-# Website: https://shammasdevelopment.com
+# Website: https://shammasdevelopment.io
 
 User-agent: *
 Allow: /
@@ -38,7 +38,7 @@ Disallow: /
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://shammasdevelopment.com/sitemap.xml
+Sitemap: https://shammasdevelopment.io/sitemap.xml
 
 # Host directive (for search engines that support it)
-Host: https://shammasdevelopment.com
+Host: https://shammasdevelopment.io

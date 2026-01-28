@@ -151,9 +151,22 @@ const Footer = () => {
               className="h-32 w-auto sm:h-40 md:h-44 lg:h-48 grayscale"
             />
           </Link>
-          <p className="text-sm text-neutral-700 flex items-center">
-            © Shammas Development LLC. {new Date().getFullYear()}. All rights reserved.
-          </p>
+          <div className="flex flex-col items-end gap-4">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-neutral-700">
+              <Link href="/privacy-policy" className="hover:text-neutral-950 transition">
+                Privacy Policy
+              </Link>
+              <Link href="/terms-and-conditions" className="hover:text-neutral-950 transition">
+                Terms & Conditions
+              </Link>
+              <Link href="/sitemap.xml" className="hover:text-neutral-950 transition">
+                Sitemap
+              </Link>
+            </div>
+            <p className="text-sm text-neutral-700">
+              © Shammas Development LLC. {new Date().getFullYear()}. All rights reserved.
+            </p>
+          </div>
         </div>
       </FadeIn>
     </Container>

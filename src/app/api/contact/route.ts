@@ -53,7 +53,18 @@ export async function POST(request: NextRequest) {
 
     // Parse request body
     const body = await request.json();
-    const { name, email, company, phone, message, budget } = body;
+    const { name, email, company, phone, message, budget, botcheck } = body;
+
+    // Honeypot check - if botcheck is filled, it's a bot
+    if (botcheck) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Spam detected.'
+        },
+        { status: 400 }
+      );
+    }
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -118,10 +129,12 @@ export async function POST(request: NextRequest) {
         budget: sanitizedData.budget,
         subject: 'New Contact Form Submission - Shammas Development',
         from_name: 'Shammas Development Website',
+        botcheck: '', // Honeypot for Web3Forms
       }),
     });
 
     const result = await response.json();
+    console.log('Web3Forms response:', result);
 
     if (result.success) {
       return NextResponse.json({
@@ -129,7 +142,14 @@ export async function POST(request: NextRequest) {
         message: 'Your message has been sent successfully.',
       });
     } else {
-      throw new Error('Web3Forms submission failed');
+      console.error('Web3Forms error:', result);
+      return NextResponse.json(
+        {
+          success: false,
+          error: result.message || 'Failed to send message. Please try again.'
+        },
+        { status: 400 }
+      );
     }
   } catch (error) {
     console.error('Contact form error:', error);
