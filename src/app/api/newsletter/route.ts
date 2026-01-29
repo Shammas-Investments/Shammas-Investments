@@ -1,32 +1,24 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import {
+  RateLimiter,
+  getClientIP,
+  successResponse,
+  errorResponse,
+  rateLimitResponse,
+  configErrorResponse,
+  serverErrorResponse,
+  logError,
+} from "@/lib/api-helpers";
+import { validateNewsletterForm } from "@/lib/validations";
 
-// Brevo (formerly Sendinblue) API integration
+// Brevo (formerly Sendinblue) API configuration
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const BREVO_LIST_ID = process.env.BREVO_LIST_ID || "2";
 const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || "info@shammasdevelopment.io";
 const SENDER_NAME = process.env.BREVO_SENDER_NAME || "Shammas Development";
 
-// Rate limiting configuration
-const rateLimit = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
-const MAX_REQUESTS = 5; // 5 requests per minute per IP
-
-function checkRateLimit(identifier: string): boolean {
-  const now = Date.now();
-  const userLimit = rateLimit.get(identifier);
-
-  if (!userLimit || now > userLimit.resetTime) {
-    rateLimit.set(identifier, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-    return true;
-  }
-
-  if (userLimit.count >= MAX_REQUESTS) {
-    return false;
-  }
-
-  userLimit.count++;
-  return true;
-}
+// Rate limiter: 5 requests per minute per IP
+const rateLimiter = new RateLimiter({ maxRequests: 5 });
 
 interface BrevoContact {
   email: string;
@@ -295,12 +287,9 @@ You received this email because you subscribed at shammasdevelopment.io
       body: JSON.stringify(emailData),
     });
 
-    if (response.ok) {
-      return true;
-    } else {
-      return false;
-    }
-  } catch {
+    return response.ok;
+  } catch (error) {
+    logError("Newsletter welcome email", error);
     return false;
   }
 }
@@ -308,45 +297,28 @@ You received this email because you subscribed at shammasdevelopment.io
 export async function POST(request: NextRequest) {
   try {
     // Rate limiting
-    const ip = request.headers.get('x-forwarded-for') ||
-               request.headers.get('x-real-ip') ||
-               'unknown';
+    const ip = getClientIP(request);
 
-    if (!checkRateLimit(ip)) {
-      return NextResponse.json(
-        { error: "Too many requests. Please try again later." },
-        { status: 429 }
-      );
+    if (!rateLimiter.check(ip)) {
+      return rateLimitResponse();
     }
 
     const body = await request.json();
     const { email } = body;
 
     // Validate email
-    if (!email) {
-      return NextResponse.json(
-        { error: "Email is required" },
-        { status: 400 }
-      );
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: "Please enter a valid email address" },
-        { status: 400 }
-      );
+    const validation = validateNewsletterForm({ email });
+    if (!validation.isValid) {
+      return errorResponse(validation.error!);
     }
 
     // Check if API key is configured
     if (!BREVO_API_KEY) {
-      return NextResponse.json(
-        { error: "Newsletter service is not configured" },
-        { status: 500 }
-      );
+      logError("Newsletter API", "BREVO_API_KEY not configured");
+      return configErrorResponse();
     }
 
-    const subscriberEmail = email.toLowerCase();
+    const subscriberEmail = email.toLowerCase().trim();
 
     // Create contact in Brevo
     const contactData: BrevoContact = {
@@ -373,14 +345,10 @@ export async function POST(request: NextRequest) {
       try {
         data = JSON.parse(responseText);
       } catch {
-        // If we can't parse but response is ok, treat as success
         if (response.ok) {
           data = { id: 0 };
         } else {
-          return NextResponse.json(
-            { error: "Subscription service error. Please try again." },
-            { status: response.status }
-          );
+          return errorResponse("Subscription service error. Please try again.", response.status);
         }
       }
     }
@@ -391,45 +359,26 @@ export async function POST(request: NextRequest) {
       const emailSent = await sendWelcomeEmail(subscriberEmail);
 
       if (emailSent) {
-        return NextResponse.json(
-          { message: "Successfully subscribed! Check your inbox for a welcome email." },
-          { status: 200 }
-        );
+        return successResponse(undefined, "Successfully subscribed! Check your inbox for a welcome email.");
       } else {
-        // Contact added but email failed - still success for subscription
-        return NextResponse.json(
-          { message: "Successfully subscribed! (Welcome email could not be sent - please verify sender email in Brevo)" },
-          { status: 200 }
-        );
+        return successResponse(undefined, "Successfully subscribed!");
       }
     }
 
     // Contact already exists (duplicate)
     if (response.status === 400 && data.code === "duplicate_parameter") {
-      return NextResponse.json(
-        { message: "You're already subscribed!" },
-        { status: 200 }
-      );
+      return successResponse(undefined, "You're already subscribed!");
     }
 
     // Other errors
-    return NextResponse.json(
-      { error: data.message || "Failed to subscribe. Please try again." },
-      { status: response.status }
-    );
-
-  } catch {
-    return NextResponse.json(
-      { error: "Something went wrong. Please try again later." },
-      { status: 500 }
-    );
+    return errorResponse(data.message || "Failed to subscribe. Please try again.", response.status);
+  } catch (error) {
+    logError("Newsletter API", error);
+    return serverErrorResponse("Something went wrong. Please try again later.");
   }
 }
 
-// Optional: GET endpoint to check service status
+// GET endpoint to check service status
 export async function GET() {
-  return NextResponse.json(
-    { status: "Newsletter service is running" },
-    { status: 200 }
-  );
+  return successResponse({ status: "running" }, "Newsletter service is running");
 }

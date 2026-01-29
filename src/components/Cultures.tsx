@@ -1,4 +1,3 @@
-import React from "react";
 import SectionIntro from "./SectionIntro";
 import Container from "./Container";
 import { GridList, GridListItem } from "./GridList";

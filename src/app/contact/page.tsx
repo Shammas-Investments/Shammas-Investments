@@ -22,6 +22,13 @@ export const metadata: Metadata = {
       "Get in touch with Shammas Development. Share your project details and we'll follow up within one business day.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us | Shammas Development",
+    description:
+      "Get in touch with Shammas Development. Share your project details and we'll follow up within one business day.",
+    images: ["/web-app-manifest-512x512.png"],
+  },
 };
 
 const ContactPage = () => {

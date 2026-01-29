@@ -1,4 +1,3 @@
-import React from "react";
 import Container from "./Container";
 import FadeIn, { FadeInStagger } from "./FadeIn";
 import SectionIntro from "./SectionIntro";

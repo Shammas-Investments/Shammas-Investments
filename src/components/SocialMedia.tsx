@@ -1,14 +1,21 @@
 import Link from "next/link";
 import clsx from "clsx";
+import React from "react";
 import {
   BsFacebook,
   BsTwitter,
-  BsGithub,
   BsInstagram,
   BsLinkedin,
 } from "react-icons/bs";
+import { IconType } from "react-icons";
 
-export const SocialMediaProfiles = [
+interface SocialMediaProfile {
+  title: string;
+  href: string;
+  icon: IconType;
+}
+
+export const SocialMediaProfiles: SocialMediaProfile[] = [
   {
     title: "LinkedIn",
     href: "https://www.linkedin.com/company/shammas-development",
@@ -29,14 +36,14 @@ export const SocialMediaProfiles = [
     href: "https://www.instagram.com/shammasdevelopment",
     icon: BsInstagram,
   },
-  // {
-  //   title: "GitHub",
-  //   href: "https://github.com/shammas-development",
-  //   icon: BsGithub
-  // },
 ];
 
-const SocialMedia = ({ className, invert = false }) => {
+interface SocialMediaProps {
+  className?: string;
+  invert?: boolean;
+}
+
+const SocialMedia: React.FC<SocialMediaProps> = ({ className, invert = false }) => {
   return (
     <ul
       role="list"

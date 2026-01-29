@@ -21,6 +21,13 @@ export const metadata: Metadata = {
       "Insights on software development, AI automation, cloud architecture, and digital transformation.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Shammas Development",
+    description:
+      "Insights on software development, AI automation, cloud architecture, and digital transformation.",
+    images: ["/web-app-manifest-512x512.png"],
+  },
 };
 
 const BlogPage = () => {

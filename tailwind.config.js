@@ -31,6 +31,31 @@ module.exports = {
           900: '#000000',
         },
       },
+      screens: {
+        // Touch-specific media queries
+        'touch': { 'raw': '(pointer: coarse)' },
+        'no-touch': { 'raw': '(pointer: fine)' },
+        'hover-able': { 'raw': '(hover: hover)' },
+        'hover-none': { 'raw': '(hover: none)' },
+        // Additional responsive breakpoints
+        'xs': '475px',
+        '3xl': '1920px',
+      },
+      spacing: {
+        // Touch-friendly minimum tap targets (44px)
+        'touch': '44px',
+        // Safe area insets for notched devices
+        'safe-top': 'env(safe-area-inset-top)',
+        'safe-bottom': 'env(safe-area-inset-bottom)',
+        'safe-left': 'env(safe-area-inset-left)',
+        'safe-right': 'env(safe-area-inset-right)',
+      },
+      minHeight: {
+        'touch': '44px',
+      },
+      minWidth: {
+        'touch': '44px',
+      },
     },
   },
   plugins: [],

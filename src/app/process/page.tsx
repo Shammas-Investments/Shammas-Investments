@@ -6,7 +6,6 @@ import PageIntro from "@/components/PageIntro";
 import Plan from "@/components/Plan";
 import Support from "@/components/Support";
 import Values from "@/components/Values";
-import React from "react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,6 +24,13 @@ export const metadata: Metadata = {
     description:
       "Learn about our structured, milestone-based development process designed for clarity, accountability, and results.",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Process | Shammas Development",
+    description:
+      "Learn about our structured, milestone-based development process designed for clarity, accountability, and results.",
+    images: ["/web-app-manifest-512x512.png"],
   },
 };
 

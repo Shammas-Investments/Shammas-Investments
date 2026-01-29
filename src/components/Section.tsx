@@ -2,8 +2,21 @@ import React from "react";
 import Container from "./Container";
 import FadeIn from "./FadeIn";
 import StylizedImage from "./StylizedImage";
+import { StaticImageData } from "next/image";
 
-const Section = ({ title, image, children }) => {
+interface SectionImageProps {
+  src: string | StaticImageData;
+  alt: string;
+  shape?: 0 | 1 | 2;
+}
+
+interface SectionProps {
+  title: string;
+  image: SectionImageProps;
+  children: React.ReactNode;
+}
+
+const Section: React.FC<SectionProps> = ({ title, image, children }) => {
   return (
     <Container className="group/section [counter-increment:section]">
       <div className="lg:flex lg:items-center lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20">

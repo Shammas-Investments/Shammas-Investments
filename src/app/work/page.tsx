@@ -23,6 +23,13 @@ export const metadata: Metadata = {
       "Explore our portfolio of successful projects including e-commerce platforms, SaaS applications, and AI automation systems.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Work | Shammas Development",
+    description:
+      "Explore our portfolio of successful projects including e-commerce platforms, SaaS applications, and AI automation systems.",
+    images: ["/web-app-manifest-512x512.png"],
+  },
 };
 
 interface CaseStudyCardProps {

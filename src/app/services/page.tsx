@@ -25,6 +25,13 @@ export const metadata: Metadata = {
       "Custom software development, AI/ML solutions, e-commerce platforms, cloud management, and digital transformation consulting.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services | Shammas Development",
+    description:
+      "Custom software development, AI/ML solutions, e-commerce platforms, cloud management, and digital transformation consulting.",
+    images: ["/web-app-manifest-512x512.png"],
+  },
 };
 
 // Individual Service Component

@@ -1,4 +1,3 @@
-import React from "react";
 import FadeIn from "./FadeIn";
 import Offices from "./Offices";
 import Border from "./Border";

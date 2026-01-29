@@ -1,4 +1,3 @@
-import React from "react";
 import ProcessSection from "./ProcessSection";
 import { TagList, TagListItem } from "./TagList";
 

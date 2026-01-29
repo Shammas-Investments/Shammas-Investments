@@ -3,7 +3,16 @@ import Container from "./Container";
 import FadeIn from "./FadeIn";
 import clsx from "clsx";
 
-const SectionIntro = ({
+interface SectionIntroProps {
+  eyebrow?: string;
+  title: string;
+  children?: React.ReactNode;
+  smaller?: boolean;
+  invert?: boolean;
+  className?: string;
+}
+
+const SectionIntro: React.FC<SectionIntroProps> = ({
   eyebrow,
   title,
   children,

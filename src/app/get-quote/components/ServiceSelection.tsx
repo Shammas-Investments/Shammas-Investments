@@ -15,12 +15,6 @@ const ServiceSelection: React.FC<ServiceSelectionProps> = ({
 }) => {
   const categories = getCategories();
 
-  const calculateTotal = () => {
-    return services
-      .filter((s) => selectedServices.includes(s.id))
-      .reduce((sum, s) => sum + s.price, 0);
-  };
-
   const getSelectedMonthlyServices = () => {
     return services.filter(
       (s) => selectedServices.includes(s.id) && s.priceType === "monthly"

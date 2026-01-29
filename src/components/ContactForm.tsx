@@ -1,8 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import FadeIn from "./FadeIn";
 import TextInput from "./TextInput";
 import Button from "./Button";
+import {
+  validateEmail,
+  validateRequired,
+  validateName,
+  validateLength,
+} from "@/lib/validations";
 
 interface FormData {
   name: string;
@@ -12,8 +18,16 @@ interface FormData {
   message: string;
 }
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  company?: string;
+  phone?: string;
+  message?: string;
+}
+
 interface StatusState {
-  type: string;
+  type: "idle" | "success" | "error";
   message: string;
 }
 
@@ -25,23 +39,88 @@ const ContactForm = () => {
     phone: "",
     message: "",
   });
-  const [status, setStatus] = useState<StatusState>({ type: "", message: "" });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [status, setStatus] = useState<StatusState>({ type: "idle", message: "" });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
+  const validateField = useCallback((name: keyof FormData, value: string): string | undefined => {
+    switch (name) {
+      case "name":
+        if (!validateRequired(value)) return "Name is required.";
+        if (!validateName(value)) return "Please enter a valid name (2-100 characters).";
+        return undefined;
+      case "email":
+        if (!validateRequired(value)) return "Email is required.";
+        if (!validateEmail(value)) return "Please enter a valid email address.";
+        return undefined;
+      case "message":
+        if (!validateRequired(value)) return "Message is required.";
+        if (!validateLength(value, 10, 5000)) return "Message must be between 10 and 5000 characters.";
+        return undefined;
+      default:
+        return undefined;
+    }
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
+
+    // Clear status when user modifies form
+    if (status.type !== "idle") {
+      setStatus({ type: "idle", message: "" });
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const error = validateField(name as keyof FormData, value);
+    if (error) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    let isValid = true;
+
+    (Object.keys(formData) as Array<keyof FormData>).forEach((field) => {
+      const error = validateField(field, formData[field]);
+      if (error) {
+        newErrors[field] = error;
+        isValid = false;
+      }
     });
+
+    setErrors(newErrors);
+    return isValid;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
-    setStatus({ type: "", message: "" });
+    setStatus({ type: "idle", message: "" });
 
     try {
-      // Submit through our secure server-side API route
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -61,7 +140,8 @@ const ContactForm = () => {
       if (result.success) {
         setStatus({
           type: "success",
-          message: "Thank you! Your message has been sent successfully. We'll get back to you soon.",
+          message:
+            "Thank you! Your message has been sent successfully. We'll get back to you soon.",
         });
         setFormData({
           name: "",
@@ -70,6 +150,7 @@ const ContactForm = () => {
           phone: "",
           message: "",
         });
+        setErrors({});
       } else {
         setStatus({
           type: "error",
@@ -79,7 +160,8 @@ const ContactForm = () => {
     } catch {
       setStatus({
         type: "error",
-        message: "Oops! Something went wrong. Please try again or email us directly at info@shammasdevelopment.io",
+        message:
+          "Oops! Something went wrong. Please try again or email us directly at info@shammasdevelopment.io",
       });
     } finally {
       setIsSubmitting(false);
@@ -88,7 +170,7 @@ const ContactForm = () => {
 
   return (
     <FadeIn>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <h2 className="font-display text-base font-semibold text-neutral-950">
           Work inquiries
         </h2>
@@ -114,7 +196,10 @@ const ContactForm = () => {
             autoComplete="name"
             value={formData.name}
             onChange={handleChange}
+            onBlur={handleBlur}
+            error={errors.name}
             required
+            isFirst
           />
           <TextInput
             label="Email"
@@ -123,6 +208,8 @@ const ContactForm = () => {
             autoComplete="email"
             value={formData.email}
             onChange={handleChange}
+            onBlur={handleBlur}
+            error={errors.email}
             required
           />
           <TextInput
@@ -145,7 +232,10 @@ const ContactForm = () => {
             name="message"
             value={formData.message}
             onChange={handleChange}
+            onBlur={handleBlur}
+            error={errors.message}
             required
+            isLast
           />
         </div>
 

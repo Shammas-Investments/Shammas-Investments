@@ -1,10 +1,7 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 
-export function middleware(_request) {
+export function proxy(_request: NextRequest): NextResponse {
   const response = NextResponse.next();
-
-  // Additional security headers (augments next.config.js headers)
-  const _nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
   // Security headers for extra protection
   response.headers.set('X-DNS-Prefetch-Control', 'on');
@@ -19,7 +16,7 @@ export function middleware(_request) {
   return response;
 }
 
-// Apply middleware to all routes
+// Apply proxy to all routes
 export const config = {
   matcher: [
     /*

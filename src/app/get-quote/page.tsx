@@ -22,6 +22,13 @@ export const metadata: Metadata = {
       "Build your custom service plan and get an instant quote for your project.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Get a Quote | Shammas Development",
+    description:
+      "Build your custom service plan and get an instant quote for your project.",
+    images: ["/web-app-manifest-512x512.png"],
+  },
 };
 
 const GetQuotePage = () => {

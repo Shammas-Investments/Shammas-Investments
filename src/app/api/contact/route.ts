@@ -1,91 +1,46 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
+import {
+  RateLimiter,
+  getClientIP,
+  sanitizeInput,
+  successResponse,
+  errorResponse,
+  rateLimitResponse,
+  configErrorResponse,
+  serverErrorResponse,
+  isSpamSubmission,
+  spamResponse,
+  logError,
+} from '@/lib/api-helpers';
+import { validateContactForm } from '@/lib/validations';
+import type { ContactFormData } from '@/types/api';
 
-// Rate limiting configuration (in-memory, resets on deployment)
-const rateLimit = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
-const MAX_REQUESTS = 3; // 3 requests per minute per IP
-
-// Simple rate limiter
-function checkRateLimit(identifier: string): boolean {
-  const now = Date.now();
-  const userLimit = rateLimit.get(identifier);
-
-  if (!userLimit || now > userLimit.resetTime) {
-    rateLimit.set(identifier, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-    return true;
-  }
-
-  if (userLimit.count >= MAX_REQUESTS) {
-    return false;
-  }
-
-  userLimit.count++;
-  return true;
-}
-
-// Input validation
-function validateEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email) && email.length <= 255;
-}
-
-function sanitizeInput(input: string): string {
-  return input.trim().slice(0, 1000); // Limit length and trim
-}
+// Rate limiter: 3 requests per minute per IP
+const rateLimiter = new RateLimiter({ maxRequests: 3 });
 
 export async function POST(request: NextRequest) {
   try {
-    // Get IP for rate limiting
-    const ip = request.headers.get('x-forwarded-for') ||
-               request.headers.get('x-real-ip') ||
-               'unknown';
+    // Get client IP for rate limiting
+    const ip = getClientIP(request);
 
-    // Rate limiting
-    if (!checkRateLimit(ip)) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Too many requests. Please try again later.'
-        },
-        { status: 429 }
-      );
+    // Check rate limit
+    if (!rateLimiter.check(ip)) {
+      return rateLimitResponse();
     }
 
     // Parse request body
-    const body = await request.json();
+    const body = await request.json() as ContactFormData;
     const { name, email, company, phone, message, budget, botcheck } = body;
 
     // Honeypot check - if botcheck is filled, it's a bot
-    if (botcheck) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Spam detected.'
-        },
-        { status: 400 }
-      );
+    if (isSpamSubmission(botcheck)) {
+      return spamResponse();
     }
 
     // Validate required fields
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Name, email, and message are required.'
-        },
-        { status: 400 }
-      );
-    }
-
-    // Validate email
-    if (!validateEmail(email)) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Invalid email address.'
-        },
-        { status: 400 }
-      );
+    const validation = validateContactForm({ name, email, message });
+    if (!validation.isValid) {
+      return errorResponse(validation.error!);
     }
 
     // Sanitize inputs
@@ -94,7 +49,7 @@ export async function POST(request: NextRequest) {
       email: sanitizeInput(email),
       company: company ? sanitizeInput(company) : '',
       phone: phone ? sanitizeInput(phone) : '',
-      message: sanitizeInput(message),
+      message: sanitizeInput(message, 5000),
       budget: budget ? sanitizeInput(budget) : '',
     };
 
@@ -102,64 +57,80 @@ export async function POST(request: NextRequest) {
     const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY;
 
     if (!WEB3FORMS_ACCESS_KEY) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Service configuration error. Please contact support.'
-        },
-        { status: 500 }
-      );
+      logError('Contact API', 'WEB3FORMS_ACCESS_KEY not configured');
+      return configErrorResponse();
     }
 
-    // Submit to Web3Forms
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_ACCESS_KEY,
-        name: sanitizedData.name,
-        email: sanitizedData.email,
-        company: sanitizedData.company,
-        phone: sanitizedData.phone,
-        message: sanitizedData.message,
-        budget: sanitizedData.budget,
-        subject: 'New Contact Form Submission - Shammas Development',
-        from_name: 'Shammas Development Website',
-        botcheck: '', // Honeypot for Web3Forms
-      }),
-    });
+    // Submit to Web3Forms with retry logic
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      name: sanitizedData.name,
+      email: sanitizedData.email,
+      company: sanitizedData.company,
+      phone: sanitizedData.phone,
+      message: sanitizedData.message,
+      budget: sanitizedData.budget,
+      subject: 'New Contact Form Submission - Shammas Development',
+      from_name: 'Shammas Development Website',
+      botcheck: '',
+    };
+
+    let response;
+    let lastError;
+    const maxRetries = 3;
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+        response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'User-Agent': 'Shammas-Development-Website/1.0',
+          },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeoutId);
+        break;
+      } catch (fetchError) {
+        lastError = fetchError;
+        if (attempt < maxRetries) {
+          await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+        }
+      }
+    }
+
+    if (!response) {
+      logError('Contact API', lastError);
+      return serverErrorResponse('Unable to send message. Please try again or email us directly at info@shammasdevelopment.io');
+    }
+
+    // Check content type to ensure we got JSON (handles Cloudflare challenge pages)
+    const contentType = response.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      logError('Contact API', `Unexpected response type: ${contentType}`);
+      return serverErrorResponse('Service temporarily unavailable. Please try again or email us directly at info@shammasdevelopment.io');
+    }
 
     const result = await response.json();
 
     if (result.success) {
-      return NextResponse.json({
-        success: true,
-        message: 'Your message has been sent successfully.',
-      });
+      return successResponse(undefined, 'Your message has been sent successfully.');
     } else {
-      return NextResponse.json(
-        {
-          success: false,
-          error: result.message || 'Failed to send message. Please try again.'
-        },
-        { status: 400 }
-      );
+      return errorResponse(result.message || 'Failed to send message. Please try again.');
     }
-  } catch {
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'An error occurred. Please try again or email us directly.'
-      },
-      { status: 500 }
-    );
+  } catch (error) {
+    logError('Contact API', error);
+    return serverErrorResponse('An error occurred. Please try again or email us directly at info@shammasdevelopment.io');
   }
 }
 
 // OPTIONS handler for CORS preflight
 export async function OPTIONS() {
-  return NextResponse.json({}, { status: 200 });
+  return successResponse();
 }
