@@ -1,58 +1,66 @@
-# Shammas Development - Professional IT Solutions Website
+# Shammas Development - Professional Software Development Agency
 
-A modern, secure, and SEO-optimized website for Shammas Development LLC, built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
+A modern, secure, accessible, and SEO-optimized website for Shammas Development LLC, built with Next.js 16, TypeScript (strict mode), Tailwind CSS, and Framer Motion.
 
 ![Shammas Development](./src/appLogo.png)
 
 ## About Shammas Development
 
-Shammas Development is a comprehensive IT solutions provider specializing in:
+Shammas Development is an operator-focused software development agency specializing in:
 
-- **Software & Application Development** - Custom software solutions, web applications, mobile apps
-- **Game Development** - Immersive gaming experiences across all platforms
-- **E-Commerce Platform Management** - Amazon, Walmart, Shopify solutions
-- **AI/ML & LLM Chatbot Development** - Advanced AI solutions and intelligent chatbots
-- **Cloud Management & Infrastructure** - AWS, Azure, Google Cloud expertise
-- **Graphics Design & Content Management** - Professional design and CMS solutions
-- **Social Media Management** - Strategic social media profile management
-- **Digital Transformation Consulting** - End-to-end IT consulting services
+- **Custom Internal Tools** - Replace manual processes and spreadsheets with purpose-built applications
+- **Automation & AI Workflows** - Reduce operational overhead with intelligent systems
+- **Scalable Web Applications** - MVPs and production systems designed for growth
 
 **Founded by:** Jonathan Shammas and Joe Shammas
 
 ## Features
 
 ### Technical Excellence
-- ✅ **Next.js 14.2.18** - Latest stable version with App Router
-- ✅ **React 18.3.1** - Modern React with latest features
-- ✅ **Tailwind CSS 3.4.15** - Utility-first CSS framework
-- ✅ **Framer Motion 11.x** - Smooth animations and transitions
-- ✅ **TypeScript Ready** - Type-safe development
-- ✅ **Image Optimization** - Sharp integration for production
+- **Next.js 16.1.6** - Latest version with Turbopack and App Router
+- **React 19** - Modern React with latest features
+- **TypeScript Strict Mode** - Full type safety with strict compiler options
+- **Tailwind CSS 3.4** - Utility-first CSS framework with custom configurations
+- **Framer Motion** - Smooth animations and transitions
+- **Sharp** - Optimized image processing
+
+### Architecture & Code Quality
+- **Shared Utilities Library** - Centralized API helpers, validations, and types
+- **Custom Hooks** - Reusable form state management
+- **Standardized API Responses** - Consistent response format across all endpoints
+- **Rate Limiting** - In-memory rate limiting for API protection
+- **Input Sanitization** - Server-side validation and sanitization
 
 ### Security Features
-- 🔒 **Security Headers** - HSTS, CSP, X-Frame-Options, XSS Protection
-- 🔒 **Content Security Policy** - Comprehensive CSP implementation
-- 🔒 **HTTPS Enforcement** - Strict Transport Security
-- 🔒 **Frame Protection** - Clickjacking prevention
-- 🔒 **XSS Protection** - Cross-site scripting protection
-- 🔒 **Permissions Policy** - Camera, microphone, geolocation restrictions
-- 🔒 **No Source Maps** - Production source maps disabled
+- **Security Headers** - HSTS, CSP, X-Frame-Options, XSS Protection
+- **Content Security Policy** - Comprehensive CSP with nonce support
+- **Rate Limiting** - Protection against abuse on all API endpoints
+- **Honeypot Spam Protection** - Bot detection on forms
+- **Input Validation** - Server-side validation with sanitization
+- **HTTPS Enforcement** - Strict Transport Security
+- **No Source Maps** - Production source maps disabled
 
 ### SEO Optimization
-- 📊 **Structured Metadata** - Complete OpenGraph and Twitter Cards
-- 📊 **Sitemap.xml** - Auto-generated sitemap for search engines
-- 📊 **Robots.txt** - Search engine crawler instructions
-- 📊 **Semantic HTML** - Proper HTML5 structure
-- 📊 **Web Manifest** - PWA capabilities
-- 📊 **Keywords Optimization** - Comprehensive keyword strategy
-- 📊 **Fast Loading** - Optimized performance metrics
+- **Dynamic Sitemap** - Auto-generated sitemap.ts for search engines
+- **Structured Metadata** - Complete OpenGraph and Twitter Cards on all pages
+- **JSON-LD Schema** - Organization structured data
+- **Semantic HTML** - Proper HTML5 structure
+- **Web Manifest** - PWA capabilities
+- **Robots.txt** - Search engine crawler instructions
 
-### Design & UX
-- 🎨 **Professional Black & White Theme** - Elegant color scheme
-- 🎨 **Custom Typography** - Playfair Display & Inter fonts
-- 🎨 **Responsive Design** - Mobile-first approach
-- 🎨 **Smooth Animations** - Framer Motion powered transitions
-- 🎨 **Accessible** - WCAG compliant components
+### Accessibility (WCAG Compliant)
+- **Skip-to-Content Link** - Keyboard navigation support
+- **ARIA Attributes** - Proper aria-invalid, aria-describedby, aria-required
+- **Focus States** - Visible focus indicators on all interactive elements
+- **Error Announcements** - Screen reader friendly form validation
+- **Active Navigation** - Current page indicator in navigation
+- **Required Field Indicators** - Visual and semantic required markers
+
+### Responsive Design
+- **Fluid Typography** - CSS clamp() based responsive text sizing
+- **Touch Media Queries** - Optimized for touch devices
+- **Safe Area Insets** - Support for notched devices
+- **Mobile-First Approach** - Responsive from 320px to 4K displays
 
 ## Project Structure
 
@@ -61,29 +69,38 @@ shammas-development/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── about/             # About page
+│   │   ├── api/               # API routes
+│   │   │   ├── contact/       # Contact form API
+│   │   │   ├── newsletter/    # Newsletter subscription API
+│   │   │   └── quote/         # Quote form API
 │   │   ├── blog/              # Blog section
 │   │   ├── contact/           # Contact page
+│   │   ├── get-quote/         # Quote builder page
+│   │   ├── privacy-policy/    # Privacy policy page
 │   │   ├── process/           # Process page
-│   │   ├── work/              # Portfolio/Work page
-│   │   ├── layout.jsx         # Root layout with fonts
-│   │   ├── page.jsx           # Homepage
-│   │   └── globals.css        # Global styles
+│   │   ├── products/          # Products page
+│   │   ├── services/          # Services page
+│   │   ├── terms-and-conditions/ # Terms page
+│   │   ├── work/              # Portfolio page
+│   │   ├── layout.tsx         # Root layout
+│   │   ├── page.tsx           # Homepage
+│   │   ├── sitemap.ts         # Dynamic sitemap generation
+│   │   └── globals.css        # Global styles with fluid typography
 │   ├── components/            # Reusable React components
-│   │   ├── Services.jsx       # All IT services showcase
-│   │   ├── Footer.jsx         # Site footer
-│   │   ├── RootLayout.jsx     # Main layout wrapper
-│   │   └── ...                # Other components
-│   ├── config/
-│   │   └── site.js            # SEO and metadata configuration
-│   ├── constants/
-│   │   └── index.jsx          # Navigation and constants
-│   └── appLogo.png            # Company logo
+│   ├── hooks/                 # Custom React hooks
+│   │   └── useFormState.ts    # Form state management hook
+│   ├── lib/                   # Utility libraries
+│   │   ├── api-helpers.ts     # Rate limiting, sanitization, responses
+│   │   └── validations.ts     # Reusable validation functions
+│   ├── types/                 # TypeScript type definitions
+│   │   └── api.ts             # API response and form types
+│   └── proxy.ts               # Security headers middleware
 ├── public/
 │   ├── robots.txt             # Search engine instructions
-│   ├── sitemap.xml            # SEO sitemap
 │   └── site.webmanifest       # PWA manifest
-├── next.config.js             # Next.js configuration with security
+├── next.config.js             # Next.js configuration
 ├── tailwind.config.js         # Tailwind CSS configuration
+├── tsconfig.json              # TypeScript strict configuration
 └── package.json               # Dependencies
 ```
 
@@ -91,7 +108,7 @@ shammas-development/
 
 ### Prerequisites
 
-- Node.js 18.x or higher
+- Node.js 20.x or higher
 - npm or yarn package manager
 
 ### Installation
@@ -107,12 +124,27 @@ shammas-development/
    npm install
    ```
 
-3. **Run development server**
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   Configure your `.env.local`:
+   ```env
+   NEXT_PUBLIC_SITE_URL=https://shammasdevelopment.io
+   WEB3FORMS_ACCESS_KEY=your_web3forms_key
+   BREVO_API_KEY=your_brevo_api_key
+   BREVO_LIST_ID=2
+   BREVO_SENDER_EMAIL=info@shammasdevelopment.io
+   BREVO_SENDER_NAME=Shammas Development
+   ```
+
+4. **Run development server**
    ```bash
    npm run dev
    ```
 
-4. **Open browser**
+5. **Open browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Build for Production
@@ -122,80 +154,75 @@ npm run build
 npm start
 ```
 
+### Type Check
+
+```bash
+npm run type-check
+```
+
 ### Lint Code
 
 ```bash
 npm run lint
 ```
 
+## API Routes
+
+### Contact Form (`/api/contact`)
+- **Method:** POST
+- **Rate Limit:** 3 requests/minute per IP
+- **Features:** Validation, sanitization, honeypot spam protection
+- **Service:** Web3Forms
+
+### Newsletter (`/api/newsletter`)
+- **Method:** POST
+- **Rate Limit:** 5 requests/minute per IP
+- **Features:** Email validation, welcome email
+- **Service:** Brevo (Sendinblue)
+
+### Quote Form (`/api/quote`)
+- **Method:** POST
+- **Rate Limit:** 5 requests/minute per IP
+- **Features:** Validation, sanitization
+- **Service:** Web3Forms
+
 ## Configuration
 
-### Update Contact Information
+### TypeScript Strict Mode
 
-Edit `/src/components/ContactDetails.jsx`:
-- Replace placeholder email addresses
-- Update contact information
+The project uses strict TypeScript settings in `tsconfig.json`:
+- `noImplicitAny: true`
+- `strictNullChecks: true`
+- `strictFunctionTypes: true`
+- `noImplicitReturns: true`
 
-Edit `/src/components/Offices.jsx`:
-- Update office addresses
-- Add or remove office locations
+### Tailwind Custom Configuration
 
-### Update Social Media Links
+Custom utilities in `tailwind.config.js`:
+- Touch device media queries (`touch:`, `hover-able:`)
+- Safe area inset spacing
+- Custom color palette
 
-Edit `/src/components/SocialMedia.jsx`:
-- Update social media URLs
-- Add or remove platforms
+### Fluid Typography
 
-### Update Domain
-
-Edit `/src/config/site.js`:
-- Change `metadataBase` to your actual domain
-- Update metadata and SEO information
-
-### Update Content
-
-- **Homepage**: `/src/app/page.jsx`
-- **About Page**: `/src/app/about/page.jsx`
-- **Services**: `/src/components/Services.jsx`
-- **Process**: `/src/app/process/page.jsx`
-- **Contact**: `/src/app/contact/page.jsx`
-
-## Security Considerations
-
-This website implements industry-standard security best practices:
-
-1. **HTTP Headers**: Configured in `next.config.js`
-2. **CSP**: Content Security Policy prevents XSS attacks
-3. **HSTS**: Forces HTTPS connections
-4. **Frame Protection**: Prevents clickjacking
-5. **No Production Source Maps**: Protects source code
-6. **Dependency Updates**: All packages updated to latest secure versions
-
-### Known Vulnerabilities
-
-- 3 high severity vulnerabilities in dev dependencies (eslint-config-next)
-- These are in development-only linter tools and do NOT affect production
-- Fixes require upgrading to Next.js 15 (breaking changes)
-
-## Performance Optimizations
-
-- ✅ Image optimization with Sharp
-- ✅ Font optimization with Next.js Font system
-- ✅ Code splitting and lazy loading
-- ✅ Asset compression
-- ✅ React Strict Mode enabled
-- ✅ SWC minification
+CSS custom properties in `globals.css`:
+- `.fluid-heading-xl` - Responsive extra-large headings
+- `.fluid-heading-lg` - Responsive large headings
+- `.fluid-heading-md` - Responsive medium headings
+- `.fluid-body-lg` - Responsive large body text
 
 ## Technology Stack
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| Next.js | 14.2.18 | React framework |
-| React | 18.3.1 | UI library |
-| Tailwind CSS | 3.4.15 | Styling |
-| Framer Motion | 11.11.11 | Animations |
-| Sharp | 0.34.5 | Image optimization |
-| React Icons | 5.3.0 | Icon library |
+| Next.js | 16.1.6 | React framework |
+| React | 19.x | UI library |
+| TypeScript | 5.x | Type safety |
+| Tailwind CSS | 3.4.x | Styling |
+| Framer Motion | 11.x | Animations |
+| Sharp | 0.34.x | Image optimization |
+| Brevo | - | Email service |
+| Web3Forms | - | Form submissions |
 
 ## Browser Support
 
@@ -211,85 +238,42 @@ This website implements industry-standard security best practices:
 
 1. Push code to GitHub
 2. Import project in Vercel
-3. Deploy automatically
+3. Add environment variables
+4. Deploy automatically
 
-### Other Platforms
-
-Compatible with any Node.js hosting:
-- Netlify
-- AWS Amplify
-- Digital Ocean
-- Railway
-- Render
-
-### Environment Variables
-
-Create `.env.local` for environment-specific configuration:
+### Environment Variables for Production
 
 ```env
 NEXT_PUBLIC_SITE_URL=https://shammasdevelopment.io
+WEB3FORMS_ACCESS_KEY=your_production_key
+BREVO_API_KEY=your_production_key
+BREVO_LIST_ID=2
+BREVO_SENDER_EMAIL=info@shammasdevelopment.io
+BREVO_SENDER_NAME=Shammas Development
 ```
 
-## Maintenance
+## Development Notes
 
-### Regular Updates
+### Local API Testing
 
-```bash
-# Check for outdated packages
-npm outdated
+Web3Forms API calls may fail locally due to Cloudflare protection. This is expected behavior - the forms work correctly when deployed to Vercel.
 
-# Update dependencies
-npm update
+### Adding New API Routes
 
-# Audit security
-npm audit
-```
-
-### Content Updates
-
-All content is easily editable in the respective component files. No database required.
+1. Create route in `src/app/api/[route]/route.ts`
+2. Import helpers from `@/lib/api-helpers`
+3. Use validation functions from `@/lib/validations`
+4. Follow the standardized response format from `@/types/api`
 
 ## Support
 
 For technical issues or questions:
 - Email: support@shammasdevelopment.io
-- GitHub Issues: [Create an issue]
 
 ## License
 
-© 2026 Shammas Development LLC. All rights reserved.
-
-## Changelog
-
-### Version 1.0.0 (2026-01-08)
-
-**Initial Release**
-- ✅ Complete rebrand from original template
-- ✅ Updated to Next.js 14.2.18
-- ✅ Implemented comprehensive security headers
-- ✅ SEO optimization with sitemap and metadata
-- ✅ Professional black & white design theme
-- ✅ All 8 IT service categories integrated
-- ✅ Custom font integration (Playfair Display, Inter)
-- ✅ Logo integration throughout site
-- ✅ Placeholder contact information
-- ✅ Mobile-responsive design
-- ✅ Performance optimizations
-- ✅ Accessibility improvements
-
-## Next Steps
-
-1. **Purchase Domain**: Register shammasdevelopment.io
-2. **Update Contact Info**: Replace all placeholder emails/phones
-3. **Update Social Media**: Add real social media account URLs
-4. **Add Portfolio**: Populate work/portfolio section with real projects
-5. **Blog Content**: Add blog posts and case studies
-6. **Analytics**: Set up Google Analytics or alternative
-7. **Email**: Configure contact form to send emails
-8. **SSL Certificate**: Ensure HTTPS is properly configured
-9. **Performance Testing**: Run Lighthouse audits
-10. **Launch**: Deploy to production!
+Proprietary - All Rights Reserved. See [LICENSE](./LICENSE) for details.
 
 ---
 
-**Built with precision by Claude Code** 🚀
+**Built with Next.js 16 and TypeScript**
