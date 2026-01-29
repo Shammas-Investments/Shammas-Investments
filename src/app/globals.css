@@ -1,0 +1,228 @@
+@import "./base.css";
+@tailwind components;
+@tailwind utilities;
+
+/* NProgress Loading Bar */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #171717;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #171717, 0 0 5px #171717;
+  opacity: 1;
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Dark mode support for progress bar */
+@media (prefers-color-scheme: dark) {
+  #nprogress .bar {
+    background: #ffffff;
+  }
+  #nprogress .peg {
+    box-shadow: 0 0 10px #ffffff, 0 0 5px #ffffff;
+  }
+}
+
+/* CSS Custom Properties for Fluid Typography */
+:root {
+  --fluid-min-width: 320;
+  --fluid-max-width: 1280;
+  --fluid-min-size: 1;
+  --fluid-max-size: 1.25;
+  --fluid-min-ratio: 1.2;
+  --fluid-max-ratio: 1.333;
+}
+
+/* Global grayscale filter for all images - black and white theme */
+@layer components {
+  img,
+  svg image,
+  [class*="Image"] {
+    @apply grayscale;
+  }
+
+  /* Ensure Next.js Image components are also grayscale */
+  img[src] {
+    filter: grayscale(100%);
+  }
+}
+
+/* Fluid Typography Classes */
+@layer utilities {
+  /* Extra Large Heading - scales from 2.5rem (40px) to 4rem (64px) */
+  .fluid-heading-xl {
+    font-size: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+    line-height: 1.1;
+  }
+
+  /* Large Heading - scales from 2rem (32px) to 3rem (48px) */
+  .fluid-heading-lg {
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+    line-height: 1.15;
+  }
+
+  /* Medium Heading - scales from 1.5rem (24px) to 2.25rem (36px) */
+  .fluid-heading-md {
+    font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  /* Small Heading - scales from 1.25rem (20px) to 1.75rem (28px) */
+  .fluid-heading-sm {
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    line-height: 1.3;
+  }
+
+  /* Body Large - scales from 1.125rem (18px) to 1.25rem (20px) */
+  .fluid-body-lg {
+    font-size: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+    line-height: 1.6;
+  }
+
+  /* Body Normal - scales from 1rem (16px) to 1.125rem (18px) */
+  .fluid-body {
+    font-size: clamp(1rem, 0.9rem + 0.25vw, 1.125rem);
+    line-height: 1.7;
+  }
+
+  /* Body Small - scales from 0.875rem (14px) to 1rem (16px) */
+  .fluid-body-sm {
+    font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+    line-height: 1.5;
+  }
+
+  /* Touch-friendly tap targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Safe area padding for mobile devices with notches */
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Focus visible only for keyboard navigation */
+  .focus-visible-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2;
+  }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --focus-ring-color: CanvasText;
+  }
+}
+
+/* Print Styles */
+@media print {
+  /* Hide navigation, header, footer, and UI elements */
+  header,
+  nav,
+  footer,
+  .no-print,
+  [data-print-hide="true"] {
+    display: none !important;
+  }
+
+  /* Reset page margins */
+  @page {
+    margin: 1cm;
+    size: A4;
+  }
+
+  /* Reset body and html styles */
+  html,
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Remove all dark backgrounds in print */
+  .bg-neutral-950,
+  .bg-neutral-900,
+  .bg-neutral-800,
+  [class*="bg-neutral-9"],
+  [class*="bg-neutral-8"] {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Ensure all divs have white background unless specifically styled for print */
+  div {
+    background-color: transparent !important;
+  }
+
+  /* Ensure images print properly */
+  img {
+    max-width: 100% !important;
+    filter: none !important;
+  }
+
+  /* Ensure proper page breaks */
+  .print-break-before {
+    page-break-before: always;
+  }
+
+  .print-break-after {
+    page-break-after: always;
+  }
+
+  .print-avoid-break {
+    page-break-inside: avoid;
+  }
+
+  /* Print-only elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Hide print-hidden elements */
+  .print-hidden {
+    display: none !important;
+  }
+
+  /* Make links plain text */
+  a {
+    text-decoration: none !important;
+    color: black !important;
+  }
+
+  /* Remove shadows and borders that don't print well */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
