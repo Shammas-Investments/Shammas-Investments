@@ -180,8 +180,11 @@ export function spamResponse(): NextResponse<ApiResponse<never>> {
 
 /**
  * Log error with context (for server-side logging)
+ * In production, errors are sent to Sentry; console is dev-only
  */
 export function logError(context: string, error: unknown): void {
-  const errorMessage = error instanceof Error ? error.message : String(error);
-  console.error(`[API Error] ${context}: ${errorMessage}`);
+  if (process.env.NODE_ENV === 'development') {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error(`[API Error] ${context}: ${errorMessage}`);
+  }
 }

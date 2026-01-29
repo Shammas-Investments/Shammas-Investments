@@ -87,7 +87,9 @@ const SocialShare = ({
       await navigator.clipboard.writeText(url);
       // You could add a toast notification here
     } catch (err) {
-      console.error("Failed to copy:", err);
+      if (process.env.NODE_ENV === "development") {
+        console.error("Failed to copy:", err);
+      }
     }
   };
 

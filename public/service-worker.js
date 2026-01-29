@@ -28,12 +28,9 @@ const MAX_DYNAMIC_CACHE_ITEMS = 50
 
 // Install service worker
 self.addEventListener('install', (event) => {
-  console.log('[SW] Installing service worker...')
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SW] Caching app shell')
-      return cache.addAll(urlsToCache).catch((error) => {
-        console.warn('[SW] Some assets failed to cache:', error)
+      return cache.addAll(urlsToCache).catch(() => {
         // Continue even if some assets fail
         return Promise.resolve()
       })
@@ -44,14 +41,12 @@ self.addEventListener('install', (event) => {
 
 // Activate service worker
 self.addEventListener('activate', (event) => {
-  console.log('[SW] Activating service worker...')
   const currentCaches = [CACHE_NAME, STATIC_CACHE, DYNAMIC_CACHE]
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (!currentCaches.includes(cacheName)) {
-            console.log('[SW] Deleting old cache:', cacheName)
             return caches.delete(cacheName)
           }
         })
@@ -143,7 +138,6 @@ self.addEventListener('fetch', (event) => {
         .catch(() => {
           return caches.match(request).then((cachedResponse) => {
             if (cachedResponse) {
-              console.log('[SW] Serving page from cache:', request.url)
               return cachedResponse
             }
             // Return offline page
@@ -175,7 +169,7 @@ self.addEventListener('fetch', (event) => {
 // Background sync for failed form submissions
 self.addEventListener('sync', (event) => {
   if (event.tag === 'contact-form-sync') {
-    console.log('[SW] Background sync: contact-form-sync')
+    // Handle background sync
   }
 })
 

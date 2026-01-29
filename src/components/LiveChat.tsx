@@ -59,7 +59,9 @@ const LiveChat = ({
       };
 
       script.onerror = () => {
-        console.warn("Failed to load Tawk.to chat widget");
+        if (process.env.NODE_ENV === "development") {
+          console.warn("Failed to load Tawk.to chat widget");
+        }
       };
 
       document.head.appendChild(script);
