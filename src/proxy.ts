@@ -14,6 +14,7 @@ export function proxy(_request: NextRequest): NextResponse {
   }
 
   return response;
+  
 }
 
 // Apply proxy to all routes
