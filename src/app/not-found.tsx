@@ -14,7 +14,7 @@ const NotFound = () => {
           Page not found
         </h1>
         <p className="mt-2 text-sm text-neutral-600">
-          Sorry, we could ont find the page you are looking for.
+          Sorry, we could not find the page you are looking for.
         </p>
         <Link
           href="/"

@@ -18,8 +18,6 @@ interface PlanSummaryProps {
   contact: ContactData;
 }
 
-const WEB3FORMS_ACCESS_KEY = "3c89ca5b-b6c2-40b3-8a9c-29aa71b3fa08";
-
 const PlanSummary: React.FC<PlanSummaryProps> = ({
   selectedServices,
   serviceDetails,
@@ -128,21 +126,16 @@ const PlanSummary: React.FC<PlanSummaryProps> = ({
 
     try {
       const summaryText = generateSummaryText();
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // Use secure server-side API route
+      const response = await fetch("/api/quote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: "Your Service Plan Summary - Shammas Development",
-          from_name: "Shammas Development",
-          to: contact.email,
           name: contact.fullName,
           email: contact.email,
-          message: summaryText,
-          botcheck: "",
+          summary: summaryText,
         }),
       });
 
@@ -156,10 +149,10 @@ const PlanSummary: React.FC<PlanSummaryProps> = ({
       } else {
         setEmailStatus({
           type: "error",
-          message: "Failed to send email. Please try again.",
+          message: result.error || "Failed to send email. Please try again.",
         });
       }
-    } catch (error) {
+    } catch {
       setEmailStatus({
         type: "error",
         message: "Error sending email. Please try again.",
@@ -411,6 +404,8 @@ const PlanSummary: React.FC<PlanSummaryProps> = ({
         {/* Email Status */}
         {emailStatus.message && (
           <div
+            role="alert"
+            aria-live="polite"
             className={clsx(
               "rounded-2xl p-4 print:hidden",
               emailStatus.type === "success"

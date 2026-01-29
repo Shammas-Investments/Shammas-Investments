@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Rate limiting configuration (in-memory, resets on deployment)
+// Rate limiting configuration
 const rateLimit = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
-const MAX_REQUESTS = 3; // 3 requests per minute per IP
+const MAX_REQUESTS = 5; // 5 requests per minute per IP
 
-// Simple rate limiter
 function checkRateLimit(identifier: string): boolean {
   const now = Date.now();
   const userLimit = rateLimit.get(identifier);
@@ -23,95 +22,61 @@ function checkRateLimit(identifier: string): boolean {
   return true;
 }
 
-// Input validation
 function validateEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email) && email.length <= 255;
 }
 
 function sanitizeInput(input: string): string {
-  return input.trim().slice(0, 1000); // Limit length and trim
+  return input.trim().slice(0, 5000); // Allow longer content for summary
 }
 
 export async function POST(request: NextRequest) {
   try {
-    // Get IP for rate limiting
     const ip = request.headers.get('x-forwarded-for') ||
                request.headers.get('x-real-ip') ||
                'unknown';
 
-    // Rate limiting
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
-        {
-          success: false,
-          error: 'Too many requests. Please try again later.'
-        },
+        { success: false, error: 'Too many requests. Please try again later.' },
         { status: 429 }
       );
     }
 
-    // Parse request body
     const body = await request.json();
-    const { name, email, company, phone, message, budget, botcheck } = body;
-
-    // Honeypot check - if botcheck is filled, it's a bot
-    if (botcheck) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Spam detected.'
-        },
-        { status: 400 }
-      );
-    }
+    const { name, email, summary } = body;
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !summary) {
       return NextResponse.json(
-        {
-          success: false,
-          error: 'Name, email, and message are required.'
-        },
+        { success: false, error: 'Name, email, and summary are required.' },
         { status: 400 }
       );
     }
 
-    // Validate email
     if (!validateEmail(email)) {
       return NextResponse.json(
-        {
-          success: false,
-          error: 'Invalid email address.'
-        },
+        { success: false, error: 'Invalid email address.' },
         { status: 400 }
       );
     }
 
-    // Sanitize inputs
     const sanitizedData = {
       name: sanitizeInput(name),
       email: sanitizeInput(email),
-      company: company ? sanitizeInput(company) : '',
-      phone: phone ? sanitizeInput(phone) : '',
-      message: sanitizeInput(message),
-      budget: budget ? sanitizeInput(budget) : '',
+      summary: sanitizeInput(summary),
     };
 
-    // Get API key from server-side environment variable
     const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY;
 
     if (!WEB3FORMS_ACCESS_KEY) {
       return NextResponse.json(
-        {
-          success: false,
-          error: 'Service configuration error. Please contact support.'
-        },
+        { success: false, error: 'Service configuration error. Please contact support.' },
         { status: 500 }
       );
     }
 
-    // Submit to Web3Forms
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
@@ -120,15 +85,12 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify({
         access_key: WEB3FORMS_ACCESS_KEY,
+        subject: 'Your Service Plan Summary - Shammas Development',
+        from_name: 'Shammas Development',
         name: sanitizedData.name,
         email: sanitizedData.email,
-        company: sanitizedData.company,
-        phone: sanitizedData.phone,
-        message: sanitizedData.message,
-        budget: sanitizedData.budget,
-        subject: 'New Contact Form Submission - Shammas Development',
-        from_name: 'Shammas Development Website',
-        botcheck: '', // Honeypot for Web3Forms
+        message: sanitizedData.summary,
+        botcheck: '',
       }),
     });
 
@@ -137,29 +99,22 @@ export async function POST(request: NextRequest) {
     if (result.success) {
       return NextResponse.json({
         success: true,
-        message: 'Your message has been sent successfully.',
+        message: 'Summary sent to your email!',
       });
     } else {
       return NextResponse.json(
-        {
-          success: false,
-          error: result.message || 'Failed to send message. Please try again.'
-        },
+        { success: false, error: 'Failed to send email. Please try again.' },
         { status: 400 }
       );
     }
   } catch {
     return NextResponse.json(
-      {
-        success: false,
-        error: 'An error occurred. Please try again or email us directly.'
-      },
+      { success: false, error: 'An error occurred. Please try again.' },
       { status: 500 }
     );
   }
 }
 
-// OPTIONS handler for CORS preflight
 export async function OPTIONS() {
   return NextResponse.json({}, { status: 200 });
 }

@@ -6,6 +6,28 @@ const BREVO_LIST_ID = process.env.BREVO_LIST_ID || "2";
 const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || "info@shammasdevelopment.io";
 const SENDER_NAME = process.env.BREVO_SENDER_NAME || "Shammas Development";
 
+// Rate limiting configuration
+const rateLimit = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const MAX_REQUESTS = 5; // 5 requests per minute per IP
+
+function checkRateLimit(identifier: string): boolean {
+  const now = Date.now();
+  const userLimit = rateLimit.get(identifier);
+
+  if (!userLimit || now > userLimit.resetTime) {
+    rateLimit.set(identifier, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+    return true;
+  }
+
+  if (userLimit.count >= MAX_REQUESTS) {
+    return false;
+  }
+
+  userLimit.count++;
+  return true;
+}
+
 interface BrevoContact {
   email: string;
   listIds: number[];
@@ -274,21 +296,29 @@ You received this email because you subscribed at shammasdevelopment.io
     });
 
     if (response.ok) {
-      console.log("Welcome email sent to:", subscriberEmail);
       return true;
     } else {
-      const errorData = await response.json();
-      console.error("Failed to send welcome email:", errorData);
       return false;
     }
-  } catch (error) {
-    console.error("Error sending welcome email:", error);
+  } catch {
     return false;
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting
+    const ip = request.headers.get('x-forwarded-for') ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    if (!checkRateLimit(ip)) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { email } = body;
 
@@ -310,7 +340,6 @@ export async function POST(request: NextRequest) {
 
     // Check if API key is configured
     if (!BREVO_API_KEY) {
-      console.error("BREVO_API_KEY is not configured");
       return NextResponse.json(
         { error: "Newsletter service is not configured" },
         { status: 500 }
@@ -344,21 +373,17 @@ export async function POST(request: NextRequest) {
       try {
         data = JSON.parse(responseText);
       } catch {
-        console.error("Failed to parse Brevo response:", responseText);
         // If we can't parse but response is ok, treat as success
         if (response.ok) {
           data = { id: 0 };
         } else {
           return NextResponse.json(
-            { error: `API Error (${response.status}): ${responseText || 'Unknown error'}` },
+            { error: "Subscription service error. Please try again." },
             { status: response.status }
           );
         }
       }
     }
-
-    // Log for debugging
-    console.log("Brevo API response:", response.status, data);
 
     // Handle different response scenarios
     if (response.ok) {
@@ -388,14 +413,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Other errors
-    console.error("Brevo API error:", data);
     return NextResponse.json(
       { error: data.message || "Failed to subscribe. Please try again." },
       { status: response.status }
     );
 
-  } catch (error) {
-    console.error("Newsletter subscription error:", error);
+  } catch {
     return NextResponse.json(
       { error: "Something went wrong. Please try again later." },
       { status: 500 }

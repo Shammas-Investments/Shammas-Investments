@@ -7,13 +7,33 @@ import Plan from "@/components/Plan";
 import Support from "@/components/Support";
 import Values from "@/components/Values";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Process | Shammas Development",
+  description:
+    "Learn about our structured, milestone-based development process: Discovery, Planning, Build, Launch, and Support. Transparent and reliable execution.",
+  keywords: [
+    "software development process",
+    "agile development",
+    "project methodology",
+    "milestone-based delivery",
+    "transparent development",
+  ],
+  openGraph: {
+    title: "Our Process | Shammas Development",
+    description:
+      "Learn about our structured, milestone-based development process designed for clarity, accountability, and results.",
+    type: "website",
+  },
+};
 
 const ProcessPage = () => {
   return (
     <>
-      <PageIntro eyebrow="How we work" title="Transparent and Reliable Execution">
+      <PageIntro eyebrow="Our Process" title="Structured, Milestone-Based Delivery">
         <p>
-          We follow a structured process designed for clarity, accountability, and results. You always know what&apos;s happening, and we deliver systems built to last.
+          Most projects follow a structured, milestone-based process designed to reduce risk and ensure alignment. You always know what&apos;s happening, and we deliver systems built to last.
         </p>
       </PageIntro>
       <div className="mt-24 space-y-24 [counter-reset:section] sm:mt-32 sm:space-y-32 lg:mt-40 lg:space-y-40">

@@ -12,7 +12,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<ButtonProps> = ({ invert, href, className, children, ...props }) => {
   const buttonClassName = clsx(
     className,
-    "inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition",
+    "inline-flex rounded-full px-5 py-2.5 sm:px-4 sm:py-1.5 text-sm font-semibold transition min-h-[44px] items-center justify-center",
     invert
       ? "bg-white text-neutral-950 hover:bg-neutral-200"
       : "bg-neutral-950 text-white hover:bg-neutral-800"

@@ -29,11 +29,11 @@ export const SocialMediaProfiles = [
     href: "https://www.instagram.com/shammasdevelopment",
     icon: BsInstagram,
   },
-  {
-    title: "GitHub",
-    href: "https://github.com/shammas-development",
-    icon: BsGithub
-  },
+  // {
+  //   title: "GitHub",
+  //   href: "https://github.com/shammas-development",
+  //   icon: BsGithub
+  // },
 ];
 
 const SocialMedia = ({ className, invert = false }) => {
@@ -51,12 +51,14 @@ const SocialMedia = ({ className, invert = false }) => {
           <Link
             href={item.href}
             aria-label={item.title}
+            target="_blank"
+            rel="noopener noreferrer"
             className={clsx(
-              "transition",
+              "flex items-center justify-center min-h-[44px] min-w-[44px] -m-2 p-2 transition",
               invert ? "hover:text-neutral-200" : "hover:text-neutral-700"
             )}
           >
-            <item.icon className="h-6 w-6 fill-current" />
+            <item.icon className="h-6 w-6 fill-current" aria-hidden="true" />
           </Link>
         </li>
       ))}

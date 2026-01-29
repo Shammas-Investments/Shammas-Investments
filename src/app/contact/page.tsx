@@ -3,6 +3,26 @@ import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
 import PageIntro from "@/components/PageIntro";
 import CalendlySection from "@/components/CalendlySection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us | Shammas Development",
+  description:
+    "Get in touch with Shammas Development. Share your project details and we'll follow up with next steps within one business day. Book a free strategy call.",
+  keywords: [
+    "contact shammas development",
+    "software development inquiry",
+    "book consultation",
+    "project quote",
+    "get in touch",
+  ],
+  openGraph: {
+    title: "Contact Us | Shammas Development",
+    description:
+      "Get in touch with Shammas Development. Share your project details and we'll follow up within one business day.",
+    type: "website",
+  },
+};
 
 const ContactPage = () => {
   return (
@@ -11,7 +31,7 @@ const ContactPage = () => {
         <p>Share what you&apos;re working on and we&apos;ll follow up with next steps. Expect a reply within one business day.</p>
       </PageIntro>
       <Container className="mt-24 sm:mt-32 lg:mt-40">
-        <div className="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:grid-cols-2 lg:gap-y-24">
           <ContactDetails />
           <ContactForm />
         </div>

@@ -2,6 +2,10 @@ import { navigation } from "@/constants";
 import Link from "next/link";
 
 const FooterNavigation = () => {
+  const isExternalLink = (href: string) => {
+    return href.startsWith("http://") || href.startsWith("https://");
+  };
+
   return (
     <nav>
       <ul role="list" className="grid grid-cols-2 gap-8 sm:grid-cols-3">
@@ -16,6 +20,10 @@ const FooterNavigation = () => {
                   <Link
                     href={link.href}
                     className="transition hover:text-neutral-950"
+                    {...(isExternalLink(link.href) && {
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    })}
                   >
                     {link.title}
                   </Link>

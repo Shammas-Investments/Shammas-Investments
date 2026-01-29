@@ -69,7 +69,7 @@ const NewsletterForm = () => {
           message: data.error || "Something went wrong. Please try again.",
         });
       }
-    } catch (error) {
+    } catch {
       setStatus({
         type: "error",
         message: "Something went wrong. Please try again later.",
@@ -90,6 +90,8 @@ const NewsletterForm = () => {
 
       {status.message && (
         <div
+          role="alert"
+          aria-live="polite"
           className={`mt-4 rounded-xl p-3 text-sm ${
             status.type === "success"
               ? "bg-green-50 text-green-800 border border-green-200"
@@ -115,9 +117,9 @@ const NewsletterForm = () => {
         <div className="absolute inset-y-1 right-1 flex justify-end">
           <button
             type="submit"
-            aria-label="Submit"
+            aria-label="Subscribe to newsletter"
             disabled={isSubmitting}
-            className="flex aspect-square h-full items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex aspect-square h-full min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2"
           >
             {isSubmitting ? (
               <span className="text-xs">...</span>

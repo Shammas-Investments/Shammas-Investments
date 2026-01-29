@@ -82,14 +82,15 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
           <h3 className="mb-4 text-base font-medium text-neutral-950">
             Project Timeline
           </h3>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4" role="group" aria-label="Project Timeline">
             {timelineOptions.map((option) => (
               <button
                 key={option.value}
                 type="button"
                 onClick={() => onContactChange("timeline", option.value)}
+                aria-pressed={contact.timeline === option.value}
                 className={clsx(
-                  "rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all",
+                  "rounded-xl border-2 px-4 py-3 min-h-[44px] text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2",
                   contact.timeline === option.value
                     ? "border-neutral-950 bg-neutral-950 text-white"
                     : "border-neutral-200 bg-white text-neutral-700 hover:border-neutral-400"
@@ -120,12 +121,15 @@ const FloatingInput: React.FC<FloatingInputProps> = ({
   ...props
 }) => {
   const id = useId();
+  const errorId = `${id}-error`;
 
   return (
     <div className="group relative z-0 transition-all focus-within:z-10">
       <input
         id={id}
         placeholder=" "
+        aria-invalid={error ? "true" : "false"}
+        aria-describedby={error ? errorId : undefined}
         className={clsx(
           "peer block w-full border border-neutral-300 bg-transparent px-6 pb-4 pt-12 text-base/6 text-neutral-950 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5",
           isFirst && "rounded-t-2xl",
@@ -146,7 +150,7 @@ const FloatingInput: React.FC<FloatingInputProps> = ({
         {label}
       </label>
       {error && (
-        <p className="absolute -bottom-5 left-6 text-xs text-red-500">{error}</p>
+        <p id={errorId} role="alert" className="absolute -bottom-5 left-6 text-xs text-red-500">{error}</p>
       )}
     </div>
   );

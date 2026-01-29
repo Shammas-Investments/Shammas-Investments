@@ -7,24 +7,24 @@ const Cultures = () => {
   return (
     <div className="mt-24 rounded-4xl bg-neutral-950 py-24 sm:mt-32 lg:mt-40 lg:py-32">
       <SectionIntro
-        eyebrow="Our values"
-        title="Built on a foundation of excellence and integrity."
+        eyebrow="How We Work"
+        title="Structured, transparent, and built to last."
         invert
       >
         <p>
-          Our core values guide every decision we make and every solution we deliver.
+          Our approach ensures clarity at every step and systems designed for the long term.
         </p>
       </SectionIntro>
       <Container className="mt-16">
         <GridList>
-          <GridListItem title="Innovation" invert>
-            We stay ahead of technology trends, constantly exploring new solutions and approaches to deliver cutting-edge results for our clients.
+          <GridListItem title="Structured Discovery" invert>
+            We invest time upfront to understand your business, goals, and constraints before writing a single line of code.
           </GridListItem>
-          <GridListItem title="Excellence" invert>
-            Quality is non-negotiable. We hold ourselves to the highest standards in every project, ensuring exceptional outcomes that exceed expectations.
+          <GridListItem title="Transparent Communication" invert>
+            Regular progress updates, clear milestones, and honest conversations. You always know where things stand.
           </GridListItem>
-          <GridListItem title="Partnership" invert>
-            Your success is our success. We build lasting relationships based on trust, transparency, and mutual growth.
+          <GridListItem title="Long-term Maintainability" invert>
+            Every engineering decision is made with the future in mind — clean architecture, documentation, and systems built to evolve.
           </GridListItem>
         </GridList>
       </Container>

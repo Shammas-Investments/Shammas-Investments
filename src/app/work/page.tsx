@@ -3,6 +3,27 @@ import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import ContactSection from "@/components/ContactSection";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Work | Shammas Development",
+  description:
+    "Explore our portfolio of successful projects including e-commerce platforms, SaaS applications, AI automation systems, and custom software solutions.",
+  keywords: [
+    "software development portfolio",
+    "case studies",
+    "e-commerce projects",
+    "SaaS development",
+    "AI automation projects",
+    "custom software examples",
+  ],
+  openGraph: {
+    title: "Our Work | Shammas Development",
+    description:
+      "Explore our portfolio of successful projects including e-commerce platforms, SaaS applications, and AI automation systems.",
+    type: "website",
+  },
+};
 
 interface CaseStudyCardProps {
   title: string;

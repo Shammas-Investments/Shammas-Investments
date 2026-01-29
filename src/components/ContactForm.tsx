@@ -17,9 +17,6 @@ interface StatusState {
   message: string;
 }
 
-// Web3Forms access key (safe to expose - they have built-in protection)
-const WEB3FORMS_ACCESS_KEY = "3c89ca5b-b6c2-40b3-8a9c-29aa71b3fa08";
-
 const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -44,23 +41,18 @@ const ContactForm = () => {
     setStatus({ type: "", message: "" });
 
     try {
-      // Submit directly to Web3Forms (client-side required for free plan)
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // Submit through our secure server-side API route
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
         },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
           company: formData.company,
           phone: formData.phone,
           message: formData.message,
-          subject: "New Contact Form Submission - Shammas Development",
-          from_name: "Shammas Development Website",
-          botcheck: "",
         }),
       });
 
@@ -81,10 +73,10 @@ const ContactForm = () => {
       } else {
         setStatus({
           type: "error",
-          message: result.message || "Something went wrong. Please try again.",
+          message: result.error || "Something went wrong. Please try again.",
         });
       }
-    } catch (error) {
+    } catch {
       setStatus({
         type: "error",
         message: "Oops! Something went wrong. Please try again or email us directly at info@shammasdevelopment.io",
@@ -103,6 +95,8 @@ const ContactForm = () => {
 
         {status.message && (
           <div
+            role="alert"
+            aria-live="polite"
             className={`mt-4 rounded-2xl p-4 ${
               status.type === "success"
                 ? "bg-green-50 text-green-800 border border-green-200"
@@ -161,6 +155,8 @@ const ContactForm = () => {
           name="botcheck"
           className="hidden"
           style={{ display: "none" }}
+          tabIndex={-1}
+          aria-hidden="true"
         />
 
         <Button type="submit" className="mt-10" disabled={isSubmitting}>

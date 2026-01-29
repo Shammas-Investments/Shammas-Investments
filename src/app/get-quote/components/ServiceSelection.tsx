@@ -118,8 +118,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isSelected, onToggle
     <button
       type="button"
       onClick={onToggle}
+      aria-pressed={isSelected}
+      aria-label={`${service.name} - Starting from ${formatPrice(service.price, service.priceType)}${isSelected ? " (selected)" : ""}`}
       className={clsx(
-        "group relative flex w-full cursor-pointer flex-col rounded-2xl border-2 p-4 text-left transition-all",
+        "group relative flex w-full cursor-pointer flex-col rounded-2xl border-2 p-4 text-left transition-all min-h-[44px] focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2",
         isSelected
           ? "border-neutral-950 bg-neutral-950 text-white"
           : "border-neutral-200 bg-white text-neutral-950 hover:border-neutral-400"
@@ -128,6 +130,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isSelected, onToggle
       <div className="flex items-start justify-between gap-2">
         <span className="text-sm font-medium leading-tight">{service.name}</span>
         <div
+          aria-hidden="true"
           className={clsx(
             "flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 transition",
             isSelected

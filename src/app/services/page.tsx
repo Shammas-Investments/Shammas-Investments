@@ -4,6 +4,28 @@ import FadeIn from "@/components/FadeIn";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/Button";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services | Shammas Development",
+  description:
+    "Explore our services: custom software development, AI/ML solutions, e-commerce platforms, cloud management, game development, and digital transformation consulting.",
+  keywords: [
+    "software development services",
+    "AI ML development",
+    "e-commerce development",
+    "cloud management services",
+    "custom software solutions",
+    "game development",
+    "digital transformation",
+  ],
+  openGraph: {
+    title: "Services | Shammas Development",
+    description:
+      "Custom software development, AI/ML solutions, e-commerce platforms, cloud management, and digital transformation consulting.",
+    type: "website",
+  },
+};
 
 // Individual Service Component
 interface ServiceDetailProps {
