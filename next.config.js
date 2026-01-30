@@ -94,7 +94,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline' https://*.tawk.to https://assets.calendly.com",
               "img-src 'self' data: https: blob:",
               "font-src 'self' data: https://*.tawk.to",
-              "connect-src 'self' https://vitals.vercel-insights.com https://api.web3forms.com https://*.list-manage.com https://*.mailchimp.com https://calendly.com https://*.calendly.com https://*.tawk.to wss://*.tawk.to https://www.google-analytics.com https://*.trustpilot.com https://api.brevo.com https://*.clarity.ms https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.sentry.io https://*.ingest.sentry.io",
+              "connect-src 'self' https://vitals.vercel-insights.com https://api.web3forms.com https://*.list-manage.com https://*.mailchimp.com https://calendly.com https://*.calendly.com https://*.tawk.to wss://*.tawk.to https://www.google-analytics.com https://*.trustpilot.com https://api.brevo.com https://*.clarity.ms https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.sentry.io https://*.ingest.sentry.io https://*.adtrafficquality.google",
               "frame-src 'self' https://calendly.com https://*.calendly.com https://*.tawk.to https://*.trustpilot.com https://*.googlesyndication.com https://*.doubleclick.net https://googleads.g.doubleclick.net",
               "frame-ancestors 'self'",
               "base-uri 'self'",
