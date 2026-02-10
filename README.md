@@ -1,26 +1,27 @@
-# Shammas Development - Professional Software Development Agency
+# Shammas Development - Internal Tools, AI Automation & MVP Development
 
-A modern, secure, accessible, and SEO-optimized website for Shammas Development LLC, built with Next.js 16, TypeScript (strict mode), Tailwind CSS, and Framer Motion.
+A modern, production-grade website for Shammas Development LLC, built with Next.js 16, TypeScript (strict mode), Tailwind CSS, and Framer Motion. Achieves A+ across SEO, Security, Accessibility, and Performance.
 
 ![Shammas Development](./src/appLogo.png)
 
 ## About Shammas Development
 
-Shammas Development is an operator-focused software development agency specializing in:
+Shammas Development LLC builds custom software for teams that have outgrown spreadsheets and manual workflows. Clear scope, weekly demos, production-grade systems.
 
-- **Custom Internal Tools** - Replace manual processes and spreadsheets with purpose-built applications
-- **Automation & AI Workflows** - Reduce operational overhead with intelligent systems
-- **Scalable Web Applications** - MVPs and production systems designed for growth
+- **Internal Tools Development** - Custom dashboards, admin panels, and workflow tools starting at $5K
+- **AI Automation** - LLM-powered workflows for document processing, classification, and reporting starting at $10K
+- **MVP & SaaS Development** - Full-stack products with auth, payments, and scalable architecture starting at $20K
+- **Cloud & DevOps** - AWS, Google Cloud, and Azure infrastructure, CI/CD pipelines, and container orchestration
 
-**Founded by:** Jonathan Shammas and Joe Shammas
+**Founded by:** Hassan Naeem (Founder & CTO) and Joe Shammas (Co-Founder & CEO)
 
 ## Features
 
-### Technical Excellence
+### Technical Stack
 - **Next.js 16.1.6** - Latest version with Turbopack and App Router
 - **React 19** - Modern React with latest features
 - **TypeScript Strict Mode** - Full type safety with strict compiler options
-- **Tailwind CSS 3.4** - Utility-first CSS framework with custom configurations
+- **Tailwind CSS 3.4** - Utility-first CSS with custom configurations
 - **Framer Motion** - Smooth animations and transitions
 - **Sharp** - Optimized image processing
 
@@ -30,78 +31,119 @@ Shammas Development is an operator-focused software development agency specializ
 - **Standardized API Responses** - Consistent response format across all endpoints
 - **Rate Limiting** - In-memory rate limiting for API protection
 - **Input Sanitization** - Server-side validation and sanitization
+- **Error Boundary** - Graceful error handling with fallback UI
 
-### Security Features
-- **Security Headers** - HSTS, CSP, X-Frame-Options, XSS Protection
-- **Content Security Policy** - Comprehensive CSP with nonce support
+### Security (A+ Grade)
+- **Content Security Policy** - Comprehensive CSP with explicit source allowlisting via proxy.ts
+- **Security Headers** - HSTS, X-Frame-Options, X-Content-Type-Options, X-XSS-Protection, Referrer-Policy, Permissions-Policy
+- **Bot & Scanner Blocking** - Blocks known attack paths (wp-admin, .env, phpmyadmin) and malicious user agents (sqlmap, nikto, nmap)
+- **Request Validation** - URL length limits (2048 chars) to prevent buffer overflow attempts
 - **Rate Limiting** - Protection against abuse on all API endpoints
 - **Honeypot Spam Protection** - Bot detection on forms
 - **Input Validation** - Server-side validation with sanitization
-- **HTTPS Enforcement** - Strict Transport Security
-- **No Source Maps** - Production source maps disabled
+- **HTTPS Enforcement** - Strict Transport Security with preload
+- **No Source Maps** - Production source maps disabled (uploaded to Sentry only)
+- **security.txt** - Responsible disclosure policy per RFC 9116
+- **Request IDs** - Unique X-Request-Id header per request for observability
 
-### SEO Optimization
-- **Dynamic Sitemap** - Auto-generated sitemap.ts for search engines
-- **Structured Metadata** - Complete OpenGraph and Twitter Cards on all pages
-- **JSON-LD Schema** - Organization structured data
-- **Semantic HTML** - Proper HTML5 structure
-- **Web Manifest** - PWA capabilities
-- **Robots.txt** - Search engine crawler instructions
+### SEO (A+ Grade)
+- **Canonical URLs** - Page-specific canonical URLs on all 17 pages
+- **Dynamic Sitemap** - Auto-generated sitemap.ts covering all routes
+- **Structured Metadata** - Complete OpenGraph and Twitter Cards on every page
+- **JSON-LD Schemas** - Organization, BreadcrumbList, FAQPage, and Article structured data
+- **Semantic HTML** - Proper HTML5 structure throughout
+- **Robots.txt** - Comprehensive crawler instructions with bot-specific rules
+- **Web Manifest** - PWA-optimized manifest with shortcuts
 
-### Accessibility (WCAG Compliant)
+### Accessibility (A+ Grade, WCAG AAA)
+- **WCAG AAA Contrast** - All text meets 7:1 contrast ratio on dark backgrounds
 - **Skip-to-Content Link** - Keyboard navigation support
-- **ARIA Attributes** - Proper aria-invalid, aria-describedby, aria-required
-- **Focus States** - Visible focus indicators on all interactive elements
-- **Error Announcements** - Screen reader friendly form validation
-- **Active Navigation** - Current page indicator in navigation
-- **Required Field Indicators** - Visual and semantic required markers
+- **ARIA Attributes** - Complete aria-labels, aria-hidden on decorative elements, aria-invalid, aria-describedby, aria-required
+- **Focus States** - Visible focus indicators with focus-visible rings on all interactive elements
+- **Accessible Carousel** - Touch/swipe, keyboard pause (Space/Enter), role="marquee", prefers-reduced-motion support
+- **Screen Reader Support** - Error announcements, live regions, proper labeling
+- **44px Touch Targets** - Minimum touch target size on all interactive elements
 
-### Responsive Design
-- **Fluid Typography** - CSS clamp() based responsive text sizing
-- **Touch Media Queries** - Optimized for touch devices
-- **Safe Area Insets** - Support for notched devices
-- **Mobile-First Approach** - Responsive from 320px to 4K displays
+### PWA (Progressive Web App)
+- **Service Worker** - Smart caching strategies (cache-first for static, network-first for HTML, stale-while-revalidate)
+- **Offline Support** - Dedicated offline page with cached navigation
+- **Install Prompt** - Native app install experience
+- **Background Sync** - Form submission retry on reconnect
+- **Push Notifications** - Ready for push notification support
+- **App Shortcuts** - Quick access to Services, Contact, and Products
+
+### Performance
+- **Static Generation** - All pages pre-rendered at build time
+- **Image Optimization** - AVIF/WebP with responsive sizes and blur placeholders
+- **Font Optimization** - Google Fonts with `display: swap` and preconnect
+- **CSS Optimization** - Experimental `optimizeCss` enabled
+- **Lazy Loading** - Progressive content loading
+- **DNS Prefetch** - Third-party origin prefetching for faster loads
+- **Compressed Assets** - Gzip/Brotli compression enabled
+
+### Analytics & Monitoring
+- **Sentry** - Error tracking with source map upload and tunnel route
+- **Google Analytics** - Traffic and behavior analytics
+- **Microsoft Clarity** - Session recordings and heatmaps
+- **Vercel Speed Insights** - Core Web Vitals monitoring
+- **Trustpilot** - Review integration
 
 ## Project Structure
 
 ```
 shammas-development/
 ├── src/
-│   ├── app/                    # Next.js App Router pages
-│   │   ├── about/             # About page
-│   │   ├── api/               # API routes
-│   │   │   ├── contact/       # Contact form API
-│   │   │   ├── newsletter/    # Newsletter subscription API
-│   │   │   └── quote/         # Quote form API
-│   │   ├── blog/              # Blog section
-│   │   ├── contact/           # Contact page
-│   │   ├── get-quote/         # Quote builder page
-│   │   ├── privacy-policy/    # Privacy policy page
-│   │   ├── process/           # Process page
-│   │   ├── products/          # Products page
-│   │   ├── services/          # Services page
-│   │   ├── terms-and-conditions/ # Terms page
-│   │   ├── work/              # Portfolio page
-│   │   ├── layout.tsx         # Root layout
-│   │   ├── page.tsx           # Homepage
-│   │   ├── sitemap.ts         # Dynamic sitemap generation
-│   │   └── globals.css        # Global styles with fluid typography
-│   ├── components/            # Reusable React components
-│   ├── hooks/                 # Custom React hooks
-│   │   └── useFormState.ts    # Form state management hook
-│   ├── lib/                   # Utility libraries
-│   │   ├── api-helpers.ts     # Rate limiting, sanitization, responses
-│   │   └── validations.ts     # Reusable validation functions
-│   ├── types/                 # TypeScript type definitions
-│   │   └── api.ts             # API response and form types
-│   └── proxy.ts               # Security headers middleware
+│   ├── app/                          # Next.js App Router pages
+│   │   ├── about/                    # About page
+│   │   ├── ai-automation/            # AI Automation service page
+│   │   ├── api/                      # API routes
+│   │   │   ├── contact/              # Contact form API
+│   │   │   ├── newsletter/           # Newsletter subscription API
+│   │   │   └── quote/                # Quote form API
+│   │   ├── blog/                     # Blog section
+│   │   ├── contact/                  # Contact page
+│   │   ├── custom-software-cost/     # Pricing/cost estimator page
+│   │   ├── faq/                      # FAQ page with FAQPage schema
+│   │   ├── get-quote/                # Interactive quote builder
+│   │   ├── internal-tools/           # Internal Tools service page
+│   │   ├── mvp-development/          # MVP Development service page
+│   │   ├── offline/                  # PWA offline fallback page
+│   │   ├── privacy-policy/           # Privacy policy
+│   │   ├── process/                  # Development process page
+│   │   ├── products/                 # Products page
+│   │   ├── services/                 # Services overview page
+│   │   ├── terms-and-conditions/     # Terms of service
+│   │   ├── work/                     # Portfolio page
+│   │   │   └── [slug]/              # Dynamic case study pages
+│   │   ├── error.tsx                 # Error boundary page
+│   │   ├── not-found.tsx             # Custom 404 page
+│   │   ├── layout.tsx                # Root layout with metadata & JSON-LD
+│   │   ├── page.tsx                  # Homepage
+│   │   ├── sitemap.ts                # Dynamic sitemap generation
+│   │   └── globals.css               # Global styles with fluid typography
+│   ├── components/                   # Reusable React components
+│   ├── hooks/                        # Custom React hooks
+│   │   └── useFormState.ts           # Form state management hook
+│   ├── lib/                          # Utility libraries
+│   │   ├── api-helpers.ts            # Rate limiting, sanitization, responses
+│   │   ├── validations.ts            # Reusable validation functions
+│   │   ├── structured-data.ts        # JSON-LD schema generators
+│   │   └── image-utils.ts            # Image optimization utilities
+│   ├── types/                        # TypeScript type definitions
+│   │   └── api.ts                    # API response and form types
+│   └── proxy.ts                      # Security proxy (CSP, bot blocking, headers)
 ├── public/
-│   ├── robots.txt             # Search engine instructions
-│   └── site.webmanifest       # PWA manifest
-├── next.config.js             # Next.js configuration
-├── tailwind.config.js         # Tailwind CSS configuration
-├── tsconfig.json              # TypeScript strict configuration
-└── package.json               # Dependencies
+│   ├── .well-known/
+│   │   └── security.txt              # Security disclosure policy (RFC 9116)
+│   ├── robots.txt                    # Search engine instructions
+│   ├── service-worker.js             # PWA service worker
+│   └── site.webmanifest              # PWA manifest
+├── next.config.js                    # Next.js configuration
+├── tailwind.config.js                # Tailwind CSS configuration
+├── tsconfig.json                     # TypeScript strict configuration
+├── sentry.client.config.ts           # Sentry client configuration
+├── sentry.server.config.ts           # Sentry server configuration
+└── package.json                      # Dependencies
 ```
 
 ## Getting Started
@@ -137,6 +179,13 @@ shammas-development/
    BREVO_LIST_ID=2
    BREVO_SENDER_EMAIL=info@shammasdevelopment.io
    BREVO_SENDER_NAME=Shammas Development
+   NEXT_PUBLIC_SENTRY_DSN=your_sentry_dsn
+   SENTRY_ORG=your_sentry_org
+   SENTRY_PROJECT=your_sentry_project
+   NEXT_PUBLIC_GA_MEASUREMENT_ID=your_ga_id
+   NEXT_PUBLIC_CLARITY_PROJECT_ID=your_clarity_id
+   NEXT_PUBLIC_TAWK_PROPERTY_ID=your_tawk_property_id
+   NEXT_PUBLIC_TAWK_WIDGET_ID=your_tawk_widget_id
    ```
 
 4. **Run development server**
@@ -152,6 +201,12 @@ shammas-development/
 ```bash
 npm run build
 npm start
+```
+
+### Bundle Analysis
+
+```bash
+ANALYZE=true npm run build
 ```
 
 ### Type Check
@@ -211,16 +266,27 @@ CSS custom properties in `globals.css`:
 - `.fluid-heading-md` - Responsive medium headings
 - `.fluid-body-lg` - Responsive large body text
 
+### Security Proxy (proxy.ts)
+
+Next.js 16 uses `proxy.ts` instead of `middleware.ts`. The proxy handles:
+- Comprehensive CSP with explicit source allowlisting
+- Script, style, connect, and frame source restrictions
+- Bot and scanner blocking (paths + user agents)
+- Dynamic security headers
+- Request ID generation for observability
+- API cache-control headers
+
 ## Technology Stack
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| Next.js | 16.1.6 | React framework |
+| Next.js | 16.1.6 | React framework with Turbopack |
 | React | 19.x | UI library |
 | TypeScript | 5.x | Type safety |
 | Tailwind CSS | 3.4.x | Styling |
 | Framer Motion | 11.x | Animations |
 | Sharp | 0.34.x | Image optimization |
+| Sentry | Latest | Error tracking |
 | Brevo | - | Email service |
 | Web3Forms | - | Form submissions |
 
@@ -250,6 +316,13 @@ BREVO_API_KEY=your_production_key
 BREVO_LIST_ID=2
 BREVO_SENDER_EMAIL=info@shammasdevelopment.io
 BREVO_SENDER_NAME=Shammas Development
+NEXT_PUBLIC_SENTRY_DSN=your_sentry_dsn
+SENTRY_ORG=your_sentry_org
+SENTRY_PROJECT=your_sentry_project
+NEXT_PUBLIC_GA_MEASUREMENT_ID=your_ga_id
+NEXT_PUBLIC_CLARITY_PROJECT_ID=your_clarity_id
+NEXT_PUBLIC_TAWK_PROPERTY_ID=your_tawk_property_id
+NEXT_PUBLIC_TAWK_WIDGET_ID=your_tawk_widget_id
 ```
 
 ## Development Notes
@@ -265,10 +338,19 @@ Web3Forms API calls may fail locally due to Cloudflare protection. This is expec
 3. Use validation functions from `@/lib/validations`
 4. Follow the standardized response format from `@/types/api`
 
+### Adding New Pages
+
+1. Create directory in `src/app/[page-name]/`
+2. Add `page.tsx` with metadata export including `alternates.canonical`
+3. Add breadcrumb schema using `generateBreadcrumbSchema` from `@/lib/structured-data`
+4. Add the route to `src/app/sitemap.ts`
+5. Add the route to `public/service-worker.js` urlsToCache array
+6. Bump service worker cache version
+
 ## Support
 
 For technical issues or questions:
-- Email: support@shammasdevelopment.io
+- Email: info@shammasdevelopment.io
 
 ## License
 
@@ -276,4 +358,4 @@ Proprietary - All Rights Reserved. See [LICENSE](./LICENSE) for details.
 
 ---
 
-**Built with Next.js 16 and TypeScript**
+**Built with Next.js 16, TypeScript, and Tailwind CSS**

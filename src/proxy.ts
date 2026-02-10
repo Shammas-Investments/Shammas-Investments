@@ -51,19 +51,14 @@ export function proxy(request: NextRequest): NextResponse {
     return new NextResponse(null, { status: 414 });
   }
 
-  // Generate cryptographic nonce for CSP
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
-
-  // Pass nonce to Next.js via request headers so it can apply to internal scripts
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-nonce', nonce);
-
   const isDevelopment = process.env.NODE_ENV === 'development';
 
-  // Build CSP with nonce + strict-dynamic
+  // Build CSP with explicit source allowlisting
+  // Note: nonce-based CSP requires Next.js to apply nonces to all its inline scripts,
+  // which it does not do automatically. Using 'unsafe-inline' + explicit hosts instead.
   const csp = [
     "default-src 'self'",
-    `script-src 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline' ${isDevelopment ? "'unsafe-eval'" : ''} https:`,
+    `script-src 'self' 'unsafe-inline' ${isDevelopment ? "'unsafe-eval'" : ''} https://www.googletagmanager.com https://www.google-analytics.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://googleads.g.doubleclick.net https://*.google.com https://embed.tawk.to https://*.tawk.to https://www.clarity.ms https://*.clarity.ms https://invitejs.trustpilot.com https://*.trustpilot.com https://assets.calendly.com https://*.sentry.io https://va.vercel-scripts.com https://*.vercel-scripts.com https://*.adtrafficquality.google`,
     "style-src 'self' 'unsafe-inline' https://*.tawk.to https://assets.calendly.com",
     "img-src 'self' data: https: blob:",
     "font-src 'self' data: https://*.tawk.to",
@@ -76,13 +71,9 @@ export function proxy(request: NextRequest): NextResponse {
     "upgrade-insecure-requests",
   ].join('; ');
 
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
+  const response = NextResponse.next();
 
-  // Set CSP header with nonce (dynamic per request)
+  // Set CSP header
   response.headers.set('Content-Security-Policy', csp);
 
   // Additional security headers
