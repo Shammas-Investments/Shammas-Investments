@@ -38,6 +38,9 @@ export const metadata: Metadata = {
       "Learn about our structured, milestone-based development process designed for clarity, accountability, and results.",
     images: ["/web-app-manifest-512x512.png"],
   },
+  alternates: {
+    canonical: "/process",
+  },
 };
 
 const ProcessPage = () => {

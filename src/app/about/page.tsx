@@ -36,6 +36,9 @@ export const metadata: Metadata = {
       "Learn about Shammas Development - a technology partner focused on building reliable software, AI automation, and cloud systems.",
     images: ["/web-app-manifest-512x512.png"],
   },
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const AboutPage = () => {
@@ -49,25 +52,24 @@ const AboutPage = () => {
 
       <PageIntro
         eyebrow="About us"
-        title="Technology Partner for Growing Teams"
+        title="A Small Senior Team That Builds Software the Right Way"
       >
         <p>
-          We believe the best software is practical, well-designed, and aligned with real business outcomes.
+          We are a small senior team that builds software the way operators expect it to be built.
         </p>
         <div className="mt-10 max-w-2xl space-y-6 text-base">
           <p>
+            No outsourcing. No bait and switch. No junior handoffs.
+          </p>
+          <p>
             Shammas Development was founded on the idea that technology should
-            feel supportive — not overwhelming. We help companies simplify operations
-            and scale through well-built technology.
+            feel supportive — not overwhelming. We help companies replace manual work
+            with reliable internal software and AI automation.
           </p>
           <p>
-            Every project is approached as a long-term investment in our
-            client&apos;s success. We build solutions teams trust, understand, and
-            confidently use long after launch.
-          </p>
-          <p>
-            As founders, we hold ourselves accountable for the quality of our
-            work and the outcomes we deliver.
+            Every project is scoped clearly, delivered in weekly milestones, and
+            documented for full handoff. The engineers you meet during scoping are
+            the same engineers who build your system.
           </p>
         </div>
       </PageIntro>

@@ -72,7 +72,7 @@ const CalendlySection: React.FC<CalendlySectionProps> = ({ title, description, i
               Contact Us Instead
             </a>
           </div>
-          <p className="mt-6 text-sm text-neutral-400">
+          <p className="mt-6 text-sm text-neutral-300">
             Available Monday - Friday, 8 AM - 6 PM EST
           </p>
         </div>

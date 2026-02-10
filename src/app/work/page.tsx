@@ -39,6 +39,9 @@ export const metadata: Metadata = {
       "Explore our portfolio of successful projects including e-commerce platforms, SaaS applications, and AI automation systems.",
     images: ["/web-app-manifest-512x512.png"],
   },
+  alternates: {
+    canonical: "/work",
+  },
 };
 
 // Industry icons mapping
@@ -96,7 +99,7 @@ const WorkPage = () => {
                         <span className="text-3xl">
                           {industryIcons[study.industry] || "📁"}
                         </span>
-                        <span className="text-sm font-medium text-neutral-400">
+                        <span className="text-sm font-medium text-neutral-300">
                           {study.industry}
                         </span>
                       </div>
@@ -106,7 +109,7 @@ const WorkPage = () => {
                       <p className="mt-2 text-sm text-neutral-500">
                         {study.client} • {study.year}
                       </p>
-                      <p className="mt-4 text-neutral-400 line-clamp-2">
+                      <p className="mt-4 text-neutral-300 line-clamp-2">
                         {study.description}
                       </p>
 

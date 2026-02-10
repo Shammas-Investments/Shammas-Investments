@@ -1,0 +1,10 @@
+# Security Policy for Shammas Development LLC
+# https://shammasdevelopment.io
+# RFC 9116 compliant
+
+Contact: mailto:security@shammasdevelopment.io
+Contact: mailto:info@shammasdevelopment.io
+Expires: 2027-02-09T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://shammasdevelopment.io/.well-known/security.txt
+Policy: https://shammasdevelopment.io/privacy-policy

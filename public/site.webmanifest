@@ -1,7 +1,7 @@
 {
-  "name": "Shammas Development - Complete IT Solutions & Technology Services",
-  "short_name": "SD",
-  "description": "Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, cloud management, and digital transformation services.",
+  "name": "Shammas Development - Internal Tools, AI Automation & MVP Development",
+  "short_name": "Shammas Dev",
+  "description": "Custom internal tools, AI automation, and MVP development for teams that have outgrown spreadsheets and manual workflows.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -42,7 +42,7 @@
     {
       "name": "Services",
       "short_name": "Services",
-      "description": "View our IT services",
+      "description": "View our development services",
       "url": "/services",
       "icons": [
         {

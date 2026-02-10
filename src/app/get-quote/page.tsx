@@ -35,6 +35,9 @@ export const metadata: Metadata = {
       "Build your custom service plan and get an instant quote for your project.",
     images: ["/web-app-manifest-512x512.png"],
   },
+  alternates: {
+    canonical: "/get-quote",
+  },
 };
 
 const GetQuotePage = () => {

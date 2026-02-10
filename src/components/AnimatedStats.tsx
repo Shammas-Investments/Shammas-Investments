@@ -75,7 +75,7 @@ const AnimatedStats = () => {
             <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
               Trusted by Growing Businesses
             </h2>
-            <p className="mt-4 text-lg text-neutral-400">
+            <p className="mt-4 text-lg text-neutral-300">
               We&apos;ve helped companies across industries achieve measurable results
             </p>
           </div>
@@ -94,7 +94,7 @@ const AnimatedStats = () => {
               <p className="font-display text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
-              <p className="mt-3 text-sm font-medium text-neutral-400 sm:text-base">
+              <p className="mt-3 text-sm font-medium text-neutral-300 sm:text-base">
                 {stat.label}
               </p>
             </motion.div>

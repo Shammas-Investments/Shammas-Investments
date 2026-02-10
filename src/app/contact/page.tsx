@@ -35,6 +35,9 @@ export const metadata: Metadata = {
       "Get in touch with Shammas Development. Share your project details and we'll follow up within one business day.",
     images: ["/web-app-manifest-512x512.png"],
   },
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 const ContactPage = () => {
@@ -46,8 +49,8 @@ const ContactPage = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <PageIntro eyebrow="Contact us" title="Let&apos;s work together">
-        <p>Share what you&apos;re working on and we&apos;ll follow up with next steps. Expect a reply within one business day.</p>
+      <PageIntro eyebrow="Contact us" title="Request a Build Plan">
+        <p>Tell us what you are building. We respond within twenty-four hours.</p>
       </PageIntro>
       <Container className="mt-24 sm:mt-32 lg:mt-40">
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:grid-cols-2 lg:gap-y-24">

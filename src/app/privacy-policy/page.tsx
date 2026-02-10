@@ -1,6 +1,12 @@
 import Container from "@/components/Container";
 import PageIntro from "@/components/PageIntro";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import type { Metadata } from "next";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Privacy Policy", path: "/privacy-policy" },
+]);
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Shammas Development",
@@ -25,11 +31,18 @@ export const metadata: Metadata = {
       "Privacy Policy for Shammas Development LLC - Learn how we collect, use, and protect your information.",
     images: ["/web-app-manifest-512x512.png"],
   },
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 const PrivacyPolicyPage = () => {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <PageIntro eyebrow="Legal" title="Privacy Policy">
         <p>Effective Date: January 27, 2026 | Last Updated: January 27, 2026</p>
       </PageIntro>

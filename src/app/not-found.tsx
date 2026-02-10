@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import Link from "next/link";
 import Button from "@/components/Button";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  description: "The page you are looking for could not be found. Browse our services or contact us for help.",
+  robots: { index: false, follow: true },
+};
 
 const popularPages = [
   { name: "Services", href: "/services", description: "Explore our offerings" },

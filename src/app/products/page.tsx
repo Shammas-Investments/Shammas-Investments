@@ -3,7 +3,13 @@ import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import PageIntro from "@/components/PageIntro";
 import { GridList, GridListItem } from "@/components/GridList";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import type { Metadata } from "next";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Products", path: "/products" },
+]);
 
 export const metadata: Metadata = {
   title: "Products | Shammas Development",
@@ -29,11 +35,18 @@ export const metadata: Metadata = {
       "Discover Roop - our premium gaming and branding platform designed for the gaming and gambling industry.",
     images: ["/web-app-manifest-512x512.png"],
   },
+  alternates: {
+    canonical: "/products",
+  },
 };
 
 const ProductsPage = () => {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <PageIntro eyebrow="Our Products" title="Roop - Premium Gaming & Branding Platform">
         <p>
           A comprehensive web and mobile platform designed for the gaming and gambling industry. Roop empowers players and brands to engage, compete, and build their presence in the digital gaming ecosystem.
@@ -241,6 +254,8 @@ const ProductsPage = () => {
                 "WebSocket",
                 "Stripe",
                 "AWS",
+                "Google Cloud",
+                "Azure",
                 "Docker",
                 "Kubernetes",
                 "GraphQL",

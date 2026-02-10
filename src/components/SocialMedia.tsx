@@ -3,9 +3,9 @@ import clsx from "clsx";
 import React from "react";
 import {
   BsFacebook,
-  BsInstagram,
+  // BsInstagram,
   BsLinkedin,
-  BsTwitterX,
+  // BsTwitterX,
 } from "react-icons/bs";
 import { IconType } from "react-icons";
 
@@ -26,16 +26,16 @@ const allProfiles: SocialMediaProfile[] = [
     href: process.env.NEXT_PUBLIC_FACEBOOK_URL,
     icon: BsFacebook,
   },
-  {
-    title: "Instagram",
-    href: process.env.NEXT_PUBLIC_INSTAGRAM_URL,
-    icon: BsInstagram,
-  },
-  {
-    title: "Twitter",
-    href: process.env.NEXT_PUBLIC_TWITTER_URL,
-    icon: BsTwitterX,
-  },
+  // {
+  //   title: "Instagram",
+  //   href: process.env.NEXT_PUBLIC_INSTAGRAM_URL,
+  //   icon: BsInstagram,
+  // },
+  // {
+  //   title: "Twitter",
+  //   href: process.env.NEXT_PUBLIC_TWITTER_URL,
+  //   icon: BsTwitterX,
+  // },
 ];
 
 // Only export profiles that have URLs configured

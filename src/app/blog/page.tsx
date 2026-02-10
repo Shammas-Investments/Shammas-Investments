@@ -34,6 +34,9 @@ export const metadata: Metadata = {
       "Insights on software development, AI automation, cloud architecture, and digital transformation.",
     images: ["/web-app-manifest-512x512.png"],
   },
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 const BlogPage = () => {

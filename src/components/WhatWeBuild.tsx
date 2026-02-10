@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "./Container";
 import FadeIn, { FadeInStagger } from "./FadeIn";
 import SectionIntro from "./SectionIntro";
@@ -5,21 +6,24 @@ import SectionIntro from "./SectionIntro";
 const items = [
   {
     number: "01",
-    title: "Custom Internal Tools",
+    title: "Internal Tools",
     description:
-      "Replace manual processes and spreadsheets with purpose-built applications that streamline your operations.",
+      "Dashboards, admin panels, workflow software.",
+    href: "/internal-tools",
   },
   {
     number: "02",
-    title: "Automation & AI Workflows",
+    title: "AI Automation",
     description:
-      "Reduce operational overhead with intelligent systems that handle repetitive tasks and surface insights.",
+      "LLM-powered workflows and document processing.",
+    href: "/ai-automation",
   },
   {
     number: "03",
-    title: "Scalable Web Applications",
+    title: "MVP and Product Builds",
     description:
-      "MVPs and production systems designed for growth, built on modern architecture that evolves with your business.",
+      "Production-ready MVPs built to scale.",
+    href: "/mvp-development",
   },
 ];
 
@@ -40,17 +44,25 @@ const WhatWeBuild = () => {
           <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item) => (
               <FadeIn key={item.number}>
-                <div className="relative flex flex-col rounded-3xl bg-neutral-50 p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-100">
-                  <span className="font-display text-5xl font-light text-neutral-300">
-                    {item.number}
-                  </span>
-                  <h3 className="mt-4 font-display text-xl font-semibold text-neutral-950">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-base text-neutral-600">
-                    {item.description}
-                  </p>
-                </div>
+                <Link href={item.href}>
+                  <div className="relative flex flex-col rounded-3xl bg-neutral-50 p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-100">
+                    <span className="font-display text-5xl font-light text-neutral-300">
+                      {item.number}
+                    </span>
+                    <h3 className="mt-4 font-display text-xl font-semibold text-neutral-950">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-base text-neutral-600">
+                      {item.description}
+                    </p>
+                    <span className="mt-4 inline-flex items-center text-sm font-semibold text-neutral-950">
+                      Learn more
+                      <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </span>
+                  </div>
+                </Link>
               </FadeIn>
             ))}
           </div>

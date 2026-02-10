@@ -25,6 +25,7 @@ const CalendlyButton: React.FC<CalendlyButtonProps> = ({
     <button
       type="button"
       onClick={handleClick}
+      aria-label="Book a strategy call (opens in new window)"
       className={clsx(
         "inline-flex rounded-full px-5 py-2.5 sm:px-4 sm:py-1.5 text-sm font-semibold transition min-h-[44px] items-center justify-center",
         invert

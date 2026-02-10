@@ -41,15 +41,15 @@ const FounderCard: React.FC<FounderProps> = ({ name, role, image, bio }) => {
 const founders: FounderProps[] = [
   {
     name: "Joe Shammas",
-    role: "Founder & CEO",
+    role: "Co-Founder & CEO",
     image: founderImage2,
-    bio: "Joe oversees our technical direction and engineering excellence, ensuring every solution we deliver meets the highest standards of quality and reliability.",
+    bio: "Joe leads client strategy and delivery, ensuring every project is scoped clearly and delivered on time with full transparency.",
   },
   {
     name: "Hassan Naeem",
-    role: "Co-Founder & CTO",
+    role: "Founder & CTO",
     image: founderImage1,
-    bio: "Hassan leads our vision and strategy, bringing years of experience in technology leadership and a commitment to building solutions that create lasting value for clients.",
+    bio: "Hassan leads architecture and engineering, building production-grade systems with clean code, strong documentation, and long-term maintainability.",
   },
 ];
 
@@ -61,9 +61,8 @@ const Founders = () => {
         title="Meet the founders"
       >
         <p>
-          We started Shammas Development with a simple belief: technology should
-          empower businesses, not complicate them. Our mission is to build reliable,
-          scalable solutions that our clients can trust and depend on.
+          A small senior team with no outsourcing, no bait and switch, and no
+          junior handoffs. The people you meet are the people who build your system.
         </p>
       </SectionIntro>
 

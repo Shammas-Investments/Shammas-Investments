@@ -16,28 +16,32 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 export const metadata: Metadata = {
   title: "Services | Shammas Development",
   description:
-    "Explore our services: custom software development, AI/ML solutions, e-commerce platforms, cloud management, game development, and digital transformation consulting.",
+    "Custom software and AI automation services. Internal tools development, AI automation, MVP and SaaS development, cloud and DevOps, e-commerce platforms, and digital transformation consulting.",
   keywords: [
-    "software development services",
-    "AI ML development",
-    "e-commerce development",
-    "cloud management services",
+    "internal tools development",
+    "AI automation services",
+    "MVP development",
+    "SaaS development",
+    "cloud and DevOps",
     "custom software solutions",
-    "game development",
+    "e-commerce development",
     "digital transformation",
   ],
   openGraph: {
     title: "Services | Shammas Development",
     description:
-      "Custom software development, AI/ML solutions, e-commerce platforms, cloud management, and digital transformation consulting.",
+      "Custom software and AI automation services. Internal tools, AI workflows, MVP development, cloud and DevOps.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Services | Shammas Development",
     description:
-      "Custom software development, AI/ML solutions, e-commerce platforms, cloud management, and digital transformation consulting.",
+      "Custom software and AI automation services. Internal tools, AI workflows, MVP development, cloud and DevOps.",
     images: ["/web-app-manifest-512x512.png"],
+  },
+  alternates: {
+    canonical: "/services",
   },
 };
 
@@ -107,44 +111,78 @@ const ServicesPage = () => {
   // Breadcrumb schema is rendered in the component
   const services = [
     {
-      id: "software",
-      title: "Software & Application Development",
+      id: "internal-tools",
+      title: "Internal Tools Development",
       icon: "💻",
-      description: "We build custom software solutions tailored to your unique business needs. From enterprise applications to lightweight tools, our development team delivers scalable, maintainable, and high-performance software that drives your business forward.",
+      description: "Replace spreadsheets and manual workflows with purpose-built internal software. We build dashboards, admin panels, and workflow tools that streamline your operations and give your team the systems they actually need.",
       features: [
-        "Custom web applications with modern frameworks (React, Next.js, Vue.js)",
-        "Mobile applications for iOS and Android (React Native, Flutter, Swift, Kotlin)",
-        "Enterprise software solutions with complex business logic",
-        "Progressive Web Apps (PWAs) for cross-platform compatibility",
-        "API development and third-party integrations",
-        "Legacy system modernization and migration",
-        "Microservices architecture and cloud-native applications",
-        "Real-time applications with WebSockets and server-sent events"
+        "Custom admin panels and dashboards",
+        "Workflow automation and approval systems",
+        "Data management and reporting tools",
+        "Role-based access and team collaboration features",
+        "Integration with existing tools and APIs",
+        "Real-time data syncing and notifications",
+        "Custom CRM and internal portals",
+        "Legacy system replacement and migration"
       ],
-      technologies: ["React", "Next.js", "Node.js", "Python", "Django", "FastAPI", "PostgreSQL", "MongoDB", "Redis", "Docker", "Kubernetes"]
+      technologies: ["React", "Next.js", "Node.js", "Python", "PostgreSQL", "MongoDB", "Neo4j", "Redis", "Docker", "AWS", "Google Cloud", "Azure"]
     },
     {
-      id: "game",
-      title: "Game Development",
-      icon: "🎮",
-      description: "Create immersive gaming experiences across all platforms. Our game development team brings your creative vision to life with cutting-edge graphics, engaging gameplay mechanics, and seamless performance across mobile, desktop, and console platforms.",
+      id: "ai-automation",
+      title: "AI Automation",
+      icon: "🤖",
+      description: "Automate repetitive work with AI-powered workflows. From document processing to intelligent routing, we build LLM-powered systems that handle the tasks your team shouldn't be doing manually.",
       features: [
-        "2D and 3D game development for all platforms",
-        "Mobile games (iOS and Android)",
-        "PC and console game development",
-        "Multiplayer and online gaming systems",
-        "Game engine customization (Unity, Unreal Engine)",
-        "Virtual Reality (VR) and Augmented Reality (AR) experiences",
-        "Game monetization strategies and in-app purchases",
-        "Performance optimization and quality assurance"
+        "LLM-powered document processing and extraction",
+        "Intelligent workflow automation",
+        "Custom AI chatbots for internal and customer-facing use",
+        "Natural Language Processing pipelines",
+        "AI-powered data classification and routing",
+        "Predictive analytics and forecasting",
+        "Automated reporting and summarization",
+        "Integration with OpenAI, Claude, Gemini, Mistral, DeepSeek, and open-source models"
       ],
-      technologies: ["Unity", "Unreal Engine", "C#", "C++", "Blender", "Photon", "PlayFab", "WebGL"]
+      technologies: ["Python", "OpenAI API", "Anthropic Claude", "Google Gemini", "Mistral", "DeepSeek", "Ollama", "LangChain", "Hugging Face", "Pinecone", "Qdrant", "Neo4j", "TensorFlow", "FastAPI"]
+    },
+    {
+      id: "mvp-saas",
+      title: "MVP and SaaS Development",
+      icon: "🚀",
+      description: "Build scalable MVPs and SaaS products that are production-ready from day one. We take your idea from concept to launch with clean architecture, modern tooling, and a focus on getting to market fast.",
+      features: [
+        "Rapid MVP development and validation",
+        "Full-stack SaaS product builds",
+        "Multi-tenant architecture and user management",
+        "Billing and subscription integration (Stripe)",
+        "Mobile-responsive web applications",
+        "Progressive Web Apps (PWAs)",
+        "API development and third-party integrations",
+        "Scalable architecture designed for growth"
+      ],
+      technologies: ["React", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "Stripe", "Vercel", "AWS", "Google Cloud", "Azure", "Docker"]
+    },
+    {
+      id: "cloud",
+      title: "Cloud and DevOps",
+      icon: "☁️",
+      description: "CI/CD pipelines, infrastructure, and security hardening. We set up and manage your cloud environment so your team can ship faster without worrying about infrastructure.",
+      features: [
+        "CI/CD pipeline setup and automation",
+        "AWS, Azure, and Google Cloud Platform expertise",
+        "Infrastructure as Code (Terraform, CloudFormation)",
+        "Container orchestration with Kubernetes",
+        "Cloud migration and modernization",
+        "24/7 monitoring, alerting, and incident response",
+        "Cost optimization and resource management",
+        "Security hardening and compliance"
+      ],
+      technologies: ["AWS", "Azure", "Google Cloud", "Cloudera", "Terraform", "Docker", "Kubernetes", "GitHub Actions", "GitLab CI", "Prometheus", "Grafana"]
     },
     {
       id: "ecommerce",
       title: "E-Commerce Platform Management",
       icon: "🛒",
-      description: "Comprehensive e-commerce solutions to maximize your online sales. We specialize in Amazon Seller Central, Walmart Marketplace, and Shopify, helping you optimize listings, manage inventory, and scale your online business profitably.",
+      description: "Comprehensive e-commerce solutions to maximize your online sales. We specialize in Amazon Seller Central, Walmart Marketplace, and Shopify, helping you optimize listings, manage inventory, and scale your online business.",
       features: [
         "Amazon Seller Central account setup and optimization",
         "Walmart Marketplace integration and management",
@@ -153,101 +191,25 @@ const ServicesPage = () => {
         "Inventory management and order fulfillment systems",
         "Multi-channel selling strategy and automation",
         "Payment gateway integration and security",
-        "Analytics and reporting dashboards",
-        "Customer review management and reputation building"
+        "Analytics and reporting dashboards"
       ],
-      technologies: ["Shopify", "Amazon MWS API", "Walmart API", "Stripe", "PayPal", "WooCommerce", "BigCommerce", "Google Analytics"]
-    },
-    {
-      id: "ai-ml",
-      title: "AI/ML & LLM Chatbot Development",
-      icon: "🤖",
-      description: "Harness the power of artificial intelligence and machine learning to automate processes, gain insights from data, and create intelligent chatbots that enhance customer experience. We build AI solutions that deliver real business value.",
-      features: [
-        "Custom AI/ML model development and training",
-        "Large Language Model (LLM) integration (GPT, Claude, Llama)",
-        "Intelligent chatbots for customer support and sales",
-        "Natural Language Processing (NLP) applications",
-        "Computer vision and image recognition systems",
-        "Predictive analytics and forecasting models",
-        "Recommendation engines and personalization",
-        "AI-powered automation and workflow optimization",
-        "Voice assistants and speech recognition"
-      ],
-      technologies: ["Python", "TensorFlow", "PyTorch", "OpenAI API", "Anthropic Claude", "Hugging Face", "LangChain", "Pinecone", "Scikit-learn"]
-    },
-    {
-      id: "cloud",
-      title: "Cloud Management & Infrastructure",
-      icon: "☁️",
-      description: "Expert cloud infrastructure management across AWS, Azure, and Google Cloud. We design, deploy, and manage scalable cloud architectures that ensure high availability, security, and cost-efficiency for your applications and data.",
-      features: [
-        "Cloud architecture design and implementation",
-        "AWS, Azure, and Google Cloud Platform expertise",
-        "Infrastructure as Code (Terraform, CloudFormation)",
-        "Container orchestration with Kubernetes",
-        "CI/CD pipeline setup and automation",
-        "Cloud migration from on-premise to cloud",
-        "24/7 monitoring, alerting, and incident response",
-        "Cost optimization and resource management",
-        "Disaster recovery and backup strategies",
-        "Security compliance and governance"
-      ],
-      technologies: ["AWS", "Azure", "Google Cloud", "Terraform", "Docker", "Kubernetes", "Jenkins", "GitLab CI", "Prometheus", "Grafana"]
-    },
-    {
-      id: "graphics",
-      title: "Graphics Design & Content Management",
-      icon: "🎨",
-      description: "Professional graphic design services and comprehensive content management solutions. We create stunning visuals that communicate your brand message and implement CMS systems that make content updates simple and efficient.",
-      features: [
-        "Brand identity design (logos, color schemes, typography)",
-        "Marketing materials (brochures, flyers, presentations)",
-        "Social media graphics and templates",
-        "UI/UX design for web and mobile applications",
-        "Infographics and data visualization",
-        "Content Management System (CMS) implementation",
-        "WordPress, Contentful, Strapi customization",
-        "Digital asset management and organization",
-        "Print design and production-ready files"
-      ],
-      technologies: ["Adobe Creative Suite", "Figma", "Sketch", "WordPress", "Contentful", "Strapi", "Sanity", "Webflow"]
-    },
-    {
-      id: "social-media",
-      title: "Social Media Management",
-      icon: "📱",
-      description: "Strategic social media management to build your brand presence and engage your audience. We handle everything from content creation to community management, analytics, and paid advertising campaigns across all major platforms.",
-      features: [
-        "Social media strategy development",
-        "Content creation and scheduling",
-        "Community management and engagement",
-        "Paid advertising campaigns (Facebook, Instagram, LinkedIn, Twitter)",
-        "Influencer partnership coordination",
-        "Analytics and performance reporting",
-        "Brand reputation monitoring",
-        "Social media crisis management",
-        "Multi-platform management and automation"
-      ],
-      technologies: ["Hootsuite", "Buffer", "Sprout Social", "Meta Business Suite", "LinkedIn Campaign Manager", "Canva", "Later"]
+      technologies: ["Shopify", "Amazon MWS API", "Walmart API", "Stripe", "PayPal", "WooCommerce", "BigCommerce"]
     },
     {
       id: "consulting",
       title: "Digital Transformation Consulting",
-      icon: "🚀",
-      description: "End-to-end IT consulting services to modernize your business operations and accelerate your digital transformation journey. We assess your current infrastructure, identify opportunities, and implement solutions that drive efficiency and innovation.",
+      icon: "📋",
+      description: "Technology strategy and roadmap planning for teams that need to modernize. We assess your current stack, identify bottlenecks, and build a plan to get you where you need to be.",
       features: [
-        "Digital strategy development and roadmap planning",
         "Technology stack assessment and recommendations",
         "Process automation and workflow optimization",
-        "Legacy system modernization",
-        "Change management and training programs",
+        "Legacy system modernization planning",
         "Cybersecurity assessment and implementation",
         "Data strategy and analytics implementation",
         "Agile transformation and DevOps adoption",
-        "Vendor selection and technology evaluation"
+        "Architecture review and scalability planning"
       ],
-      technologies: ["Enterprise Architecture", "Business Process Management", "Agile", "Scrum", "DevOps", "ITIL", "Six Sigma"]
+      technologies: ["Enterprise Architecture", "Agile", "Scrum", "DevOps", "ITIL"]
     }
   ];
 
@@ -259,9 +221,9 @@ const ServicesPage = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <PageIntro eyebrow="Our Services" title="Practical Engineering Solutions">
+      <PageIntro eyebrow="Our Services" title="Custom Software and AI Automation Services">
         <p>
-          Our services are designed to help businesses build, automate, and scale technology with confidence. We deliver practical engineering solutions that solve real operational problems.
+          We help teams replace manual work with reliable software. Internal tools, AI automation, MVPs, and cloud infrastructure — built to spec, delivered on time.
         </p>
       </PageIntro>
 
@@ -279,11 +241,11 @@ const ServicesPage = () => {
               Ready to get started?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-neutral-300">
-              Build your custom service plan and get an instant quote for your project.
+              Tell us what you need built. We will scope it and get back to you within twenty-four hours.
             </p>
             <div className="mt-8">
               <Button href="/get-quote" invert>
-                Get a Custom Quote
+                Get a Build Plan
               </Button>
             </div>
           </div>

@@ -20,7 +20,9 @@ interface FormData {
   name: string;
   email: string;
   company: string;
-  phone: string;
+  projectType: string;
+  budgetRange: string;
+  timeline: string;
   message: string;
 }
 
@@ -28,7 +30,9 @@ interface FormErrors {
   name?: string;
   email?: string;
   company?: string;
-  phone?: string;
+  projectType?: string;
+  budgetRange?: string;
+  timeline?: string;
   message?: string;
 }
 
@@ -40,7 +44,9 @@ const ContactForm = () => {
     name: "",
     email: "",
     company: "",
-    phone: "",
+    projectType: "",
+    budgetRange: "",
+    timeline: "",
     message: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -141,7 +147,9 @@ const ContactForm = () => {
           name: formData.name,
           email: formData.email,
           company: formData.company,
-          phone: formData.phone,
+          projectType: formData.projectType,
+          budgetRange: formData.budgetRange,
+          timeline: formData.timeline,
           message: formData.message,
         }),
       });
@@ -172,7 +180,9 @@ const ContactForm = () => {
       name: "",
       email: "",
       company: "",
-      phone: "",
+      projectType: "",
+      budgetRange: "",
+      timeline: "",
       message: "",
     });
     setErrors({});
@@ -198,7 +208,7 @@ const ContactForm = () => {
     <FadeIn>
       <form onSubmit={handleSubmit} noValidate>
         <h2 className="font-display text-base font-semibold text-neutral-950">
-          Work inquiries
+          Request a Build Plan
         </h2>
 
         {/* Error message */}
@@ -251,11 +261,23 @@ const ContactForm = () => {
             disabled={status === "submitting"}
           />
           <TextInput
-            label="Phone"
-            type="tel"
-            name="phone"
-            autoComplete="tel"
-            value={formData.phone}
+            label="Project Type"
+            name="projectType"
+            value={formData.projectType}
+            onChange={handleChange}
+            disabled={status === "submitting"}
+          />
+          <TextInput
+            label="Budget Range"
+            name="budgetRange"
+            value={formData.budgetRange}
+            onChange={handleChange}
+            disabled={status === "submitting"}
+          />
+          <TextInput
+            label="Timeline"
+            name="timeline"
+            value={formData.timeline}
             onChange={handleChange}
             disabled={status === "submitting"}
           />
@@ -293,7 +315,7 @@ const ContactForm = () => {
               Sending...
             </span>
           ) : (
-            "Let's work together"
+            "Submit Build Plan Request"
           )}
         </Button>
       </form>

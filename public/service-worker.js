@@ -1,6 +1,6 @@
-const CACHE_NAME = 'shammas-development-v3'
-const STATIC_CACHE = 'shammas-static-v3'
-const DYNAMIC_CACHE = 'shammas-dynamic-v3'
+const CACHE_NAME = 'shammas-development-v4'
+const STATIC_CACHE = 'shammas-static-v4'
+const DYNAMIC_CACHE = 'shammas-dynamic-v4'
 
 // Static assets to cache immediately
 const urlsToCache = [
@@ -14,6 +14,13 @@ const urlsToCache = [
   '/contact',
   '/faq',
   '/get-quote',
+  '/internal-tools',
+  '/ai-automation',
+  '/mvp-development',
+  '/custom-software-cost',
+  '/blog',
+  '/privacy-policy',
+  '/terms-and-conditions',
   '/site.webmanifest',
   '/favicon.ico',
   '/favicon.svg',

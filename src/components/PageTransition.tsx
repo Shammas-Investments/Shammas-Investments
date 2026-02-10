@@ -38,10 +38,11 @@ const PageTransition = ({ children }: PageTransitionProps) => {
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={pathname}
-        initial="initial"
+        initial={false}
         animate="enter"
         exit="exit"
         variants={pageVariants}
+        suppressHydrationWarning
       >
         {children}
       </motion.div>

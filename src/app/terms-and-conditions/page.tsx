@@ -1,6 +1,12 @@
 import Container from "@/components/Container";
 import PageIntro from "@/components/PageIntro";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import type { Metadata } from "next";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Terms and Conditions", path: "/terms-and-conditions" },
+]);
 
 export const metadata: Metadata = {
   title: "Terms and Conditions | Shammas Development",
@@ -25,11 +31,18 @@ export const metadata: Metadata = {
       "Terms and Conditions for Shammas Development LLC - Read our terms of service and usage policies.",
     images: ["/web-app-manifest-512x512.png"],
   },
+  alternates: {
+    canonical: "/terms-and-conditions",
+  },
 };
 
 const TermsAndConditionsPage = () => {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <PageIntro eyebrow="Legal" title="Terms and Conditions">
         <p>Effective Date: January 27, 2026 | Last Updated: January 27, 2026</p>
       </PageIntro>

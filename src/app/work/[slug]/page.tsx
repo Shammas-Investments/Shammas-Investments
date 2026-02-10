@@ -55,6 +55,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: caseStudy.description,
       images: ["/web-app-manifest-512x512.png"],
     },
+    alternates: {
+      canonical: `/work/${slug}`,
+    },
   };
 }
 
@@ -153,7 +156,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 <p className="font-display text-3xl font-semibold text-white sm:text-4xl">
                   {metric.value}
                 </p>
-                <p className="mt-2 text-sm text-neutral-400">{metric.label}</p>
+                <p className="mt-2 text-sm text-neutral-300">{metric.label}</p>
               </FadeIn>
             ))}
           </div>
@@ -271,7 +274,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 <p className="font-semibold text-white">
                   {caseStudy.testimonial.author}
                 </p>
-                <p className="text-sm text-neutral-400">
+                <p className="text-sm text-neutral-300">
                   {caseStudy.testimonial.role}
                 </p>
               </div>

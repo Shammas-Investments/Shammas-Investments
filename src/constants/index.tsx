@@ -4,9 +4,10 @@ export const navigation = [
   {
     title: "Services",
     links: [
-      { title: "Software Development", href: "/services#software" },
-      { title: "AI & ML Solutions", href: "/services#ai-ml" },
-      { title: "E-Commerce", href: "/services#ecommerce" },
+      { title: "Internal Tools", href: "/internal-tools" },
+      { title: "AI Automation", href: "/ai-automation" },
+      { title: "MVP Development", href: "/mvp-development" },
+      { title: "Pricing", href: "/custom-software-cost" },
       {
         title: (
           <>

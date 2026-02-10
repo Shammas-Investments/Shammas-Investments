@@ -90,7 +90,7 @@ export default function InstallPrompt() {
         </div>
         <button
           onClick={() => setShowPrompt(false)}
-          className="flex-shrink-0 text-neutral-400 hover:text-white text-2xl transition-colors"
+          className="flex-shrink-0 text-neutral-300 hover:text-white text-2xl transition-colors"
           aria-label="Close"
         >
           ×

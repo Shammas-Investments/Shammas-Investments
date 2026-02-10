@@ -1,6 +1,6 @@
 # Robots.txt for Shammas Development LLC
 # Website: https://shammasdevelopment.io
-# Keywords: shammas, shammasdevelopment, shammasdev, shammas investments
+# Keywords: shammas, shammasdevelopment, shammasdev, shammas development
 
 # Default rules for all crawlers
 User-agent: *

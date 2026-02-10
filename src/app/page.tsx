@@ -3,7 +3,6 @@ import ContactSection from "@/components/ContactSection";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import Button from "@/components/Button";
-import CalendlyButton from "@/components/CalendlyButton";
 import WhatWeBuild from "@/components/WhatWeBuild";
 import WhoWeWorkWith from "@/components/WhoWeWorkWith";
 import WhyShammas from "@/components/WhyShammas";
@@ -12,25 +11,35 @@ import WhatHappensNext from "@/components/WhatHappensNext";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Shammas Development - Complete IT Solutions & Technology Services | shammasdev',
-  description: 'Shammas Development LLC - Expert IT solutions provider. Search shammas, shammasdev, shammas investments for software development, AI/ML, e-commerce, cloud management, and digital transformation services. Technology investment and consulting worldwide.',
+  title: 'Shammas Development - Internal Tools, AI Automation & MVP Development',
+  description: 'Custom internal tools, AI automation, and MVP development for teams that have outgrown spreadsheets and manual workflows. Clear scope, weekly demos, production-grade systems.',
   keywords: [
-    'shammas',
-    'shammas investments',
+    'shammas development',
     'shammasdev',
-    'shammas invest',
-    'shammas LLC',
-    'shammas technology',
-    'IT solutions',
-    'technology services',
+    'internal tools development',
+    'AI automation',
+    'MVP development',
+    'custom software development',
+    'workflow automation',
+    'LLM automation',
+    'SaaS development',
     'software development company',
-    'AI development',
-    'digital transformation',
+    'custom dashboards',
+    'admin panels',
   ],
   openGraph: {
-    title: 'Shammas Development - Complete IT Solutions & Technology Services',
-    description: 'Leading IT solutions provider specializing in software development, AI/ML, e-commerce platforms, and digital transformation. Expert technology consulting.',
+    title: 'Shammas Development - Internal Tools, AI Automation & MVP Development',
+    description: 'Custom internal tools, AI automation, and MVP development for teams that have outgrown spreadsheets and manual workflows.',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shammas Development - Internal Tools, AI Automation & MVP Development',
+    description: 'Custom internal tools, AI automation, and MVP development for teams that have outgrown spreadsheets and manual workflows.',
+    images: ['/web-app-manifest-512x512.png'],
+  },
+  alternates: {
+    canonical: '/',
   },
 };
 
@@ -41,18 +50,18 @@ export default function Home() {
       <Container className="mt-32 sm:mt-40 md:mt-48 lg:mt-56">
         <FadeIn className="max-w-3xl">
           <h1 className="font-banner text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            We design and build custom software, automation, and AI systems that help businesses scale with confidence.
+            Internal Tools & AI Automation That Replace Manual Work
           </h1>
           <p className="mt-6 text-xl font-medium text-neutral-800">
-            Built for founders and operators who need reliable, well-architected systems tailored to how their business actually works.
+            We build custom internal software and AI workflows for teams that have outgrown spreadsheets, duct-taped tools, and busywork.
           </p>
           <p className="mt-4 text-lg text-neutral-600">
-            From MVPs to internal platforms, we focus on practical solutions that deliver measurable, long-term value.
+            Clear scope. Weekly demos. Production-grade systems.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <CalendlyButton>Book a Strategy Call</CalendlyButton>
-            <Button href="/get-quote" className="bg-white !text-neutral-950 border-2 border-neutral-950 hover:!bg-neutral-100">
-              Get a Custom Quote
+            <Button href="/get-quote">Get a Build Plan</Button>
+            <Button href="/process" className="bg-white !text-neutral-950 border-2 border-neutral-950 hover:!bg-neutral-100">
+              See How We Work
             </Button>
           </div>
         </FadeIn>

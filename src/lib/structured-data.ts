@@ -88,7 +88,7 @@ export function generateOrganizationSchema() {
     logo: `${SITE_URL}/web-app-manifest-512x512.png`,
     sameAs: [
       'https://www.linkedin.com/company/shammas-development',
-      'https://twitter.com/shammasdev',
+      // 'https://twitter.com/shammasdev',
     ],
     contactPoint: {
       '@type': 'ContactPoint',

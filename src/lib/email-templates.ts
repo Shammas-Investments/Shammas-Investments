@@ -53,9 +53,11 @@ export function emailFooter(options?: { dark?: boolean }): string {
               <a href="https://linkedin.com/company/shammas-development" target="_blank" style="display: inline-block; margin: 0 8px;">
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24" height="24" style="display: block; opacity: 0.6;" />
               </a>
+              <!-- Twitter commented out
               <a href="https://twitter.com/shammasdev" target="_blank" style="display: inline-block; margin: 0 8px;">
                 <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="24" height="24" style="display: block; opacity: 0.6;" />
               </a>
+              -->
             </td>
           </tr>
           <tr>

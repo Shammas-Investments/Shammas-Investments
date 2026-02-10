@@ -51,6 +51,7 @@ const WhyShammas = () => {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                       strokeWidth={2}
+                      aria-hidden="true"
                     >
                       <path
                         strokeLinecap="round"
@@ -63,7 +64,7 @@ const WhyShammas = () => {
                     <h3 className="font-display text-lg font-semibold text-white">
                       {reason.title}
                     </h3>
-                    <p className="mt-2 text-sm text-neutral-400">
+                    <p className="mt-2 text-sm text-neutral-300">
                       {reason.description}
                     </p>
                   </div>
