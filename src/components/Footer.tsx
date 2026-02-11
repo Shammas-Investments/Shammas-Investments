@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import appLogo from "@/appLogo.png";
 import { trackNewsletterSignup } from "@/lib/analytics";
+import Trustpilot from "./Trustpilot";
 
 interface StatusState {
   type: string;
@@ -147,7 +148,10 @@ const Footer = () => {
             <NewsletterForm />
           </div>
         </div>
-        <div className="mb-20 mt-24 flex flex-wrap items-center justify-between gap-x-6 gap-y-6 border-t border-neutral-950/10 pt-12">
+        <div className="mt-16 border-t border-neutral-950/10 pt-8">
+          <Trustpilot />
+        </div>
+        <div className="mb-20 mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-6 border-t border-neutral-950/10 pt-12">
           <Link href={"/"} aria-label="Home" className="flex-shrink-0">
             <Image
               src={appLogo}

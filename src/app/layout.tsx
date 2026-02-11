@@ -17,7 +17,6 @@ import NewsletterPopup from '@/components/NewsletterPopup';
 import StickyCTA from '@/components/StickyCTA';
 import NavigationEvents from '@/components/NavigationEvents';
 import AdSense from '@/components/AdSense';
-import Trustpilot from '@/components/Trustpilot';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -278,7 +277,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <NewsletterPopup />
         <StickyCTA />
         <AdSense />
-        <Trustpilot />
       </body>
     </html>
   );
