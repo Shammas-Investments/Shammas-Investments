@@ -5,7 +5,7 @@ import FadeIn, { FadeInStagger } from "./FadeIn";
 import SectionIntro from "./SectionIntro";
 
 // Placeholder images - replace with actual founder photos
-import founderImage1 from "@/images/team/ceo.jpeg";
+// import founderImage1 from "@/images/team/ceo.jpeg";
 import founderImage2 from "@/images/team/cto.jpeg";
 
 interface FounderProps {
@@ -45,12 +45,12 @@ const founders: FounderProps[] = [
     image: founderImage2,
     bio: "Joe leads client strategy and delivery, ensuring every project is scoped clearly and delivered on time with full transparency.",
   },
-  {
-    name: "Hassan Naeem",
-    role: "Founder & CTO",
-    image: founderImage1,
-    bio: "Hassan leads architecture and engineering, building production-grade systems with clean code, strong documentation, and long-term maintainability.",
-  },
+  // {
+  //   name: "Hassan Naeem",
+  //   role: "Founder & CTO",
+  //   image: founderImage1,
+  //   bio: "Hassan leads architecture and engineering, building production-grade systems with clean code, strong documentation, and long-term maintainability.",
+  // },
 ];
 
 const Founders = () => {
@@ -58,7 +58,7 @@ const Founders = () => {
     <div className="mt-24 sm:mt-32 lg:mt-40">
       <SectionIntro
         eyebrow="Leadership"
-        title="Meet the founders"
+        title={founders.length > 1 ? "Meet the founders" : "Meet the founder"}
       >
         <p>
           A small senior team with no outsourcing, no bait and switch, and no
@@ -67,7 +67,7 @@ const Founders = () => {
       </SectionIntro>
 
       <Container className="mt-16">
-        <FadeInStagger className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:gap-12">
+        <FadeInStagger className={`grid grid-cols-1 gap-8 lg:gap-12 ${founders.length > 1 ? 'sm:grid-cols-2' : 'mx-auto max-w-md'}`}>
           {founders.map((founder) => (
             <FounderCard key={founder.name} {...founder} />
           ))}
